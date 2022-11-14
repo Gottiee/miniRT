@@ -1,14 +1,15 @@
 # VARIABLES
 
-NAME		= minirt
+NAME		= miniRT
 #NAME_BONUS	= pipex_bonus
 
 LIB_DIR	 	= libft
 LIB			= libft/libft.a
 
-SRC_DIR		= src/
-OBJ_DIR		= obj/
-SUBDIR		= obj/
+SRC_DIR		= 	src/
+OBJ_DIR		= 	obj/
+SUBDIR		=	obj/vector \
+				obj/utils \
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc
@@ -21,7 +22,13 @@ SAN			= -fsanitize=address
 
 # SOURCES
 
-SRC_FILES = mlx_fonction
+SRC_FILES = 	main \
+				mlx_fonction \
+				vector/vector_class \
+				vector/vector_utility \
+				vector/vector_utility2 \
+
+
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))
 SRCS		=	$(addprefix $(SRC_DIR), $(C_FILES))
 OBJS		=	$(addprefix $(OBJ_DIR), $(C_FILES:.c=.o))
@@ -70,14 +77,13 @@ $(OBJ_DIR)%.o:	 $(SRC_DIR)%.c
 			@echo "    $(RED)$(LOAD)/($(COUNT))"
 
 #	BONUS
-bonus:		$(LIB) $(NAME_BONUS)
+bonus:		obj $(LIB) $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJS_BONUS)
 			@$(CC) $(CFLAGS) $(ADDFLAGS) $^ -o $(NAME_BONUS) $(LIB)
 			@echo "$(RED)$(NAME_BONUS) BONUS compiled !$(CYAN)"
 
 $(OBJ_DIR)%.o:	 $(BONUS_DIR)%.c 
-			@mkdir -p $(OBJ_DIR)
 			@$(CC) $(CFLAGS) -c -o $@ $< 
 			@echo "$(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(RED)[Done]$(NOC)"
 

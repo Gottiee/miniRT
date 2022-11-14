@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_fonction.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eedy <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/14 12:15:44 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/14 15:34:07 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,4 @@ void	mlx_center(void)
 	mlx_destroy_image(data.mlx_ptr, data.i.i);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
-}
-
-int main (void)
-{
-	mlx_center();
 }
