@@ -1,6 +1,6 @@
 # VARIABLES
 
-NAME		= minishell
+NAME		= minirt
 #NAME_BONUS	= pipex_bonus
 
 LIB_DIR	 	= libft
@@ -8,12 +8,12 @@ LIB			= libft/libft.a
 
 SRC_DIR		= src/
 OBJ_DIR		= obj/
-SUBDIR		= obj/pipex obj/builtins obj/signal obj/parsing_theo obj/struct
+SUBDIR		= obj/
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -g -I./srcs/includes -MMD -MP
-ADDFLAGS	=  -L -lft -lreadline
+CFLAGS		= -Wall -Werror -Wextra -g -I./srcs/includes -Imlx_linux -MMD -MP
+ADDFLAGS	=  -L -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 RM			= rm -rf
 AR			= ar rcs
@@ -21,44 +21,7 @@ SAN			= -fsanitize=address
 
 # SOURCES
 
-SRC_FILES = pipex/main \
-pipex/pipex \
-pipex/pipex2 \
-pipex/pipex3 \
-pipex/pipex4 \
-pipex/pipex5 \
-pipex/end_and_free \
-pipex/lexeur_pipex \
-pipex/lexeur_pipex2 \
-pipex/fork_process \
-pipex/fork_process2 \
-pipex/get_file \
-pipex/struct_manage_pipex \
-pipex/struc_manage2 \
-pipex/pipex_parsing \
-pipex/here_doc \
-pipex/her_doc2 \
-builtins/cd \
-builtins/utils \
-builtins/pwd \
-builtins/builtins_manage \
-builtins/echo \
-builtins/env \
-builtins/unset \
-builtins/export \
-builtins/exit \
-signal/signal \
-parsing_theo/cmd_type \
-parsing_theo/parsing \
-parsing_theo/txt_trad \
-parsing_theo/utils \
-struct/prompt \
-struct/t_local_var2 \
-struct/t_local_var \
-struct/t_str2 \
-struct/t_str \
-struct/trad_dquotes
-
+SRC_FILES = mlx_fonction
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))
 SRCS		=	$(addprefix $(SRC_DIR), $(C_FILES))
 OBJS		=	$(addprefix $(OBJ_DIR), $(C_FILES:.c=.o))
