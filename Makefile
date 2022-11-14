@@ -23,7 +23,7 @@ SAN			= -fsanitize=address
 # SOURCES
 
 SRC_FILES = 	main \
-				mlx_fonction \
+				utils/mlx_fonction \
 				vector/vector_class \
 				vector/vector_utility \
 				vector/vector_utility2 \

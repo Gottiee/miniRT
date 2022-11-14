@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ray_class.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/14 15:48:51 by gmansuy          ###   ########.fr       */
+/*   Created: 2022/11/14 15:57:52 by gmansuy           #+#    #+#             */
+/*   Updated: 2022/11/14 16:30:01 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/minirt.h"
+#include "../../header/minirt.h"
 
-int main(int argc, char const *argv[])
+t_ray	*init_ray(t_vec *origin, t_vec *direction)
 {
-	t_vec	u;
-	t_vec	v;
-	t_vec	*p;
+	t_ray *new;
 	
-	(void)argc;
-	(void)argv;
-	init_vec(&u, 2, 0, 3);
-	init_vec(&v, 4, 4, 4);
-	p = div_const(&u, 3.0);
-	
-	printv(p);
-	return (0);
-}
+	new = magic_malloc(sizeof(t_ray));
+	new->orig = origin;
+	new->dir = direction;
+	return (new);
+} 
+
+t_vec	*at(t_ray *r, double t)
+{
+	return (plus(r.orig, mult_const(r.dir, t)));
+} 
+

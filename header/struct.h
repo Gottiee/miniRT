@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/14 15:21:41 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/14 17:06:25 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ typedef struct s_vec
 {
 	double e[3];
 }				t_vec;
+
+typedef struct s_ray
+{
+	t_vec	*orig;
+	t_vec	*dir;
+}				t_ray;
+
+typedef struct s_cam
+{
+	float	aspect_ratio;
+	int		image_width;
+	int		image_height;
+	
+}				t_cam;
 
 typedef struct s_img
 {
