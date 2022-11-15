@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 14:59:21 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 16:15:30 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define WINDOW_H 225
 # define WINDOW_W 400
+# define RATIO WINDOW_W / WINDOW_H
 # include "../libft/include/libft.h"
 # include "struct.h"
 
@@ -41,6 +42,7 @@ int	render(t_data *data);
 
 /*Fichier: vector_class.c*/
 void	plus_equal(t_vec *u, t_vec *v);
+void	min_equal(t_vec *u, t_vec *v);
 void	mult_equal(t_vec *u, double t);
 void	div_equal(t_vec *u, double t);
 double	length_squared(t_vec *u);

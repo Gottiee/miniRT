@@ -6,17 +6,31 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 14:56:20 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:42:50 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
+t_vec	*get_lower(t_cam *cam, t_vec horizontal, t_vec vertical)
+{
+	t_vec	*new;
+	
+	new = new_vec(0, 0, 0);
+	div_equal(&horizontal, 2);
+	div_equal(&vertical, 2);
+	min_equal(new, &horizontal);
+	min_equal(new, &vertical);
+	new->e[2] -= cam->focal_length;
+	return (new);
+}
+
 void	init_cam(t_cam *cam)
 {
-	cam->aspect_ratio = 16.0 / 9.0;
-	cam->image_width = 400;
-	cam->image_height = (int)(cam->image_width / cam->aspect_ratio);
+	cam->aspect_ratio = (double)WINDOW_W / (double)WINDOW_H;
+	printf("%f\n", cam->aspect_ratio);
+	// cam->image_width = 400;
+	// cam->image_height = (int)(cam->image_width / cam->aspect_ratio);
 	// cam->image_height = 1080;
 	cam->viewport_height = 2.0;
 	cam->viewport_width = cam->aspect_ratio * cam->viewport_height;
@@ -24,6 +38,5 @@ void	init_cam(t_cam *cam)
 	cam->origin = new_vec(0, 0, 0);
 	cam->horizontal = new_vec(cam->viewport_width, 0, 0);
 	cam->vertical = new_vec(0, cam->viewport_height, 0);
-	cam->lower_left_corner = minus(minus(minus(cam->origin, div_const(cam->horizontal, 2)),
-			div_const(cam->vertical, 2)), new_vec(0, 0, cam->focal_length));
+	cam->lower_left_corner = get_lower(cam, *cam->horizontal, *cam->vertical);
 }

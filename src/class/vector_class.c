@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 14:29:40 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:37:28 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ void	plus_equal(t_vec *u, t_vec *v)
 	u->e[0] += v->e[0];
 	u->e[1] += v->e[1];
 	u->e[2] += v->e[2];
+}
+
+/*Soustrait le vecteur v au vecteur u*/
+void	min_equal(t_vec *u, t_vec *v)
+{
+	u->e[0] -= v->e[0];
+	u->e[1] -= v->e[1];
+	u->e[2] -= v->e[2];
 }
 
 /*Multiplie le vecteur u par t*/

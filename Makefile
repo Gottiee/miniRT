@@ -23,6 +23,7 @@ SAN			= -fsanitize=address
 # SOURCES
 
 SRC_FILES = 	main \
+				render \
 				utils/mlx_fonction \
 				utils/convert_rgb \
 				class/vector_class \

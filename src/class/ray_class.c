@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:57:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 12:20:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 16:18:42 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ t_ray	*init_ray(t_vec *origin, t_vec *direction)
 	t_ray *new;
 	
 	new = magic_malloc(sizeof(t_ray));
-	new->orig = origin;
-	new->dir = direction;
+	if (!new)
+		exit (0);
+	new->orig = *origin;
+	new->dir = *direction;
 	return (new);
 } 
 
-t_vec	*at(t_ray *r, double t)
-{
-	return (plus(r->orig, mult_const(r->dir, t)));
-} 
+// t_vec	*at(t_ray *r, double t)
+// {
+// 	return (plus(r->orig, mult_const(r->dir, t)));
+// } 
 
