@@ -8,7 +8,7 @@ LIB			= libft/libft.a
 
 SRC_DIR		= 	src/
 OBJ_DIR		= 	obj/
-SUBDIR		=	obj/vector \
+SUBDIR		=	obj/class \
 				obj/utils \
 #BONUS_DIR	= src_bonus/
 
@@ -24,9 +24,11 @@ SAN			= -fsanitize=address
 
 SRC_FILES = 	main \
 				utils/mlx_fonction \
-				vector/vector_class \
-				vector/vector_utility \
-				vector/vector_utility2 \
+				class/vector_class \
+				class/vector_utility \
+				class/vector_utility2 \
+				class/ray_class \
+				class/cam_class \
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

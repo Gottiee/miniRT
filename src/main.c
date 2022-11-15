@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/14 15:48:51 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 11:50:02 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 int main(int argc, char const *argv[])
 {
-	t_vec	u;
-	t_vec	v;
-	t_vec	*p;
+	t_cam	c;
 	
 	(void)argc;
 	(void)argv;
-	init_vec(&u, 2, 0, 3);
-	init_vec(&v, 4, 4, 4);
-	p = div_const(&u, 3.0);
-	
-	printv(p);
+	init_cam(&c);
+	printv(c.lower_left_corner);
 	return (0);
 }

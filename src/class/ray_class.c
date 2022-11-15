@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:57:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/14 16:30:01 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 11:20:42 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ t_ray	*init_ray(t_vec *origin, t_vec *direction)
 
 t_vec	*at(t_ray *r, double t)
 {
-	return (plus(r.orig, mult_const(r.dir, t)));
+	return (plus(r->orig, mult_const(r->dir, t)));
 } 
 

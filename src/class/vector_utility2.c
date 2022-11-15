@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:19:57 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/14 15:42:54 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 11:41:45 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@ t_vec	*unit_vector(t_vec *v)
 }
 
 /*Crée un nouveau vecteur avec des valeurs arbitraires*/
-void	init_vec(t_vec *u, int x, int y, int z)
+t_vec	*new_vec(double x, double y, double z)
 {
-	u->e[0] = x;
-	u->e[1] = y;
-	u->e[2] = z;
+	t_vec *new;
+
+	new = magic_malloc(sizeof(t_vec));
+	new->e[0] = x;
+	new->e[1] = y;
+	new->e[2] = z;
+	return (new);
 }

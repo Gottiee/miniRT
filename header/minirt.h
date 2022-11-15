@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/14 15:30:40 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 11:47:30 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void	printv(t_vec *u);
 double	dot(t_vec *u, t_vec *v);
 t_vec	*cross(t_vec *u, t_vec *v);
 t_vec	*unit_vector(t_vec *v);
-void	init_vec(t_vec *u, int x, int y, int z);
+t_vec	*new_vec(double x, double y, double z);
+/*Fichier: ray_class.c*/
+t_ray	*init_ray(t_vec *origin, t_vec *direction);
+t_vec	*at(t_ray *r, double t);
+/*Fichier: cam_class.c*/
+void	init_cam(t_cam *cam);
 
 #endif 
