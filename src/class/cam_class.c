@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 14:47:14 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:56:20 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_cam(t_cam *cam)
 {
 	cam->aspect_ratio = 16.0 / 9.0;
-	cam->image_width = 1900;
+	cam->image_width = 400;
 	cam->image_height = (int)(cam->image_width / cam->aspect_ratio);
 	// cam->image_height = 1080;
 	cam->viewport_height = 2.0;

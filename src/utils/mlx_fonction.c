@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 14:39:48 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:59:54 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,16 @@ void	mlx_center()
 	t_data data;
 
 	data.mlx_ptr = mlx_init();
-	//if (data.mlx_ptr == NULL)
-	printf("%d %d\n", data.cam.image_width, data.cam.image_height);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, data.cam.image_width, data.cam.image_height, "MiniRT");
+	if (data.mlx_ptr == NULL)
+		exit (0);
+	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_W, WINDOW_H, "MiniRT");
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
+		exit (0);
 		//quitter le progamme
 	}
-	data.i.i = mlx_new_image(data.mlx_ptr, data.cam.image_width, data.cam.image_height);
+	data.i.i = mlx_new_image(data.mlx_ptr, WINDOW_W, WINDOW_H);
 	if (!data.i.i)
 		printf("33");
 	data.i.a = mlx_get_data_addr(data.i.i, &data.i.b, &data.i.l, &data.i.e);

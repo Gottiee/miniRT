@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 13:17:43 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:59:21 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define WINDOW_H 1080
-# define WINDOW_W 1920
+# define WINDOW_H 225
+# define WINDOW_W 400
 # include "../libft/include/libft.h"
 # include "struct.h"
 

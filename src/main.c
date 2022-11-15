@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 14:39:46 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:01:12 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,23 @@ int render(t_data *data)
 {
 	int		i;
 	int		j;
-	t_cam	*cam;
+	t_cam	cam;
 	double	u;
 	double	v;
 	t_ray	*r;
 	t_color	*color;
-	// t_lst	*garbage;
 
-	init_cam(&data->cam);
-	cam = &(data->cam);
-	j = cam->image_height - 1;
+	init_cam(&cam);
+	j = cam.image_height - 1;
 	while (j >= 0)
 	{
 		i = 0;
-		while (i < cam->image_width)
+		while (i < cam.image_width)
 		{
-			u = (double)i / (cam->image_width - 1);
-			v = (double)j / (cam->image_height - 1);
-			r = init_ray(cam->origin, minus(plus(plus(cam->lower_left_corner,
-				mult_const(cam->horizontal, u)), mult_const(cam->vertical, v)), cam->origin));
+			u = (double)i / (cam.image_width - 1);
+			v = (double)j / (cam.image_height - 1);
+			r = init_ray(cam.origin, minus(plus(plus(cam.lower_left_corner,
+				mult_const(cam.horizontal, u)), mult_const(cam.vertical, v)), cam.origin));
 			color = ray_color(*r);
 			img_pix_put(&data->i, i, j, hexa(*color));
 			i++;
@@ -53,6 +51,7 @@ int render(t_data *data)
 		j --;
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
+	magic_free();
 	return (0);
 }
 
