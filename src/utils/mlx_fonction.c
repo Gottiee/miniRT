@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 14:59:54 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:02:02 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	mlx_center()
 	}
 	data.i.i = mlx_new_image(data.mlx_ptr, WINDOW_W, WINDOW_H);
 	if (!data.i.i)
-		printf("33");
+		exit(0);
 	data.i.a = mlx_get_data_addr(data.i.i, &data.i.b, &data.i.l, &data.i.e);
 	if (!data.i.a)
-		printf("34");
+		exit(0);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, 17, StructureNotifyMask, &handle_destroy, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);

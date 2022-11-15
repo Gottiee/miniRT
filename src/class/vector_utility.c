@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 14:36:07 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:02:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_vec	*plus(t_vec *u, t_vec *v)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+	if (!new)
+		exit(1);
 	new->e[0] = u->e[0] + v->e[0];
 	new->e[1] = u->e[1] + v->e[1];
 	new->e[2] = u->e[2] + v->e[2];
@@ -30,6 +32,8 @@ t_vec	*minus(t_vec *u, t_vec *v)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+	if (!new)
+		exit(1);
 	new->e[0] = u->e[0] - v->e[0];
 	new->e[1] = u->e[1] - v->e[1];
 	new->e[2] = u->e[2] - v->e[2];
@@ -42,6 +46,8 @@ t_vec	*mult_vec(t_vec *u, t_vec *v)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+	if (!new)
+		exit(1);
 	new->e[0] = u->e[0] * v->e[0];
 	new->e[1] = u->e[1] * v->e[1];
 	new->e[2] = u->e[2] * v->e[2];
@@ -54,6 +60,8 @@ t_vec	*mult_const(t_vec *u, const double t)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+	if (!new)
+		exit(1);
 	new->e[0] = u->e[0] * t;
 	new->e[1] = u->e[1] * t;
 	new->e[2] = u->e[2] * t;
