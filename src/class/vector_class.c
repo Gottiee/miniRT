@@ -6,40 +6,51 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 15:37:28 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 18:57:51 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
+void	vec(t_vec *u, int x, int y, int z)
+{
+	u->e[0] = x;
+	u->e[1] = y;
+	u->e[2] = z;
+}
+
 /*Additionne le vecteur v au vecteur u*/
-void	plus_equal(t_vec *u, t_vec *v)
+t_vec	plus_equal(t_vec *u, t_vec *v)
 {
 	u->e[0] += v->e[0];
 	u->e[1] += v->e[1];
 	u->e[2] += v->e[2];
+	return (*u);
 }
 
 /*Soustrait le vecteur v au vecteur u*/
-void	min_equal(t_vec *u, t_vec *v)
+t_vec	min_equal(t_vec *u, t_vec *v)
 {
 	u->e[0] -= v->e[0];
 	u->e[1] -= v->e[1];
 	u->e[2] -= v->e[2];
+	return (*u);
 }
 
 /*Multiplie le vecteur u par t*/
-void	mult_equal(t_vec *u, double t)
+t_vec	mult_equal(t_vec *u, double t)
 {
 	u->e[0] *= t;
 	u->e[1] *= t;
 	u->e[2] *= t;
+	return (*u);
 }
 
 /*Divise le vecteur u par t*/
-void	div_equal(t_vec *u, double t)
+t_vec	div_equal(t_vec *u, double t)
 {
 	mult_equal(u, 1 / t);
+	return (*u);
 }
 
 /*Taille du vecteur 'u' au carré*/

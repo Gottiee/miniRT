@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_rgb.c                                      :+:      :+:    :+:   */
+/*   calcul_render.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 11:55:11 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 17:53:32 by gmansuy          ###   ########.fr       */
+/*   Created: 2022/11/15 17:39:40 by gmansuy           #+#    #+#             */
+/*   Updated: 2022/11/15 19:06:40 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/minirt.h"
+#include "../header/minirt.h"
 
-int	hexa(t_color *col)
+int	hit_sphere(t_point *center, double radius, t_ray r)
 {
-	int r;
-	int g;
-	int b;
-	
-	r = (int)(col->e[0] * 255);
-	g = (int)(col->e[1] * 255);
-	b = (int)(col->e[2] * 255);
-	return (r << 16 | g << 8 | b);
-}
+	double		a;
+	double		b;
+	double		c;
+	double		discr;
 
-void	img_pix_put(t_img *img, int x, int y, int color)
-{
-	char	*pixel;
-
-	pixel = img->a + (y * img->l + x * (img->b / 8));
-	if (pixel)
-		*(int *)pixel = color;
+	min_equal(&r.orig, center);
+	a = dot(&r.dir, &r.dir);
+	b = 2.0 * dot(&r.orig, &r.dir);
+	c = dot(&r.orig, &r.orig) - radius * radius;
+	discr = b * b - 4 * a * c;
+	return (discr > 0);
 }

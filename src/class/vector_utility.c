@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 15:02:49 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 17:57:45 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_vec	*plus(t_vec *u, t_vec *v)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+		printf("plus malloc!\n");
 	if (!new)
 		exit(1);
 	new->e[0] = u->e[0] + v->e[0];
@@ -32,6 +33,8 @@ t_vec	*minus(t_vec *u, t_vec *v)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+		printf("minus malloc!\n");
+
 	if (!new)
 		exit(1);
 	new->e[0] = u->e[0] - v->e[0];
@@ -46,6 +49,8 @@ t_vec	*mult_vec(t_vec *u, t_vec *v)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+		printf("mult_vec malloc!\n");
+
 	if (!new)
 		exit(1);
 	new->e[0] = u->e[0] * v->e[0];
@@ -60,6 +65,8 @@ t_vec	*mult_const(t_vec *u, const double t)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+		printf("mult_const malloc!\n");
+
 	if (!new)
 		exit(1);
 	new->e[0] = u->e[0] * t;

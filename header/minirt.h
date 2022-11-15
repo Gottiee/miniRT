@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 16:21:22 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 19:01:15 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@
 void	mlx_center(void);
 /*Fichier : convert_rgb.c*/
 void	img_pix_put(t_img *img, int x, int y, int color);
-int		hexa(t_color col);
+int		hexa(t_color *col);
 
-// int		render(t_data *data);
-int	render(t_data *data);
+int		render(t_data *data);
+int		hit_sphere(t_point *center, double radius, t_ray r);
+void	vec(t_vec *u, int x, int y, int z);
 
 /*          --- Classe vector ---     */
 
 /*Fichier: vector_class.c*/
-void	plus_equal(t_vec *u, t_vec *v);
-void	min_equal(t_vec *u, t_vec *v);
-void	mult_equal(t_vec *u, double t);
-void	div_equal(t_vec *u, double t);
+t_vec	plus_equal(t_vec *u, t_vec *v);
+t_vec	min_equal(t_vec *u, t_vec *v);
+t_vec	mult_equal(t_vec *u, double t);
+t_vec	div_equal(t_vec *u, double t);
 double	length_squared(t_vec *u);
 double	length(t_vec *u);
 /*Fichier: vector_utility.c*/

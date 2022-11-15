@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 15:52:22 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 18:49:18 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_cam
 	double	viewport_width;
 	double	focal_length;
 	t_point	*origin;
-	t_vec	*horizontal;
-	t_vec	*vertical;
+	t_vec	horizontal;
+	t_vec	vertical;
 	t_point	*lower_left_corner;
 }				t_cam;
 

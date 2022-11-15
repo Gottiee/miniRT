@@ -24,6 +24,7 @@ SAN			= -fsanitize=address
 
 SRC_FILES = 	main \
 				render \
+				calcul_render \
 				utils/mlx_fonction \
 				utils/convert_rgb \
 				class/vector_class \

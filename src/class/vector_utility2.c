@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:19:57 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 16:05:03 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 19:03:06 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_vec	*new_vec(double x, double y, double z)
 	t_vec *new;
 
 	new = magic_malloc(sizeof(t_vec));
+	printf("new vec malloc\n");
 	if (!new)
 		exit (1);
 	new->e[0] = x;
