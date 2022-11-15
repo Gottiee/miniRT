@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 13:16:21 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:39:48 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	mlx_center()
 {
 	t_data data;
 
-	init_cam(&data.cam);
 	data.mlx_ptr = mlx_init();
 	//if (data.mlx_ptr == NULL)
 	printf("%d %d\n", data.cam.image_width, data.cam.image_height);

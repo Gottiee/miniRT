@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:55:11 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 13:32:15 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:26:55 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	hexa(t_color col)
 	int g;
 	int b;
 	
-	// printf("%f %f %f\n", col.e[0], col.e[1], col.e[2]);
 	r = (int)(col.e[0] * 255);
 	g = (int)(col.e[1] * 255);
 	b = (int)(col.e[2] * 255);

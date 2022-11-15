@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 13:31:05 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:39:46 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int render(t_data *data)
 	double	v;
 	t_ray	*r;
 	t_color	*color;
-	(void)color;
-	(void)r;
+	// t_lst	*garbage;
+
+	init_cam(&data->cam);
 	cam = &(data->cam);
 	j = cam->image_height - 1;
 	while (j >= 0)
@@ -47,7 +48,6 @@ int render(t_data *data)
 				mult_const(cam->horizontal, u)), mult_const(cam->vertical, v)), cam->origin));
 			color = ray_color(*r);
 			img_pix_put(&data->i, i, j, hexa(*color));
-			// img_pix_put(&data->i, i, j, 1);
 			i++;
 		}
 		j --;
