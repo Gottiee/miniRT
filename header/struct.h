@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 11:48:22 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 12:42:52 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,7 @@ typedef struct s_data
 	void	*win_ptr;
 	t_img	i;
 	int		cur_img;
+	t_cam	cam;
 }				t_data;
-
-/*          --- Fonction qui gere la lib Mlx ---     */
-
-/*Fichier: mlx_fonction.c*/
-void	mlx_center(void);
 
 #endif 

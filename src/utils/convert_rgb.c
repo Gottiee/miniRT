@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_class.c                                        :+:      :+:    :+:   */
+/*   convert_rgb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 15:57:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 12:20:25 by gmansuy          ###   ########.fr       */
+/*   Created: 2022/11/15 11:55:11 by gmansuy           #+#    #+#             */
+/*   Updated: 2022/11/15 13:32:15 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-t_ray	*init_ray(t_vec *origin, t_vec *direction)
+int	hexa(t_color col)
 {
-	t_ray *new;
+	int r;
+	int g;
+	int b;
 	
-	new = magic_malloc(sizeof(t_ray));
-	new->orig = origin;
-	new->dir = direction;
-	return (new);
-} 
+	// printf("%f %f %f\n", col.e[0], col.e[1], col.e[2]);
+	r = (int)(col.e[0] * 255);
+	g = (int)(col.e[1] * 255);
+	b = (int)(col.e[2] * 255);
+	return (r << 16 | g << 8 | b);
+}
 
-t_vec	*at(t_ray *r, double t)
+void	img_pix_put(t_img *img, int x, int y, int color)
 {
-	return (plus(r->orig, mult_const(r->dir, t)));
-} 
+	char	*pixel;
 
+	pixel = img->a + (y * img->l + x * (img->b / 8));
+	if (pixel)
+		*(int *)pixel = color;
+}

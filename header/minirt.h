@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 11:47:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 13:17:43 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@
 
 /*Fichier: mlx_fonction.c*/
 void	mlx_center(void);
+/*Fichier : convert_rgb.c*/
+void	img_pix_put(t_img *img, int x, int y, int color);
+int		hexa(t_color col);
+
+// int		render(t_data *data);
+int	render(t_data *data);
 
 /*          --- Classe vector ---     */
 
@@ -56,5 +62,6 @@ t_ray	*init_ray(t_vec *origin, t_vec *direction);
 t_vec	*at(t_ray *r, double t);
 /*Fichier: cam_class.c*/
 void	init_cam(t_cam *cam);
+
 
 #endif 
