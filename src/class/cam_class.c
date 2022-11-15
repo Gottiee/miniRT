@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 15:42:50 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/15 16:20:06 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ t_vec	*get_lower(t_cam *cam, t_vec horizontal, t_vec vertical)
 void	init_cam(t_cam *cam)
 {
 	cam->aspect_ratio = (double)WINDOW_W / (double)WINDOW_H;
-	printf("%f\n", cam->aspect_ratio);
-	// cam->image_width = 400;
-	// cam->image_height = (int)(cam->image_width / cam->aspect_ratio);
-	// cam->image_height = 1080;
 	cam->viewport_height = 2.0;
 	cam->viewport_width = cam->aspect_ratio * cam->viewport_height;
 	cam->focal_length = 1.0;
