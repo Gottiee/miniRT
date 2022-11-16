@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/16 12:46:14 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/16 17:47:04 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,24 @@
 
 int	ray_color(t_ray r, t_color *color)
 {
+	t_record	rec;
     t_color color2;
-	t_point	p;
     double  t;
 
-	//p est la position de al sphere dans l'espace
-	vec(&p, 0, 0, -1);
-	t = hit_sphere(&p, 0.5, r);
 	vec(color, 1, 1, 1);
 	vec(&color2, 1, 0.7, 0.5);
-	if (t > 0.0)
+	if (hit_global(r, &rec, 0, DBL_MAX))
 	{
-		at(&r, t);
-		min_equal(&r.orig, &p);
-    	div_equal(&r.orig, length(&r.orig));
-		plus_equal(color, &r.orig);
-		mult_equal(color, 0.5);
-		return (hexa(color));
+		plus_equal(&rec.normal, color);
+		mult_equal(&rec.normal, 0.5);
+		return hexa(&rec.normal);
 	}
-    div_equal(&r.dir, length(&r.dir));
+	div_equal(&r.dir, length(&r.dir));
     t = 0.5 * (r.dir.e[1] + 1);
 	mult_equal(color, 1.0 - t);
     mult_equal(&color2, t);
     plus_equal(color, &color2);
 	return (hexa(color));
-
 }
 
 void	get_ray(t_cam cam, double u, double v, t_ray *new)

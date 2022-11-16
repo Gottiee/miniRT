@@ -6,13 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 10:43:52 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/16 17:06:58 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
-
-
 
 int	handle_destroy(t_data *data)
 {

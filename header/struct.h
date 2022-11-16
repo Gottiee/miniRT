@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 12:59:52 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/16 17:52:21 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,13 @@ typedef struct s_record
 	double	t;
  	double	t_min;
 	double	t_max;
+	int		front_face;
 }				t_record;
 
+typedef struct s_hit_lst
+{
+	struct s_hit_lst	*next;
+	void				*object;
+	int					bolo;
+}				t_hit_lst;
 #endif 

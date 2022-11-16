@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 12:10:58 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/16 18:05:56 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,26 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <math.h>
+# include <float.h>
 
 # define WINDOW_H 1080
 # define WINDOW_W 1920
 # define RATIO WINDOW_W / WINDOW_H
+# define SPHERE 1
+
 # include "../libft/include/libft.h"
 # include "struct.h"
+
+
+/*          --- Fonction CLASS ---     */
+
+/*Fichier: hittable.c*/
+int			hit_global(t_ray r, t_record *rec, double t_min, double t_max);
+
+/*          --- Fonction UTILS ---     */
+
+/*Fichier: hittable_list.c*/
+t_hit_lst	*get_hit(void *obj);
 
 /*          --- Fonction qui gere la lib Mlx ---     */
 
@@ -36,7 +50,6 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 int		hexa(t_color *col);
 
 int		render(t_data *data);
-double	hit_sphere(t_point *center, double radius, t_ray r);
 void	vec(t_vec *u, double x, double y, double z);
 
 /*          --- Classe vector ---     */

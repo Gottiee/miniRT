@@ -28,6 +28,7 @@ SRC_FILES = 	main \
 				render/calcul_render \
 				utils/mlx_fonction \
 				utils/convert_rgb \
+				utils/hittable_list \
 				class/vector_class \
 				class/vector_utility \
 				class/vector_utility2 \
