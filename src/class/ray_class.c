@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:57:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 17:56:39 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/16 13:15:15 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ t_ray	*init_ray(t_vec *origin, t_vec *direction)
 	return (new);
 } 
 
-// t_vec	*at(t_ray *r, double t)
-// {
-// 	return (plus(r->orig, mult_const(r->dir, t)));
-// } 
-
+/*Modifie r.dir en additionant r.orig a t*r.dir*/
+void	at(t_ray *r, double t)
+{
+	mult_equal(&r->dir, t);
+	r->dir.e[0] = r->orig.e[0] + r->dir.e[0];
+	r->dir.e[1] = r->orig.e[1] + r->dir.e[1];
+	r->dir.e[2] = r->orig.e[2] + r->dir.e[2];
+}

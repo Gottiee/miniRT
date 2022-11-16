@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 19:03:31 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:46:14 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,23 @@ int	ray_color(t_ray r, t_color *color)
 	t_point	p;
     double  t;
 
+	//p est la position de al sphere dans l'espace
 	vec(&p, 0, 0, -1);
-	if (hit_sphere(&p, 0.5, r))
-		return (0x0088ff);	
+	t = hit_sphere(&p, 0.5, r);
+	vec(color, 1, 1, 1);
+	vec(&color2, 1, 0.7, 0.5);
+	if (t > 0.0)
+	{
+		at(&r, t);
+		min_equal(&r.orig, &p);
+    	div_equal(&r.orig, length(&r.orig));
+		plus_equal(color, &r.orig);
+		mult_equal(color, 0.5);
+		return (hexa(color));
+	}
     div_equal(&r.dir, length(&r.dir));
     t = 0.5 * (r.dir.e[1] + 1);
-    color->e[0] = 1.0;
-    color->e[1] = 1.0;
-    color->e[2] = 1.0;
-    mult_equal(color, 1.0 - t);
-    color2.e[0] = 1.0;
-    color2.e[1] = 0.7;
-    color2.e[2] = 0.5;
+	mult_equal(color, 1.0 - t);
     mult_equal(&color2, t);
     plus_equal(color, &color2);
 	return (hexa(color));
@@ -65,8 +70,7 @@ int render(t_data *data)
 			u = (double)i / (WINDOW_W - 1);
 			v = (double)j / (WINDOW_H - 1);
 			get_ray(data->cam, u, v, &r);
-			img_pix_put(&data->i, i, j, ray_color(r, &color));
-			// usleep(100000);
+			img_pix_put(&data->i, i, WINDOW_H - j, ray_color(r, &color));
 			i++;
 		}
 		j --;

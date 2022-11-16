@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 18:49:18 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:59:52 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,20 @@ typedef struct s_data
 	int		cur_img;
 	t_cam	cam;
 }				t_data;
+
+typedef struct s_sphere
+{
+	t_point	center;
+	double	radius;
+}				t_sphere;
+
+typedef struct s_record
+{
+	t_point p;
+	t_vec	normal;
+	double	t;
+ 	double	t_min;
+	double	t_max;
+}				t_record;
 
 #endif 
