@@ -25,7 +25,6 @@ SAN			= -fsanitize=address
 
 SRC_FILES = 	main \
 				render/render \
-				render/calcul_render \
 				utils/mlx_fonction \
 				utils/convert_rgb \
 				utils/hittable_list \
