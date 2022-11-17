@@ -10,6 +10,7 @@ SRC_DIR		= 	src/
 OBJ_DIR		= 	obj/
 SUBDIR		=	obj/class \
 				obj/utils \
+				obj/render\
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc
@@ -23,15 +24,17 @@ SAN			= -fsanitize=address
 # SOURCES
 
 SRC_FILES = 	main \
-				render \
-				calcul_render \
+				render/render \
+				render/calcul_render \
 				utils/mlx_fonction \
 				utils/convert_rgb \
+				utils/hittable_list \
 				class/vector_class \
 				class/vector_utility \
 				class/vector_utility2 \
 				class/ray_class \
 				class/cam_class \
+				class/hittable
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

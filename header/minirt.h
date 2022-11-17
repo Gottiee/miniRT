@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 19:01:15 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/16 18:05:56 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,26 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <math.h>
+# include <float.h>
 
 # define WINDOW_H 1080
 # define WINDOW_W 1920
 # define RATIO WINDOW_W / WINDOW_H
+# define SPHERE 1
+
 # include "../libft/include/libft.h"
 # include "struct.h"
+
+
+/*          --- Fonction CLASS ---     */
+
+/*Fichier: hittable.c*/
+int			hit_global(t_ray r, t_record *rec, double t_min, double t_max);
+
+/*          --- Fonction UTILS ---     */
+
+/*Fichier: hittable_list.c*/
+t_hit_lst	*get_hit(void *obj);
 
 /*          --- Fonction qui gere la lib Mlx ---     */
 
@@ -36,8 +50,7 @@ void	img_pix_put(t_img *img, int x, int y, int color);
 int		hexa(t_color *col);
 
 int		render(t_data *data);
-int		hit_sphere(t_point *center, double radius, t_ray r);
-void	vec(t_vec *u, int x, int y, int z);
+void	vec(t_vec *u, double x, double y, double z);
 
 /*          --- Classe vector ---     */
 
@@ -62,7 +75,7 @@ t_vec	*unit_vector(t_vec *v);
 t_vec	*new_vec(double x, double y, double z);
 /*Fichier: ray_class.c*/
 t_ray	*init_ray(t_vec *origin, t_vec *direction);
-t_vec	*at(t_ray *r, double t);
+void	at(t_ray *r, double t);
 /*Fichier: cam_class.c*/
 void	init_cam(t_cam *cam);
 

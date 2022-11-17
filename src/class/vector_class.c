@@ -6,13 +6,13 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 18:57:51 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/16 11:50:02 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-void	vec(t_vec *u, int x, int y, int z)
+void	vec(t_vec *u, double x, double y, double z)
 {
 	u->e[0] = x;
 	u->e[1] = y;

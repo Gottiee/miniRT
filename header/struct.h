@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/15 18:49:18 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:52:21 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,26 @@ typedef struct s_data
 	t_cam	cam;
 }				t_data;
 
+typedef struct s_sphere
+{
+	t_point	center;
+	double	radius;
+}				t_sphere;
+
+typedef struct s_record
+{
+	t_point p;
+	t_vec	normal;
+	double	t;
+ 	double	t_min;
+	double	t_max;
+	int		front_face;
+}				t_record;
+
+typedef struct s_hit_lst
+{
+	struct s_hit_lst	*next;
+	void				*object;
+	int					bolo;
+}				t_hit_lst;
 #endif 
