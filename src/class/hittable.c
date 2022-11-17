@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hittable.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eedy <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 18:05:32 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/17 22:58:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 		double	b;
 		double	c;
 		double	discr;
-		double	root;
+		double	root;   
 
 		min_equal(&r.orig, &s->center);
 		a = length_squared(&r.dir);
@@ -44,11 +44,13 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 						return (0);
 		}
 		rec->t = root;
+		//changer at
 		at(&r, rec->t);
 		rec->p = r.dir;	
 		min_equal(&r.dir, &s->center);
 		div_equal(&r.dir, s->radius);
 		set_face(r, &r.dir, rec);
+		//sphere color = normal * 0.5 + 0.5 = couleurs de 0 a 1 pour eviter le clamp
 		return (1);
 }
 

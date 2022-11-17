@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/17 20:06:50 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/17 23:08:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	ray_color(t_ray r, t_color *color)
 {
+	//light : t_vec light_dir(-1, -1, -1) (normalize)
+	//comparaison : dot product de deux vecteurs = cosinus de leur angle
+	//d = dot(normal, -lightdir) == cos(angle)
+	//d => intensite de la couleur (si d est negatif => clamp 0)
 	t_record	rec;
     t_color color2;
     double  t;
