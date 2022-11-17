@@ -25,6 +25,7 @@ SAN			= -fsanitize=address
 
 SRC_FILES = 	main \
 				render/render \
+				render/hittable \
 				utils/mlx_fonction \
 				utils/convert_rgb \
 				utils/hittable_list \
@@ -33,7 +34,6 @@ SRC_FILES = 	main \
 				class/vector_utility2 \
 				class/ray_class \
 				class/cam_class \
-				class/hittable
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

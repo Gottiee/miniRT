@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/17 12:37:50 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/17 13:11:57 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	ray_color(t_ray r, t_color *color)
 {
 	t_record	rec;
-    t_color color2;
+    t_color 	color2;
     double  t;
 
 	vec(color, 1, 1, 1);
 	vec(&color2, 1, 0.7, 0.5);
 	if (hit_global(r, &rec, 0, DBL_MAX))
 	{
-		printv(&rec.normal);
+		// printv(&rec.normal);
 		plus_equal(&rec.normal, color);
 		mult_equal(&rec.normal, 0.5);
 		return (hexa(&rec.normal));
