@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/17 13:16:19 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:13:33 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 		double	discr;
 		double	root;
 		t_ray	tmp;
+		t_vec	oc;
 
+		oc = r.orig;
 		tmp = r;
-		min_equal(&r.orig, &s->center);
+		min_equal(&oc, &s->center);
 		a = length_squared(&r.dir);
-		b = dot(&r.orig, &r.dir);
-		c = length_squared(&r.orig) - s->radius * s->radius;
+		b = dot(&oc, &r.dir);
+		c = length_squared(&oc) - s->radius * s->radius;
 		discr = b * b - a * c;
 		if (discr < 0)
 				return (0);
@@ -51,7 +53,7 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 		rec->p = r.dir;	
 		min_equal(&r.dir, &s->center);
 		div_equal(&r.dir, s->radius);
-		set_face(r, &tmp.dir, rec);
+		set_face(tmp, &r.dir, rec);
 		return (1);
 }
 

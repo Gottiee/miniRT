@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 18:51:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:10:56 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_cam(t_cam *cam)
 	cam->aspect_ratio = (double)WINDOW_W / (double)WINDOW_H;
 	cam->viewport_height = 2.0;
 	cam->viewport_width = cam->aspect_ratio * cam->viewport_height;
-	cam->focal_length = 1.0;
+	cam->focal_length = 1;
 	cam->origin = new_vec(0, 0, 0);
 	cam->horizontal.e[0] = cam->viewport_width;
 	cam->horizontal.e[1] = 0;
