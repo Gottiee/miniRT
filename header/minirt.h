@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 18:05:56 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/17 20:06:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ t_vec	div_equal(t_vec *u, double t);
 double	length_squared(t_vec *u);
 double	length(t_vec *u);
 /*Fichier: vector_utility.c*/
-t_vec	*plus(t_vec *u, t_vec *v);
-t_vec	*minus(t_vec *u, t_vec *v);
-t_vec	*mult_vec(t_vec *u, t_vec *v);
-t_vec	*mult_const(t_vec *u, const double t);
-t_vec	*div_const(t_vec *u, const double t);
+t_vec	plus(t_vec *u, t_vec *v);
+t_vec	minus(t_vec *u, t_vec *v);
+t_vec	mult_vec(t_vec *u, t_vec *v);
+t_vec	mult_const(t_vec *u, const double t);
+t_vec	div_const(t_vec *u, const double t);
 /*Fichier: vector_utility2.c*/
 void	printv(t_vec *u);
 double	dot(t_vec *u, t_vec *v);
