@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/11/17 13:53:24 by gmansuy          ###   ########.fr       */
+=======
+/*   Updated: 2022/11/17 23:08:56 by marvin           ###   ########.fr       */
+>>>>>>> 0ddaeae0c8b5e994027a4416af4aef8a89c29574
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +18,10 @@
 
 int	ray_color(t_ray r, t_color *color)
 {
+	//light : t_vec light_dir(-1, -1, -1) (normalize)
+	//comparaison : dot product de deux vecteurs = cosinus de leur angle
+	//d = dot(normal, -lightdir) == cos(angle)
+	//d => intensite de la couleur (si d est negatif => clamp 0)
 	t_record	rec;
     t_color 	color2;
     double  t;

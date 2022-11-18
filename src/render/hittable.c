@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hittable.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD:src/render/hittable.c
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
 /*   Updated: 2022/11/17 14:13:33 by gmansuy          ###   ########.fr       */
+=======
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
+/*   Updated: 2022/11/17 22:58:09 by marvin           ###   ########.fr       */
+>>>>>>> 0ddaeae0c8b5e994027a4416af4aef8a89c29574:src/class/hittable.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +34,13 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 		double	b;
 		double	c;
 		double	discr;
+<<<<<<< HEAD:src/render/hittable.c
 		double	root;
 		t_ray	tmp;
 		t_vec	oc;
+=======
+		double	root;   
+>>>>>>> 0ddaeae0c8b5e994027a4416af4aef8a89c29574:src/class/hittable.c
 
 		oc = r.orig;
 		tmp = r;
@@ -49,11 +60,17 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 				return (0);
 		}
 		rec->t = root;
+		//changer at
 		at(&r, rec->t);
 		rec->p = r.dir;	
 		min_equal(&r.dir, &s->center);
 		div_equal(&r.dir, s->radius);
+<<<<<<< HEAD:src/render/hittable.c
 		set_face(tmp, &r.dir, rec);
+=======
+		set_face(r, &r.dir, rec);
+		//sphere color = normal * 0.5 + 0.5 = couleurs de 0 a 1 pour eviter le clamp
+>>>>>>> 0ddaeae0c8b5e994027a4416af4aef8a89c29574:src/class/hittable.c
 		return (1);
 }
 
