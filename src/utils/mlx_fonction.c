@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 17:06:58 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/18 15:41:55 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,12 @@ void	keypress_manage(int keysym, t_data *data)
 int	handle_keypress(int keysym, t_data *data)
 {
 	keypress_manage(keysym, data);
+	move(keysym, data);
 	return 0;
 }
 
-void	mlx_center()
+void	mlx_center(t_data data)
 {
-	t_data data;
-
-	init_cam(&data.cam);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		exit (0);

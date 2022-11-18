@@ -6,6 +6,7 @@
 		"stdlib.h": "c",
 		"stdio.h": "c",
 		"get_next_line.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"mlx.h": "c"
 	}
 }

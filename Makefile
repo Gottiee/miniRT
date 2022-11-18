@@ -11,6 +11,7 @@ OBJ_DIR		= 	obj/
 SUBDIR		=	obj/class \
 				obj/utils \
 				obj/render\
+				obj/objects\
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc
@@ -24,16 +25,20 @@ SAN			= -fsanitize=address
 # SOURCES
 
 SRC_FILES = 	main \
-				render/render \
-				render/hittable \
+				render/render_loop \
+				render/object_renderer \
+				render/display \
+				render/render_sphere \
 				utils/mlx_fonction \
-				utils/convert_rgb \
-				utils/hittable_list \
+				utils/move \
 				class/vector_class \
 				class/vector_utility \
 				class/vector_utility2 \
 				class/ray_class \
 				class/cam_class \
+				objects/hittable_list \
+				objects/init_objects \
+				objects/loop_objects \
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

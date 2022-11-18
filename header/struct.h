@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 17:52:21 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/18 15:43:26 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,36 @@
 #define MINIRT_H
 
 
-typedef struct s_vec
+typedef struct s_vec2
 {
-	double e[3];
-}				t_vec;
+	double	x;
+	double	y;
+}				t_vec2;
 
-typedef t_vec t_point;
-typedef t_vec t_color;
+typedef struct s_vec3
+{
+	double	x;
+	double	y;
+	double	z;
+}				t_vec3;
+
+
+typedef t_vec3 t_point;
+typedef t_vec3 t_color;
 
 typedef struct s_ray
 {
-	t_vec	orig;
-	t_vec	dir;
+	t_vec3	orig;
+	t_vec3	dir;
 }				t_ray;
 
 typedef struct s_cam
 {
-	double	aspect_ratio;
-	int		image_width;
-	int		image_height;
-	double	viewport_height;
-	double	viewport_width;
-	double	focal_length;
-	t_point	*origin;
-	t_vec	horizontal;
-	t_vec	vertical;
-	t_point	*lower_left_corner;
+	t_vec3	horizontal;
+	t_vec3	vertical;
+	t_point	origin;
+	t_point	lower_left_corner;
+	t_point	light;
 }				t_cam;
 
 typedef struct s_img
@@ -69,10 +73,9 @@ typedef struct s_sphere
 typedef struct s_record
 {
 	t_point p;
-	t_vec	normal;
+	t_vec3	normal;
+	t_color	sphere_color;
 	double	t;
- 	double	t_min;
-	double	t_max;
 	int		front_face;
 }				t_record;
 

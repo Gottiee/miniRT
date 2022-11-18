@@ -6,37 +6,26 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/17 14:10:56 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:56:00 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-t_vec	*get_lower(t_cam *cam, t_vec horizontal, t_vec vertical)
+void	init_cam(t_cam *cam, double ratio, double view_height, double focal)
 {
-	t_vec	*new;
+	double	view_width;
 	
-	new = new_vec(0, 0, 0);
-	div_equal(&horizontal, 2);
-	div_equal(&vertical, 2);
-	min_equal(new, &horizontal);
-	min_equal(new, &vertical);
-	new->e[2] -= cam->focal_length;
-	return (new);
-}
-
-void	init_cam(t_cam *cam)
-{
-	cam->aspect_ratio = (double)WINDOW_W / (double)WINDOW_H;
-	cam->viewport_height = 2.0;
-	cam->viewport_width = cam->aspect_ratio * cam->viewport_height;
-	cam->focal_length = 1;
+	view_width = ratio * view_height;
 	cam->origin = new_vec(0, 0, 0);
-	cam->horizontal.e[0] = cam->viewport_width;
-	cam->horizontal.e[1] = 0;
-	cam->horizontal.e[2] = 0;
-	cam->vertical.e[0] = 0;
-	cam->vertical.e[1] = cam->viewport_height;
-	cam->vertical.e[2] = 0;
-	cam->lower_left_corner = get_lower(cam, cam->horizontal, cam->vertical);
+	cam->horizontal = new_vec(view_width, 0, 0);
+	cam->vertical = new_vec(0, view_height, 0);
+	// lower_left_corner = origin - horizontal/2 - vertical/2 - vec3(0, 0, focal_length);
+	cam->lower_left_corner = cam->origin;
+	cam->lower_left_corner = minus(cam->lower_left_corner,
+				divis(cam->horizontal, 2));
+	cam->lower_left_corner = minus(cam->lower_left_corner,
+				divis(cam->vertical, 2));
+	cam->lower_left_corner = minus(cam->lower_left_corner, new_vec(0, 0, focal));
+	cam->light = unit_vector(new_vec(-1, -1, -1));
 }
