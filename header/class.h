@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/18 14:01:50 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:50:24 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ double	dot(t_vec3 u, t_vec3 v);
 t_vec3	cross(t_vec3 u, t_vec3 v);
 t_vec3	unit_vector(t_vec3 v);
 t_vec3	new_vec(double x, double y, double z);
+t_vec3	max(t_vec3 v1, t_vec3 v2);
 /*Fichier: ray_class.c*/
 t_ray	new_ray(t_vec3 origin, t_vec3 direction);
 t_point	at(t_ray r, double t);

@@ -6,11 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/18 15:54:24 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:15:53 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/minirt.h"
+#include "../../header/minirt.h"
 
 t_color	bckg(t_ray r)
 {
@@ -25,15 +25,9 @@ t_color	bckg(t_ray r)
 t_color	ray_color(t_ray r, t_point light)
 {
 	t_record	rec;
-	// t_vec3		light;
-	double		level;
 
-	if (hit_global(r, &rec, 0, DBL_MAX))
-	{
-		// light = unit_vector(new_vec(-1, -1, -1));
-		level = dot(rec.normal, mult(light, -1));
-		return (mult(new_vec(0.8, 0.4, 0.1), level));
-	}
+	if (hit_global(r, &rec, light))
+		return (max(mult(new_vec(0.8, 0.4, 0.1), rec.light_level), new_vec(0.02, 0.02, 0.02)));
 	// return (bckg(r));
 	return (new_vec(0, 0, 0));
 }
@@ -52,21 +46,29 @@ int render(t_data *data)
 	t_ray	r;
 	double	u;
 	double	v;
-
+	
+	clock_t before = clock(); //timer
+	
 	c.y = WINDOW_H - 1;
 	while (c.y >= 0)
-	{	
+	{
 		c.x = 0;
 		while (c.x < WINDOW_W)
 		{
-			u = (double)c.x / (WINDOW_W - 1);
-			v = (double)c.y / (WINDOW_H - 1);
+			u = c.x / (WINDOW_W - 1);
+			v = c.y / (WINDOW_H - 1);
 			init_ray(&r, data->cam, u, v);
 			img_pix_put(&data->i, c.x, WINDOW_H - c.y, hexa(ray_color(r, data->cam.light)));
 			c.x++;
 		}
 		c.y --;
 	}
+	//
+	clock_t difference = clock() - before; //timer
+	clock_t msec = difference * 1000 / CLOCKS_PER_SEC;
+	system("clear");
+	printf("%ld ms\n", msec);
+	//
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
 	return (0);
 }

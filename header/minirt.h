@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/18 15:41:23 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:44:38 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,41 @@
 # include <fcntl.h>
 # include <math.h>
 # include <float.h>
-
+# include <time.h>
 //IMAGE
-# define WINDOW_H 1080
-# define WINDOW_W 1920
+# define WINDOW_H 500
+# define WINDOW_W 500
 
 # define SPHERE 1
 
 # include "../libft/include/libft.h"
 # include "class.h"
 
+enum e_alpha {A, B, C};
+
 /*         --- UTILS ---     */
 
 /*Fichier: mlx_fonction.c*/
-void		mlx_center(t_data data);
+void		mlx_center(t_data *data);
 /*Fichier : convert_rgb.c*/
 void		img_pix_put(t_img *img, int x, int y, int color);
 int			hexa(t_color col);
 /*Fichier : move.c*/
 void		move(int keysym, t_data *data);
+void		init_move(t_data *data);
+int			key_release(int keysym, t_data *data);
+void		move_light(t_data *data);
+/*Fichier : get_data.c*/
+t_data		*get_data(void);
 
 /*			--- RENDER ---	*/
 
 /*Fichier: render.c*/
 int			render(t_data *data);
 /*Fichier: object_renderer.c*/
-int			hit_global(t_ray r, t_record *rec, double t_min, double t_max);
+int			hit_global(t_ray r, t_record *rec, t_point light);
 /*Fichier: sphere.c*/
-int			hit_sphere(t_record *rec, t_ray r, t_sphere *s, t_vec2 limit);
+int			hit_sphere(t_record *rec, t_ray r, t_sphere *s, t_vec2 limit, t_point light);
 
 /*			--- OBJECTS -- 	*/
 

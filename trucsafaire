@@ -15,3 +15,7 @@ $4 = {e = {0, 2, 0}}
 (gdb) p *cam->lower_left_corner
 $5 = {e = {-1.7777777777777777, -1, -1}}
 (gdb) 
+	// clock_t difference = clock() - before; //timer
+	// clock_t msec = difference * 1000 / CLOCKS_PER_SEC;
+	// printf("%ld ms\n", msec);
+		// clock_t before = clock(); //timer

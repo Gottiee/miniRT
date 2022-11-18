@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/18 15:43:26 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/18 18:18:28 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,6 @@ typedef struct s_img
 	int		e;
 }				t_img;
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	i;
-	int		cur_img;
-	t_cam	cam;
-}				t_data;
 
 typedef struct s_sphere
 {
@@ -76,6 +68,7 @@ typedef struct s_record
 	t_vec3	normal;
 	t_color	sphere_color;
 	double	t;
+	double	light_level;
 	int		front_face;
 }				t_record;
 
@@ -85,4 +78,21 @@ typedef struct s_hit_lst
 	void				*object;
 	int					bolo;
 }				t_hit_lst;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	i;
+	t_cam	cam;
+	int		render_image;
+	//moves
+	int		left;
+	int		right;
+	int		up;
+	int		down;
+	int		far;
+	int		close;
+}				t_data;
+
 #endif 
