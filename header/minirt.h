@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/19 16:49:47 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/19 17:49:26 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <mlx.h>
-//# include <X11/keysym.h>
-//# include <X11/X.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include <fcntl.h>
 # include <math.h>
 # include <float.h>
@@ -30,7 +30,7 @@
 # define ERROR -29999
 # define NONE 0
 # define SPHERE 1
-# define A 2
+//# define A 2
 # define C 3
 # define L 4
 # define SP 5
@@ -40,7 +40,7 @@
 # include "../libft/include/libft.h"
 # include "class.h"
 
-//enum e_alpha {A, B, C};
+enum e_alpha {A, B, C};
 
 /*         --- UTILS ---     */
 
