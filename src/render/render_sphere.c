@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/18 17:43:18 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/20 00:47:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	hit_sphere(t_record *rec, t_ray r, t_sphere *s, t_vec2 limit, t_point light)
 	}
 	rec->t = root;
 	rec->p = at(r, rec->t);
+	// faut-il vraiment enlever s->center dans le calcul de la normale ?
 	rec->normal = divis(minus(rec->p, s->center), s->radius);
 	set_face(r, rec->normal, rec);
 	rec->sphere_color = plus(mult(rec->normal, 0.5), new_vec(0.5, 0.5, 0.5));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/18 18:15:53 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/20 00:56:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ t_color	ray_color(t_ray r, t_point light)
 {
 	t_record	rec;
 
+	/*Si on hit, cast un ray vers la light :
+	newray.orig = at(r, rec.t);
+	newray.dir = (minus(light, s->center) [s->center a garder dans rec]);
+	on iter sur touts les objets, on check si hit sphere (seul le calcul du discriminent compte)
+	on eclaire ou pas le pixel selon la valeur de retour	
+	*/
 	if (hit_global(r, &rec, light))
 		return (max(mult(new_vec(0.8, 0.4, 0.1), rec.light_level), new_vec(0.02, 0.02, 0.02)));
 	// return (bckg(r));
@@ -63,8 +69,8 @@ int render(t_data *data)
 		}
 		c.y --;
 	}
-	//
-	clock_t difference = clock() - before; //timer
+	//	timer
+	clock_t difference = clock() - before;
 	clock_t msec = difference * 1000 / CLOCKS_PER_SEC;
 	system("clear");
 	printf("%ld ms\n", msec);
