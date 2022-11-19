@@ -16,7 +16,7 @@ SUBDIR		=	obj/class \
 
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -g -I./srcs/includes -Imlx_linux -MMD -MP
-ADDFLAGS	=  -L -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+ADDFLAGS	=  #-L -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 RM			= rm -rf
 AR			= ar rcs
@@ -25,12 +25,6 @@ SAN			= -fsanitize=address
 # SOURCES
 
 SRC_FILES = 	main \
-				render/render_loop \
-				render/object_renderer \
-				render/display \
-				render/render_sphere \
-				utils/mlx_fonction \
-				utils/move \
 				class/vector_class \
 				class/vector_utility \
 				class/vector_utility2 \
@@ -39,6 +33,14 @@ SRC_FILES = 	main \
 				objects/hittable_list \
 				objects/init_objects \
 				objects/loop_objects \
+				objects/lexeur \
+				objects/lexeur_object \
+				#render/render_loop \
+				#render/object_renderer \
+				#render/display \
+				#render/render_sphere \
+				#utils/mlx_fonction \
+				#utils/move \
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

@@ -6,7 +6,7 @@
 /*   By: akouoi <akouoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 09:45:14 by akouoi            #+#    #+#             */
-/*   Updated: 2022/10/10 11:59:24 by akouoi           ###   ########.fr       */
+/*   Updated: 2022/11/19 13:49:08 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	pf_point(int fd, va_list ap, int i)
 	int						n_len;
 	char					*str;
 
+	n = 0;
 	if (i == 2)
 		n = va_arg(ap, unsigned long long int);
 	if (n == 0)

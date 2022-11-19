@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/18 18:44:38 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/19 16:49:47 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,31 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <mlx.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
+//# include <X11/keysym.h>
+//# include <X11/X.h>
 # include <fcntl.h>
 # include <math.h>
 # include <float.h>
 # include <time.h>
+# include <unistd.h>
 //IMAGE
 # define WINDOW_H 500
 # define WINDOW_W 500
 
+# define ERROR -29999
+# define NONE 0
 # define SPHERE 1
+# define A 2
+# define C 3
+# define L 4
+# define SP 5
+# define PL 6
+# define CY 7
 
 # include "../libft/include/libft.h"
 # include "class.h"
 
-enum e_alpha {A, B, C};
+//enum e_alpha {A, B, C};
 
 /*         --- UTILS ---     */
 
@@ -64,5 +73,12 @@ void		init_sphere(t_vec3 vec, double ray);
 /*Fichier: hittable_list.c*/
 t_hit_lst	*get_hit(void *obj);
 /*Fichier: loop_objects.c*/
-void		loop_objects();
+int			loop_objects(char *file);
+/*Fichier: lexeur.c*/
+int			object(int fd);
+/*Fichier: lexeur_object.c*/
+int			lex_A(t_lex *lex, char *line, int i);
+int			lex_L(t_lex *lex, char *line, int i);
+int			lex_C(t_lex *lex, char *line, int i);
+int			lex_objects(t_lex *lex, char *line, int i);
 #endif 

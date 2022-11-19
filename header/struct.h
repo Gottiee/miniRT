@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/18 18:18:28 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/19 16:13:47 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,12 @@ typedef struct s_data
 	int		far;
 	int		close;
 }				t_data;
+
+typedef struct s_lex
+{
+	int 		type;	
+	double		ratio;
+	t_color		color;
+}				t_lex;
 
 #endif 
