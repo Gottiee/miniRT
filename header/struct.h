@@ -6,12 +6,12 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/19 16:13:47 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/20 17:55:29 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define MINIRT_H
+#define STRUCT_H
 
 
 typedef struct s_vec2
@@ -60,23 +60,24 @@ typedef struct s_sphere
 {
 	t_point	center;
 	double	radius;
+	t_color	color;
 }				t_sphere;
 
 typedef struct s_record
 {
-	t_point p;
-	t_vec3	normal;
-	t_color	sphere_color;
-	double	t;
-	double	light_level;
-	int		front_face;
+	t_point 	hit_point;
+	t_vec3		normal;
+	t_sphere	closest;
+	double		t;
+	double		light_level;
+	int			obj_id;
 }				t_record;
 
 typedef struct s_hit_lst
 {
 	struct s_hit_lst	*next;
 	void				*object;
-	int					bolo;
+	int					id;
 }				t_hit_lst;
 
 typedef struct s_data
@@ -86,6 +87,7 @@ typedef struct s_data
 	t_img	i;
 	t_cam	cam;
 	int		render_image;
+	int		disp_normals;
 	//moves
 	int		left;
 	int		right;
@@ -97,7 +99,7 @@ typedef struct s_data
 
 typedef struct s_lex
 {
-	int 		type;	
+	int 		type;
 	double		ratio;
 	t_color		color;
 }				t_lex;

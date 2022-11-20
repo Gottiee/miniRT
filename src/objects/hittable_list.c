@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hittable_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eedy <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:49:08 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 18:13:58 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/20 16:34:24 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_hit_lst	*new_hit(void *obj)
 	}
 	new->next = NULL;
 	new->object = obj;
+	new->id = 0;
 	return (new);	
 }
 
@@ -37,6 +38,7 @@ void	add_hit(void *obj, t_hit_lst **list)
 	while (p->next != NULL)
 		p = p->next;
 	p->next = new;
+	new->id = p->id + 1;
 }
 
 t_hit_lst	*get_hit(void *obj)

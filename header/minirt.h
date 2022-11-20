@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/19 17:49:26 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/20 18:09:04 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define ERROR -29999
 # define NONE 0
 # define SPHERE 1
-//# define A 2
+# define A 2
 # define C 3
 # define L 4
 # define SP 5
@@ -39,16 +39,14 @@
 
 # include "../libft/include/libft.h"
 # include "class.h"
+# include "draw.h"
 
-enum e_alpha {A, B, C};
+enum e_alpha {_A, _B, _C};
 
 /*         --- UTILS ---     */
 
 /*Fichier: mlx_fonction.c*/
 void		mlx_center(t_data *data);
-/*Fichier : convert_rgb.c*/
-void		img_pix_put(t_img *img, int x, int y, int color);
-int			hexa(t_color col);
 /*Fichier : move.c*/
 void		move(int keysym, t_data *data);
 void		init_move(t_data *data);
@@ -59,12 +57,18 @@ t_data		*get_data(void);
 
 /*			--- RENDER ---	*/
 
+/*Fichier : display.c*/
+void		img_pix_put(t_img *img, int x, int y, int color);
+int			hexa(t_color col);
+double		clamp(double x, double min, double max);
 /*Fichier: render.c*/
 int			render(t_data *data);
 /*Fichier: object_renderer.c*/
 int			hit_global(t_ray r, t_record *rec, t_point light);
 /*Fichier: sphere.c*/
-int			hit_sphere(t_record *rec, t_ray r, t_sphere *s, t_vec2 limit, t_point light);
+int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit);
+/*Fichier: shadow_render.c*/
+void		shadow_render(t_record *rec, t_point light);
 
 /*			--- OBJECTS -- 	*/
 

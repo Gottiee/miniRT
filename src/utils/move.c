@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/18 18:41:23 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/20 18:17:13 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,25 @@ void	move(int keysym, t_data *data)
 		data->far = 1;
 	if (keysym == XK_s)
 		data->close = 1;
+	if (keysym == XK_n)
+		data->disp_normals = data->disp_normals == 0;
 	data->render_image = 1;
 }
 
 void	move_light(t_data *data)
 {
 	if (data->left == 1)
-		data->cam.light = plus(data->cam.light, new_vec(0.1, 0, 0));
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0.1, 0, 0)));
 	if (data->right == 1)
-		data->cam.light = plus(data->cam.light, new_vec(-0.1, 0, 0));
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(-0.1, 0, 0)));
 	if (data->down == 1)
-		data->cam.light = plus(data->cam.light, new_vec(0, 0.1, 0));
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0.1, 0)));
 	if (data->up == 1)
-		data->cam.light = plus(data->cam.light, new_vec(0, -0.1, 0));	
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, -0.1, 0)));	
 	if (data->far == 1)
-		data->cam.light = plus(data->cam.light, new_vec(0, 0, 0.1));
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, 0.1)));
 	if (data->close == 1)
-		data->cam.light = plus(data->cam.light, new_vec(0, 0, -0.1));
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, -0.1)));
 }
 
 int	key_release(int keysym, t_data *data)
@@ -82,4 +84,5 @@ void	init_move(t_data *data)
 	data->right = 0;
 	data->far = 0;
 	data->close = 0;
+	data->disp_normals = 0;
 }
