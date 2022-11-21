@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/20 18:02:09 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:12:33 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ t_color	ray_color(t_ray r, t_point light, int normals)
 {
 	t_record	rec;
 
-	/*Si on hit, cast un ray vers la light :
-	newray.orig = at(r, rec.t);
-	newray.dir = (minus(light, s->center) [s->center a garder dans rec]);
-	on iter sur touts les objets, on check si hit sphere (seul le calcul du discriminent compte)
-	on eclaire ou pas le pixel selon la valeur de retour	
-	*/
 	if (hit_global(r, &rec, light))
 	{
 		if (normals)	
@@ -47,6 +41,7 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 	ray->orig = cam.origin;
 	ray->dir = plus(cam.lower_left_corner, mult(cam.horizontal, u));
 	ray->dir = plus(ray->dir, mult(cam.vertical, v));
+	ray->dir = plus(ray->dir, cam.rotate);//
 	min_equal(&ray->dir, &cam.origin);
 }
 
@@ -58,7 +53,7 @@ int render(t_data *data)
 	double	v;
 	
 	// clock_t before = clock(); //timer
-	
+	set_llc(&data->cam, data->cam.focal);
 	c.y = WINDOW_H - 1;
 	while (c.y >= 0)
 	{
@@ -79,7 +74,7 @@ int render(t_data *data)
 	// system("clear");
 	// printf("%ld ms\n", msec);
 	//
-		printv(data->cam.light);
+		// printv(mult(data->cam.light, -1));
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
 	return (0);
 }

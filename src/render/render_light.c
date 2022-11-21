@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_sphere.c                                    :+:      :+:    :+:   */
+/*   render_light.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 13:59:13 by gmansuy          ###   ########.fr       */
+/*   Created: 2022/11/21 12:55:16 by gmansuy           #+#    #+#             */
+/*   Updated: 2022/11/21 14:21:15 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-
-void	set_face(t_ray r, t_vec3 outward, t_record *rec)
-{
-	int	front_face;
-	
-	front_face = dot(r.dir, outward) < 0;
-	rec->normal = outward;
-	if (!front_face)
-		mult_equal(&rec->normal, -1);
-}
-
-void	set_normal(t_record *rec, t_ray r, t_point light, t_sphere s)
-{
-	rec->hit_point = at(r, rec->t);
-	rec->normal = divis(minus(rec->hit_point, s.center), s.radius);
-	set_face(r, rec->normal, rec);
-	rec->light_level = dot(rec->normal, mult(light, -1)) /*- 0.1 * rec->t*/;
-}
-
-double	discriminent(t_ray r, t_sphere s, double *p)
+double	discriminent_light(t_ray r, t_light s, double *p, t_point sph)
 {
 	t_vec3	oc;
 	double	discr;
 	
-	oc = minus(r.orig, s.center);
+	oc = minus(r.orig, sph);
 	p[_A] = length_squared(&r.dir);
 	p[_B] = dot(oc, r.dir);
 	p[_C] = length_squared(&oc) - s.radius * s.radius;
@@ -44,16 +25,19 @@ double	discriminent(t_ray r, t_sphere s, double *p)
 	return (discr);
 }
 
-int	hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light)
+int	hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 {
-	double		root;
-	double		discr;
-	double		p[3];
-	double		sqrt_discr;
-	t_sphere	s;
+	double	root;
+	double	discr;
+	double	p[3];
+	double	sqrt_discr;
+	t_light	l;
+	t_point sph;
 	
-	s = *((t_sphere *)rec->closest);
-	discr = discriminent(r, s, p);
+	(void)light;
+	l = *((t_light *)rec->closest);
+ 	sph = mult(light, -1);
+	discr = discriminent_light(r, l, p, sph);
 	if (discr < 0)
 		return (0);
 	sqrt_discr = sqrt(discr);
@@ -65,6 +49,8 @@ int	hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 			return (0);
 	}
 	rec->t = clamp(root, 0.0, limit.y);
-	set_normal(rec, r, light, s);
+	rec->hit_point = at(r, rec->t);
+	rec->normal = divis(minus(rec->hit_point, sph),l.radius);
+	rec->light_level = 1;
 	return (1);
 }

@@ -6,30 +6,16 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/20 18:05:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:22:08 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-void	set_face(t_ray r, t_vec3 outward, t_record *rec)
+void	init_pointer(int (*hit[2])(t_record *rec, t_ray r, t_vec2 limit, t_point light))
 {
-	int	front_face;
-	
-	front_face = dot(r.dir, outward) < 0;
-	rec->normal = outward;
-	if (!front_face)
-		mult_equal(&rec->normal, -1);
-}
-
-void	set_normal(t_record *rec, t_ray r, t_point light)
-{
-	rec->closest.color = plus(mult(rec->normal, 0.5), new_vec(0.5, 0.5, 0.5));
-	rec->hit_point = at(r, rec->t);
-	rec->normal = divis(minus(rec->hit_point, rec->closest.center), rec->closest.radius);
-	set_face(r, rec->normal, rec);
-			// printv(light);
-	rec->light_level = dot(rec->normal, mult(light, -1));
+	hit[SP] = &hit_sphere;
+	hit[L] = &hit_light;
 }
 
 int	hit_global(t_ray r, t_record *rec, t_point light)
@@ -37,17 +23,19 @@ int	hit_global(t_ray r, t_record *rec, t_point light)
 	t_hit_lst	*list;
 	t_record	rec_tmp;
 	t_vec2		limit;
-	int			hit_any;	
-
+	int			hit_any;
+	int 		(*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+	
+	init_pointer(hit);
 	limit.x = 0;
 	limit.y = DBL_MAX;
 	hit_any = 0;
-	list = get_hit(NULL);
+	list = get_hit(NULL, 0);
 	while (list)
 	{
-		rec_tmp.closest = *((t_sphere *)list->object);
+		rec_tmp.closest = list->object;
 		//poiteur sur fonction pour modifier et ne pas aller hit sphere tout le tempps?
-		if (hit_sphere(&rec_tmp, r, limit))
+		if (hit[list->type](&rec_tmp, r, limit, light))
 		{
 			hit_any = 1;
 			limit.y = rec_tmp.t;
@@ -58,8 +46,7 @@ int	hit_global(t_ray r, t_record *rec, t_point light)
 	}
 	if (!hit_any)
 		return (0);
-	set_normal(rec, r, light);
-	shadow_render(rec, light);
+	// shadow_render(rec, light);
 	return (1);
 }
 

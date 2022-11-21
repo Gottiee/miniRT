@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/20 18:09:04 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:22:33 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <unistd.h>
 //IMAGE
 # define WINDOW_H 500
-# define WINDOW_W 500
+# define WINDOW_W 700
 
 # define ERROR -29999
 # define NONE 0
@@ -52,6 +52,7 @@ void		move(int keysym, t_data *data);
 void		init_move(t_data *data);
 int			key_release(int keysym, t_data *data);
 void		move_light(t_data *data);
+void		move_cam(t_data *data);
 /*Fichier : get_data.c*/
 t_data		*get_data(void);
 
@@ -66,7 +67,10 @@ int			render(t_data *data);
 /*Fichier: object_renderer.c*/
 int			hit_global(t_ray r, t_record *rec, t_point light);
 /*Fichier: sphere.c*/
-int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit);
+int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+/*Fichier: light.c*/
+int			hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+
 /*Fichier: shadow_render.c*/
 void		shadow_render(t_record *rec, t_point light);
 
@@ -74,8 +78,9 @@ void		shadow_render(t_record *rec, t_point light);
 
 /*Fichier: init_objects.c*/
 void		init_sphere(t_vec3 vec, double ray);
+void		init_light(t_vec3 *vec, double ray);
 /*Fichier: hittable_list.c*/
-t_hit_lst	*get_hit(void *obj);
+t_hit_lst	*get_hit(void *obj, int type);
 /*Fichier: loop_objects.c*/
 int			loop_objects(char *file);
 /*Fichier: lexeur.c*/

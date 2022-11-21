@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/20 15:35:23 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 11:32:32 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ t_point	at(t_ray r, double t);
 /*Fichier: cam_class.c*/
 void	init_cam(t_cam *cam, double ratio, double view_height, double foc_len);
 t_point	*get_light();
+void	set_llc(t_cam *cam, double focal);
 
 #endif 

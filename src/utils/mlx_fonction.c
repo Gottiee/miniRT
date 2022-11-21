@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/18 18:39:29 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 11:38:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	launch_render(t_data *data)
 {
 	if (data->render_image)
 	{
-		move_light(data);
 		render(data);
 		data->render_image = 0;
 	}
@@ -78,7 +77,6 @@ void	mlx_center(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &launch_render, data);
 	mlx_hook(data->win_ptr, 17, StructureNotifyMask, &handle_destroy, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_keypress, data);
-	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, &key_release, data);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_image(data->mlx_ptr, data->i.i);
 	mlx_destroy_display(data->mlx_ptr);
