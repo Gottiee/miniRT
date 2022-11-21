@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 19:58:44 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 20:11:24 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	shadow_render(t_record *rec, t_point light)
 	int			curr_obj;
 	t_record	shadow;
 	t_vec2		limit;
-	// t_sphere	s;
+	t_sphere	s;
 
-	// s = *((t_sphere *)rec->closest);
+	s = *((t_sphere *)rec->closest);
 	list = get_hit(NULL, 0);
 	// retirer le plus et le minus ?
-	path.orig = rec->hit_point;
-	path.dir = light;
+	path.orig = plus(rec->hit_point, s.center);
+	path.dir = minus(light, s.center);
 	curr_obj = 0;
 	limit.x = 0;
 	limit.y = DBL_MAX;
