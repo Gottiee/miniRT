@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 15:47:31 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:26:54 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void	move(int keysym, t_data *data)
 		data->cam.origin = plus(data->cam.origin, new_vec(0, 0, -0.1));
 	if (keysym == XK_s)
 		data->cam.origin = plus(data->cam.origin, new_vec(0, 0, 0.1));
-	if (keysym == XK_i)
-		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, -0.1, 0)));
-	if (keysym == XK_j)
-		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0.1, 0, 0)));
 	if (keysym == XK_k)
-		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0.1, 0)));
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, -0.1, 0)));
 	if (keysym == XK_l)
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0.1, 0, 0)));
+	if (keysym == XK_i)
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0.1, 0)));
+	if (keysym == XK_j)
 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(-0.1, 0, 0)));
-	if (keysym == XK_u)
-		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, -0.1)));
 	if (keysym == XK_o)
+		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, -0.1)));
+	if (keysym == XK_u)
 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, 0.1)));
 	if (keysym == XK_n)
 		data->disp_normals = data->disp_normals == 0;
