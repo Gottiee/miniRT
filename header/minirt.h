@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 14:22:33 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:30:23 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void		move_light(t_data *data);
 void		move_cam(t_data *data);
 /*Fichier : get_data.c*/
 t_data		*get_data(void);
+/*Fichier : animation.c*/
+void	animation(t_data *data);
 
 /*			--- RENDER ---	*/
 
@@ -77,7 +79,7 @@ void		shadow_render(t_record *rec, t_point light);
 /*			--- OBJECTS -- 	*/
 
 /*Fichier: init_objects.c*/
-void		init_sphere(t_vec3 vec, double ray);
+void		init_sphere(t_vec3 vec, double ray, t_color color);
 void		init_light(t_vec3 *vec, double ray);
 /*Fichier: hittable_list.c*/
 t_hit_lst	*get_hit(void *obj, int type);

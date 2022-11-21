@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 13:28:53 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:46:00 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_record
 	double		t;
 	double		light_level;
 	int			obj_id;
+	t_color		color;
 }				t_record;
 
 typedef struct s_hit_lst
@@ -107,6 +108,7 @@ typedef struct s_data
 	int		down;
 	int		far;
 	int		close;
+	int		animation;
 }				t_data;
 
 typedef struct s_lex

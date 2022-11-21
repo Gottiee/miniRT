@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 12:55:16 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 14:21:15 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:17:36 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int	hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	rec->hit_point = at(r, rec->t);
 	rec->normal = divis(minus(rec->hit_point, sph),l.radius);
 	rec->light_level = 1;
+	rec->color = l.color;
 	return (1);
 }

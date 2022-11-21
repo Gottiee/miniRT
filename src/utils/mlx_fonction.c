@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 11:38:49 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:46:43 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ int	launch_render(t_data *data)
 {
 	if (data->render_image)
 	{
+		if (data->animation)
+			animation(data);
 		render(data);
-		data->render_image = 0;
+		// data->render_image = 0;
 	}
 	return (0);
 }
@@ -73,6 +75,7 @@ void	mlx_center(t_data *data)
 	if (!data->i.a)
 		exit(0);
 	data->render_image = 1;
+	data->animation = 0;
 	init_move(data);
 	mlx_loop_hook(data->mlx_ptr, &launch_render, data);
 	mlx_hook(data->win_ptr, 17, StructureNotifyMask, &handle_destroy, data);

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 14:12:33 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:17:56 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_color	ray_color(t_ray r, t_point light, int normals)
 	{
 		if (normals)	
 			return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
-		return (max(mult(new_vec(0.8, 0.4, 0.1), rec.light_level), new_vec(0.02, 0.02, 0.02)));
+		return (max(mult(rec.color, rec.light_level), new_vec(0.02, 0.02, 0.02)));
 	}
 	// return (bckg(r));
 	return (new_vec(0, 0, 0));

@@ -43,6 +43,7 @@ SRC_FILES = 	main \
 				render/shadow_render \
 				utils/mlx_fonction \
 				utils/move \
+				utils/animation \
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 12:35:26 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 15:47:31 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	move(int keysym, t_data *data)
 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, 0.1)));
 	if (keysym == XK_n)
 		data->disp_normals = data->disp_normals == 0;
+	if (keysym == XK_space)
+		data->animation  = data->animation == 0;
 		
 	data->render_image = 1;
 }
