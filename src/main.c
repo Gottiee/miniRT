@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 16:57:05 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 19:58:18 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int argc, char **argv)
 	// init_sphere(new_vec(0, -1, -1), 0.5, new_vec(0,0,1));
 	// init_sphere(new_vec(-1, 1, -1), 0.3, new_vec(0,1,0));
 	init_light(&data.cam.light, 0.1);
-	init_sphere(new_vec(0, -100, -1), 100, new_vec(0.8, 0.2, 0));
+	// init_sphere(new_vec(0, -100.5, -1), 100, new_vec(0, 0.6, 0.8));
+	init_sphere(new_vec(0, -5.5, -1), 5, new_vec(0, 0.6, 0.8));
 	// init_sphere(new_vec(0, -1.3, -0.5), 1);
 	mlx_center(&data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 15:17:56 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 20:05:00 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_color	ray_color(t_ray r, t_point light, int normals)
 
 	if (hit_global(r, &rec, light))
 	{
-		if (normals)	
+		if (normals)
 			return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
 		return (max(mult(rec.color, rec.light_level), new_vec(0.02, 0.02, 0.02)));
 	}
@@ -43,6 +43,7 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 	ray->dir = plus(ray->dir, mult(cam.vertical, v));
 	ray->dir = plus(ray->dir, cam.rotate);//
 	min_equal(&ray->dir, &cam.origin);
+	ray->dir = plus(ray->dir, cam.rotate);
 }
 
 int render(t_data *data)

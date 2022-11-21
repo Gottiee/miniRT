@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 16:05:34 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 20:00:14 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <time.h>
 # include <unistd.h>
 //IMAGE
-# define WINDOW_H 500
-# define WINDOW_W 700
+# define WINDOW_H 560
+# define WINDOW_W 720
 
 # define ERROR -29999
 # define NONE 0

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 16:50:34 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 19:03:21 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	set_normal(t_record *rec, t_ray r, t_point light, t_sphere s)
 	rec->hit_point = at(r, rec->t);
 	rec->normal = divis(minus(rec->hit_point, s.center), s.radius);
 	set_face(r, rec->normal, rec);
-	rec->light_level = dot(rec->normal, minus(light, s.center)) /*- 0.1 * rec->t*/;
+	rec->light_level = clamp(dot(rec->normal, minus(light, s.center)), 0, 1)/* * 1 - rec->t / 2*/;
 }
 
 double	discriminent(t_ray r, t_sphere s, double *p)
