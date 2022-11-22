@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/22 12:54:12 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/22 17:27:21 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	
 	s = *((t_sphere *)rec->closest);
 	discr = discriminent(r, s, p);
+	rec->discr = discr;
 	if (discr < 0)
 		return (0);
 	sqrt_discr = sqrt(discr);

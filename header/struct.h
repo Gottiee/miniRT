@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/22 14:06:49 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/22 17:16:35 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ typedef struct s_record
 	t_point 	hit_point;
 	t_vec3		normal;
 	void		*closest;
-	// t_sphere	closest;
 	double		t;
 	double		light_level;
 	int			obj_id;
 	t_color		color;
 	int			type;
-	int 		light;
+	double		discr;
+	int			light;
 }				t_record;
 
 typedef struct s_hit_lst

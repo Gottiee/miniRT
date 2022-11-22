@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/22 13:09:29 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/22 16:31:27 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ double		clamp(double x, double min, double max);
 int			render(t_data *data);
 /*Fichier: object_renderer.c*/
 int			hit_global(t_ray r, t_record *rec, t_point light);
+void		init_pointer(int (*hit[2])(t_record *rec, t_ray r, t_vec2 limit, t_point light));
 /*Fichier: sphere.c*/
 int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 double		discriminent(t_ray r, t_sphere s, double *p);

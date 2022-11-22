@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/22 13:16:38 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/22 16:54:40 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	init_cam(t_cam *cam, double ratio, double view_height, double focal)
 	cam->vertical = new_vec(0, view_height, 0);
 	cam->focal = focal;
 	cam->rotate = new_vec(0, 0, 0);
-	cam->light = mult(new_vec(-0.5, -0.8, 1), -1);
+	cam->light = mult(new_vec(1, -2.1, 3), -1);
+	//cam->light = mult(new_vec(1.7, 7.2, -14.2), -1);
 	cam->rotate = new_vec(0, 0, 0);
 	// cam->light = unit_vector(mult(new_vec(1, 0, -0.5), -1));
 }
