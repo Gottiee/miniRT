@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 16:22:37 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:06:49 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_record
 	int			obj_id;
 	t_color		color;
 	int			type;
+	int 		light;
 }				t_record;
 
 typedef struct s_hit_lst

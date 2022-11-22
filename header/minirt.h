@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 20:00:14 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/22 13:09:29 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int			render(t_data *data);
 int			hit_global(t_ray r, t_record *rec, t_point light);
 /*Fichier: sphere.c*/
 int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+double		discriminent(t_ray r, t_sphere s, double *p);
 /*Fichier: light.c*/
 int			hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 

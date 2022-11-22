@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 20:11:24 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:23:07 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,47 +31,13 @@
 void	shadow_render(t_record *rec, t_point light)
 {
 	t_ray		path;
-	t_hit_lst	*list;
-	int			curr_obj;
 	t_record	shadow;
-	t_vec2		limit;
-	t_sphere	s;
 
-	s = *((t_sphere *)rec->closest);
-	list = get_hit(NULL, 0);
-	// retirer le plus et le minus ?
-	path.orig = plus(rec->hit_point, s.center);
-	path.dir = minus(light, s.center);
-	curr_obj = 0;
-	limit.x = 0;
-	limit.y = DBL_MAX;
-	while (list)
-	{
-		if (list->type == L)
-		{
-			list = list->next;
-			curr_obj ++;
-			continue;	
-		}
-		shadow.closest = list->object;
-		if (list->id != rec->obj_id && hit_sphere(&shadow, path, limit, light) /*hit_obstacle(path, list->object)*/)
-		{
-			//LIGHT LEVEL = lumiere amibiante
-			rec->light_level *= 0.2;
-			break ;
-			// shadow.hit_point = at(path, shadow.t);
-			// shadow.normal = divis(minus(shadow.hit_point, ((t_sphere *)shadow.closest)->center),
-			// 		((t_sphere *)shadow.closest)->radius);
-			// shadow.light_level = dot(path.dir, mult(shadow.normal, -1)	);
-			// rec->light_level *= 1 - shadow.light_level;
-			// break ;
-		}
-		list = list->next;
-		curr_obj ++;
-	}
+	shadow.light = 1;
+	path.dir = rec->hit_point;
+	//path.dir = plus(path.dir, mult(rec->normal, 0.1));
+	path.orig = light;
+	if (hit_global(path, &shadow, light))
+		if (rec->obj_id != shadow.obj_id)
+			rec->light_level = 0.2;
 }
-
-// void	shadow_render(t_record *rec, t_point light)
-// {
-	
-// }
