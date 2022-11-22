@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/16 18:17:50 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/17 13:57:51 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	init_sphere(t_vec *vec, double ray)
 
 int	main()
 {
-	init_sphere(new_vec(0 , 0, -1), 100);
+	init_sphere(new_vec(1 , 0, -1), 0.2);
 	mlx_center();
 }

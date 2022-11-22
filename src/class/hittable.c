@@ -6,7 +6,7 @@
 /*   By: eedy <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 18:05:32 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/17 14:03:29 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 		double	c;
 		double	discr;
 		double	root;
+		t_ray	tmp;
 
+		tmp = r;
 		min_equal(&r.orig, &s->center);
 		a = length_squared(&r.dir);
 		b = dot(&r.orig, &r.dir);
-		c = length_squared(&r.dir) - s->radius * s->radius;
+		c = length_squared(&r.orig) - s->radius * s->radius;
 		discr = b * b - a * c;
 		if (discr < 0)
 				return (0);
@@ -39,16 +41,16 @@ int	hit_sphere(t_ray r, t_record *rec, t_sphere *s)
 		root = (-b - discr) / a;
 		if (root < rec->t_min || root > rec->t_max)
 		{
-				root = (-b + discr) / a;
-				if (root < rec->t_min || root > rec->t_max)
-						return (0);
+			root = (-b + discr) / a;
+			if (root < rec->t_min || root > rec->t_max)
+				return (0);
 		}
 		rec->t = root;
 		at(&r, rec->t);
 		rec->p = r.dir;	
 		min_equal(&r.dir, &s->center);
 		div_equal(&r.dir, s->radius);
-		set_face(r, &r.dir, rec);
+		set_face(tmp, &r.dir, rec);
 		return (1);
 }
 
