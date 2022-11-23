@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/22 16:31:27 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/23 13:15:00 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,9 @@ int			lex_A(t_lex *lex, char *line, int i);
 int			lex_L(t_lex *lex, char *line, int i);
 int			lex_C(t_lex *lex, char *line, int i);
 int			lex_objects(t_lex *lex, char *line, int i);
+
+/*Fichier: lexeur_util.c*/
+void		string_move(char *line);
+double		get_decimal(char *line, int i);
+int 		get_vector(char *line, int i, t_color *color);
 #endif 

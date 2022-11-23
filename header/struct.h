@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/22 17:16:35 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/23 13:24:54 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ typedef struct s_lex
 	int 		type;
 	double		ratio;
 	t_color		color;
+	t_vec3		coord;
+	t_vec3		vec;
 }				t_lex;
 
 #endif 

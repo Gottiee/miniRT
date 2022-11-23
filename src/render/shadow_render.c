@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/22 19:12:39 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/23 13:38:43 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ void	shadow_render(t_record *rec, t_point light)
 	t_record	shadow;
 
 	shadow.light = 1;
-	rec->light_level = 1;
+	rec->light_level = 2;
 	path.orig = plus(rec->hit_point, mult(rec->normal, 0.000001));
-	path.dir = light;
+	//path.dir = light;
+	path.dir = minus(light, path.orig);
 	hit_shadow(path, &shadow, light);
 	if (hit_shadow(path, &shadow, light))
 		rec->light_level = 0;
 	else
 	{
-		t_vec3 calc = minus(light, path.orig);
-		printf("%f\n", length(&calc));
-		rec->light_level *= dot(unit_vector(light), unit_vector(rec->normal));
-		rec->light_level /= (length(&calc) / 3);
+		//printf("%f\n", length(&calc));
+		rec->light_level *= dot(unit_vector(path.dir), unit_vector(rec->normal));
+		rec->light_level /= (length(&path.dir) / 3);
 	}
 }
