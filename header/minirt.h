@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/23 13:15:00 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/23 16:16:40 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,12 @@ int			hit_global(t_ray r, t_record *rec, t_point light);
 void		init_pointer(int (*hit[2])(t_record *rec, t_ray r, t_vec2 limit, t_point light));
 /*Fichier: sphere.c*/
 int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+void		set_face(t_ray r, t_vec3 outward, t_record *rec);
 double		discriminent(t_ray r, t_sphere s, double *p);
 /*Fichier: light.c*/
 int			hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light);
-
+/*Fichier: plane.c*/
+int			hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light);
 /*Fichier: shadow_render.c*/
 void		shadow_render(t_record *rec, t_point light);
 
@@ -83,6 +85,7 @@ void		shadow_render(t_record *rec, t_point light);
 /*Fichier: init_objects.c*/
 void		init_sphere(t_vec3 vec, double ray, t_color color);
 void		init_light(t_vec3 *vec, double ray);
+void		init_plane(t_vec3 center, t_color color, t_vec3 orient);
 /*Fichier: hittable_list.c*/
 t_hit_lst	*get_hit(void *obj, int type);
 /*Fichier: loop_objects.c*/

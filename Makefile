@@ -41,6 +41,7 @@ SRC_FILES = 	main \
 				render/display \
 				render/render_sphere \
 				render/render_light \
+				render/render_plane \
 				render/shadow_render \
 				utils/mlx_fonction \
 				utils/move \

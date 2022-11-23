@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 19:03:47 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:36:11 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ t_vec3	mult_vec(t_vec3 u, t_vec3 v)
 	new.x = u.x * v.x;
 	new.y = u.y * v.y;
 	new.z = u.z * v.z;
+	return (new);
+}
+
+/*Crée un nouveau vecteur qui est la divisions des vecteurs u et v*/
+t_vec3	div_vec(t_vec3 u, t_vec3 v)
+{
+	t_vec3 new;
+
+	new.x = u.x / v.x;
+	new.y = u.y / v.y;
+	new.z = u.z / v.z;
 	return (new);
 }
 

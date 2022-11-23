@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 11:32:32 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:36:01 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ double	length(t_vec3 *u);
 t_vec3	plus(t_vec3 u, t_vec3 v);
 t_vec3	minus(t_vec3 u, t_vec3 v);
 t_vec3	mult_vec(t_vec3 u, t_vec3 v);
+t_vec3	div_vec(t_vec3 u, t_vec3 v);
 t_vec3	mult(t_vec3 u, const double t);
 t_vec3	divis(t_vec3 u, const double t);
 /*Fichier: vector_utility2.c*/

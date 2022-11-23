@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/23 13:24:54 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/23 15:11:28 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_cam
 	t_point	light;
 	double	focal;
 	t_vec3	rotate;
+	
 }				t_cam;
 
 typedef struct s_img
@@ -65,6 +66,14 @@ typedef struct s_sphere
 	t_color	color;
 	
 }				t_sphere;
+
+typedef struct s_plane
+{
+	t_point	center;
+	t_color	color;
+	t_vec3	orient;
+	
+}				t_plane;
 
 typedef struct s_light
 {

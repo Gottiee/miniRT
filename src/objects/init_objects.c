@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:06:43 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 15:16:03 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:24:54 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ void	init_sphere(t_vec3 vec, double ray, t_color color)
 	s->color = color;
 	ptr = s;
 	get_hit(ptr, SP);
+}
+
+void	init_plane(t_vec3 center, t_color color, t_vec3 orient)
+{
+	t_plane	*p;
+	void	*ptr;
+	p = magic_malloc(sizeof(t_plane));
+	p->center = center;
+	p->orient = orient;
+	p->color = color;
+	ptr = p;
+	get_hit(ptr, PL);
 }
 
 void	init_light(t_vec3 *vec, double ray)
