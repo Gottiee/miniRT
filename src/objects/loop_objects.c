@@ -6,11 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:28:42 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/23 13:25:17 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/24 16:59:33 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../../header/minirt.h"
+#include "../../header/minirt.h"
 
 int	check_extension(char *file)
 {
@@ -41,11 +41,6 @@ int	loop_objects(char *file)
 		magic_free();
 		return (0);
 	}
-	//init_sphere(new_vec(0, 0, -1), 0.5);
-	init_sphere(new_vec(0.5, 0, -1), 0.2);
-	init_sphere(new_vec(0, -100.5, -0.5), 100);
-	init_sphere(new_vec(1, 0, -1), 0.2);
-	init_sphere(new_vec(1.1, 0, -1), 0.2);
 	close(fd);
 	return (1);
-}*/
+}

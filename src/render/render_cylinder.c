@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/24 16:55:28 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/24 17:53:50 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	(void)r;
 	(void)limit;
 	(void)light;
+	return (0);
 }

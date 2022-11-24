@@ -1,4 +1,4 @@
-obj/objects/lexeur.o: src/objects/lexeur.c \
+obj/objects/lexeur_geo_obj.o: src/objects/lexeur_geo_obj.c \
  src/objects/../../header/minirt.h mlx_linux/mlx.h \
  src/objects/../../header/../libft/include/libft.h \
  src/objects/../../header/../libft/include/ft_printf.h \

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/24 13:32:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/24 17:45:12 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,10 @@ typedef struct s_lex
 	t_color		color;
 	t_vec3		coord;
 	t_vec3		vec;
+	t_vec3		orient;
+	int			fov;
+	double		radius;
+	double		height;
 }				t_lex;
 
 #endif 
