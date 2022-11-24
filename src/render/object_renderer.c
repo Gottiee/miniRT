@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/23 15:54:04 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/24 15:09:02 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_pointer(int (*hit[2])(t_record *rec, t_ray r, t_vec2 limit, t_point li
 	hit[SP] = &hit_sphere;
 	hit[L] = &hit_light;
 	hit[PL] = &hit_plane;
+	hit[CY] = &hit_cylinder;
 }
 
 int	hit_global(t_ray r, t_record *rec, t_point light)

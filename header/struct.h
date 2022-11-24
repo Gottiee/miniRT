@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/23 15:11:28 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/24 13:32:30 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_vec3
 	double	x;
 	double	y;
 	double	z;
+	double height;
 }				t_vec3;
 
 
@@ -66,6 +67,15 @@ typedef struct s_sphere
 	t_color	color;
 	
 }				t_sphere;
+
+typedef struct s_cyl
+{
+	t_point	center;
+	double	radius;
+	double	height;
+	t_color	color;
+	t_vec3	orient;	
+}				t_cyl;
 
 typedef struct s_plane
 {

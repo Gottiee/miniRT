@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/23 16:47:17 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/24 11:59:23 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 	list = get_hit(NULL, 0);
 	while (list)
 	{
-		if (list->type == L)
-		{
-			list = list->next;
-			continue ;
-		}
 		rec_tmp.closest = list->object;
 		rec_tmp.type = 0;
 		if (hit[list->type](&rec_tmp, r, limit, light))
@@ -59,7 +54,7 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 		}
 		list = list->next;
 	}
-	if (!hit_any)
+	if (!hit_any || rec->type == L)
 		return (0);
 	return (1);
 }
@@ -69,16 +64,14 @@ void	shadow_render(t_record *rec, t_point light)
 	t_ray		path;
 	t_record	shadow;
 
-	shadow.light = 1;
-	rec->light_level = 2;
+	rec->light_level = 1;
 	path.orig = plus(rec->hit_point, mult(rec->normal, 0.000001));
 	path.dir = minus(light, path.orig);
-	hit_shadow(path, &shadow, light);
 	if (hit_shadow(path, &shadow, light))
 		rec->light_level = 0;
 	else
 	{
 		rec->light_level *= dot(unit_vector(path.dir), unit_vector(rec->normal));
-		rec->light_level /= (length(&path.dir) / 3);
+		rec->light_level /= (length(&path.dir) / 2);
 	}
 }
