@@ -11,11 +11,12 @@ OBJ_DIR		= 	obj/
 SUBDIR		=	obj/class \
 				obj/utils \
 				obj/render\
+				obj/objects\
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -g -I./srcs/includes -Imlx_linux -MMD -MP
-ADDFLAGS	=  -L -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+ADDFLAGS	= -L -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 RM			= rm -rf
 AR			= ar rcs
@@ -24,17 +25,28 @@ SAN			= -fsanitize=address
 # SOURCES
 
 SRC_FILES = 	main \
-				render/render \
-				render/calcul_render \
-				utils/mlx_fonction \
-				utils/convert_rgb \
-				utils/hittable_list \
 				class/vector_class \
 				class/vector_utility \
 				class/vector_utility2 \
 				class/ray_class \
 				class/cam_class \
-				class/hittable
+				objects/hittable_list \
+				objects/init_objects \
+				objects/loop_objects \
+				objects/lexeur \
+				objects/lexeur_object \
+				objects/lexeur_util \
+				render/render_loop \
+				render/object_renderer \
+				render/display \
+				render/render_sphere \
+				render/render_light \
+				render/render_cylinder \
+				render/render_plane \
+				render/shadow_render \
+				utils/mlx_fonction \
+				utils/move \
+				utils/animation \
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

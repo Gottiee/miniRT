@@ -6,55 +6,56 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:19:57 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 19:03:06 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/21 12:45:16 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
 /*Print les valeurs x, y, z du vecteur u*/
-void	printv(t_vec *u)
+void	printv(t_vec3 u)
 {
-	printf("x:%f y:%f z:%f\n", u->e[0], u->e[1], u->e[2]);
+	printf("x:%f y:%f z:%f\n", u.x, u.y, u.z);
 }
 
 /*Résultat d'une multiplication des vecteurs u et v*/
-double	dot(t_vec *u, t_vec *v)
+double	dot(t_vec3 u, t_vec3 v)
 {
-	return (u->e[0] * v->e[0] + u->e[1] * v->e[1] + u->e[2] * v->e[2]);
+	return (u.x * v.x + u.y * v.y + u.z * v.z);
 }
 
 /*??????????????????*/
-t_vec	*cross(t_vec *u, t_vec *v)
+t_vec3	cross(t_vec3 u, t_vec3 v)
 {
-	t_vec *new;
+	t_vec3 new;
 
-	new = magic_malloc(sizeof(t_vec));
-	if (!new)
-		exit (1);
-	new->e[0] = u->e[1] * v->e[2] - u->e[2] * v->e[1];
-	new->e[1] = u->e[2] * v->e[0] - u->e[0] * v->e[2];
-	new->e[2] = u->e[0] * v->e[1] - u->e[1] * v->e[0];
+	new.x = u.y * v.z - u.z * v.y;
+	new.y = u.z * v.x - u.x * v.z;
+	new.z = u.x * v.y - u.y * v.x;
 	return (new);
 }
 
 /*Crée un nouveau vecteur qui est la mutiplication de u par la constante t*/
-t_vec	*unit_vector(t_vec *v)
+t_vec3	unit_vector(t_vec3 v)
 {
-	return (div_const(v, length(v)));
+	return (divis(v, length(&v)));
 }
 
 /*Crée un nouveau vecteur avec des valeurs arbitraires*/
-t_vec	*new_vec(double x, double y, double z)
+t_vec3	new_vec(double x, double y, double z)
 {
-	t_vec *new;
+	t_vec3 new;
 
-	new = magic_malloc(sizeof(t_vec));
-	printf("new vec malloc\n");
-	if (!new)
-		exit (1);
-	new->e[0] = x;
-	new->e[1] = y;
-	new->e[2] = z;
+	new.x = x;
+	new.y = y;
+	new.z = z;
 	return (new);
+}
+
+t_vec3	max(t_vec3 v1, t_vec3 v2)
+{
+	if (length(&v1) > length(&v2))
+		return (v1);
+	else
+		return (v2);	
 }

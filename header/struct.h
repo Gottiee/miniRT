@@ -6,40 +6,48 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 17:52:21 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/24 13:32:30 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define MINIRT_H
+#define STRUCT_H
 
 
-typedef struct s_vec
+typedef struct s_vec2
 {
-	double e[3];
-}				t_vec;
+	double	x;
+	double	y;
+}				t_vec2;
 
-typedef t_vec t_point;
-typedef t_vec t_color;
+typedef struct s_vec3
+{
+	double	x;
+	double	y;
+	double	z;
+	double height;
+}				t_vec3;
+
+
+typedef t_vec3 t_point;
+typedef t_vec3 t_color;
 
 typedef struct s_ray
 {
-	t_vec	orig;
-	t_vec	dir;
+	t_vec3	orig;
+	t_vec3	dir;
 }				t_ray;
 
 typedef struct s_cam
 {
-	double	aspect_ratio;
-	int		image_width;
-	int		image_height;
-	double	viewport_height;
-	double	viewport_width;
-	double	focal_length;
-	t_point	*origin;
-	t_vec	horizontal;
-	t_vec	vertical;
-	t_point	*lower_left_corner;
+	t_vec3	horizontal;
+	t_vec3	vertical;
+	t_point	origin;
+	t_point	lower_left_corner;
+	t_point	light;
+	double	focal;
+	t_vec3	rotate;
+	
 }				t_cam;
 
 typedef struct s_img
@@ -51,35 +59,86 @@ typedef struct s_img
 	int		e;
 }				t_img;
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	i;
-	int		cur_img;
-	t_cam	cam;
-}				t_data;
 
 typedef struct s_sphere
 {
 	t_point	center;
 	double	radius;
+	t_color	color;
+	
 }				t_sphere;
+
+typedef struct s_cyl
+{
+	t_point	center;
+	double	radius;
+	double	height;
+	t_color	color;
+	t_vec3	orient;	
+}				t_cyl;
+
+typedef struct s_plane
+{
+	t_point	center;
+	t_color	color;
+	t_vec3	orient;
+	
+}				t_plane;
+
+typedef struct s_light
+{
+	t_point	*center;
+	double	radius;
+	t_color	color;
+}				t_light;
 
 typedef struct s_record
 {
-	t_point p;
-	t_vec	normal;
-	double	t;
- 	double	t_min;
-	double	t_max;
-	int		front_face;
+	t_point 	hit_point;
+	t_vec3		normal;
+	void		*closest;
+	double		t;
+	double		light_level;
+	int			obj_id;
+	t_color		color;
+	int			type;
+	double		discr;
+	int			light;
 }				t_record;
 
 typedef struct s_hit_lst
 {
 	struct s_hit_lst	*next;
 	void				*object;
-	int					bolo;
+	int					id;
+	int					type;
 }				t_hit_lst;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	i;
+	t_cam	cam;
+	int		render_image;
+	int		disp_normals;
+	//moves
+	int		left;
+	int		right;
+	int		up;
+	int		down;
+	int		far;
+	int		close;
+	int		animation;
+}				t_data;
+
+typedef struct s_lex
+{
+	int 		type;
+	double		ratio;
+	t_color		color;
+	t_vec3		coord;
+	t_vec3		vec;
+}				t_lex;
+
 #endif 

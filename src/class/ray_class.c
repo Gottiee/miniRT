@@ -6,30 +6,33 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:57:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/16 13:15:15 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/18 13:39:18 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-t_ray	*init_ray(t_vec *origin, t_vec *direction)
+t_ray	new_ray(t_vec3 origin, t_vec3 direction)
 {
-	t_ray *new;
+	t_ray new;
 	
-	new = magic_malloc(sizeof(t_ray));
-	printf("init_ray malloc!\n");
-	if (!new)
-		exit (0);
-	new->orig = *origin;
-	new->dir = *direction;
+	new.orig = origin;
+	new.dir = direction;
 	return (new);
 } 
 
 /*Modifie r.dir en additionant r.orig a t*r.dir*/
-void	at(t_ray *r, double t)
+t_point	at(t_ray r, double t)
 {
-	mult_equal(&r->dir, t);
-	r->dir.e[0] = r->orig.e[0] + r->dir.e[0];
-	r->dir.e[1] = r->orig.e[1] + r->dir.e[1];
-	r->dir.e[2] = r->orig.e[2] + r->dir.e[2];
+
+//  point3 at(double t) const {
+//             return orig + t*dir;
+//         }
+
+	return (plus(r.orig, mult(r.dir, t)));
+
+	// mult_equal(&r->dir, t);
+	// r->dir.x = r->orig.x + r->dir.x;
+	// r->dir.y = r->orig.y + r->dir.y;
+	// r->dir.z = r->orig.z + r->dir.z;
 }

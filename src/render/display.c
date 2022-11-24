@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_rgb.c                                      :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:55:11 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 17:53:32 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/24 11:48:23 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-int	hexa(t_color *col)
+double	clamp(double x, double min, double max)
+{
+	if (x < min)
+		return min;
+    if (x > max)
+		return max;
+    return (x);
+}
+
+int	hexa(t_color col)
 {
 	int r;
 	int g;
 	int b;
 	
-	r = (int)(col->e[0] * 255);
-	g = (int)(col->e[1] * 255);
-	b = (int)(col->e[2] * 255);
+	col.x = clamp(col.x, 0, 1);
+	col.y = clamp(col.y, 0, 1);
+	col.z = clamp(col.z, 0, 1);
+	r = (int)(col.x * 255);
+	g = (int)(col.y * 255);
+	b = (int)(col.z * 255);
 	return (r << 16 | g << 8 | b);
 }
 

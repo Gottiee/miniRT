@@ -6,37 +6,34 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 18:51:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/24 12:52:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-t_vec	*get_lower(t_cam *cam, t_vec horizontal, t_vec vertical)
-{
-	t_vec	*new;
-	
-	new = new_vec(0, 0, 0);
-	div_equal(&horizontal, 2);
-	div_equal(&vertical, 2);
-	min_equal(new, &horizontal);
-	min_equal(new, &vertical);
-	new->e[2] -= cam->focal_length;
-	return (new);
+void	set_llc(t_cam *cam, double focal)
+{	
+	// lower_left_corner = origin - horizontal/2 - vertical/2 - vec3(0, 0, focal_length);
+	cam->lower_left_corner = cam->origin;
+	cam->lower_left_corner = minus(cam->lower_left_corner,
+				divis(cam->horizontal, 2));
+	cam->lower_left_corner = minus(cam->lower_left_corner,
+				divis(cam->vertical, 2));
+	cam->lower_left_corner = minus(cam->lower_left_corner, new_vec(0, 0, focal));
+	// cam->lower_left_corner = plus(cam->lower_left_corner, unit_vector(cam->rotate));
 }
 
-void	init_cam(t_cam *cam)
+void	init_cam(t_cam *cam, double ratio, double view_height, double focal)
 {
-	cam->aspect_ratio = (double)WINDOW_W / (double)WINDOW_H;
-	cam->viewport_height = 2.0;
-	cam->viewport_width = cam->aspect_ratio * cam->viewport_height;
-	cam->focal_length = 1.0;
-	cam->origin = new_vec(0, 0, 0);
-	cam->horizontal.e[0] = cam->viewport_width;
-	cam->horizontal.e[1] = 0;
-	cam->horizontal.e[2] = 0;
-	cam->vertical.e[0] = 0;
-	cam->vertical.e[1] = cam->viewport_height;
-	cam->vertical.e[2] = 0;
-	cam->lower_left_corner = get_lower(cam, cam->horizontal, cam->vertical);
+	double	view_width;
+
+	view_width = ratio * view_height;
+	cam->origin = new_vec(0, 0, 1);
+	cam->horizontal = new_vec(view_width, 0, 0);
+	cam->vertical = new_vec(0, view_height, 0);
+	cam->focal = focal;
+	cam->rotate = new_vec(0, 0, 0);
+	cam->light = mult(new_vec(1, -2.1, -1), -1);
+	// cam->light = unit_vector(mult(new_vec(1, 0, -0.5), -1));
 }

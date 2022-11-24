@@ -6,77 +6,69 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/15 17:57:45 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:36:11 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
 /*Crée un nouveau vecteur qui est l'addition des vecteurs u et v*/
-t_vec	*plus(t_vec *u, t_vec *v)
+t_vec3	plus(t_vec3 u, t_vec3 v)
 {
-	t_vec *new;
+	t_vec3 new;
 
-	new = magic_malloc(sizeof(t_vec));
-		printf("plus malloc!\n");
-	if (!new)
-		exit(1);
-	new->e[0] = u->e[0] + v->e[0];
-	new->e[1] = u->e[1] + v->e[1];
-	new->e[2] = u->e[2] + v->e[2];
+	new.x = u.x + v.x;
+	new.y = u.y + v.y;
+	new.z = u.z + v.z;
 	return (new);
 }
 
 /*Crée un nouveau vecteur qui est la soustraction des vecteurs u et v*/
-t_vec	*minus(t_vec *u, t_vec *v)
+t_vec3	minus(t_vec3 u, t_vec3 v)
 {
-	t_vec *new;
-
-	new = magic_malloc(sizeof(t_vec));
-		printf("minus malloc!\n");
-
-	if (!new)
-		exit(1);
-	new->e[0] = u->e[0] - v->e[0];
-	new->e[1] = u->e[1] - v->e[1];
-	new->e[2] = u->e[2] - v->e[2];
+	t_vec3 new;
+	
+	new.x = u.x - v.x;
+	new.y = u.y - v.y;
+	new.z = u.z - v.z;
 	return (new);
 }
 
 /*Crée un nouveau vecteur qui est la mutiplication des vecteurs u et v*/
-t_vec	*mult_vec(t_vec *u, t_vec *v)
+t_vec3	mult_vec(t_vec3 u, t_vec3 v)
 {
-	t_vec *new;
+	t_vec3 new;
 
-	new = magic_malloc(sizeof(t_vec));
-		printf("mult_vec malloc!\n");
+	new.x = u.x * v.x;
+	new.y = u.y * v.y;
+	new.z = u.z * v.z;
+	return (new);
+}
 
-	if (!new)
-		exit(1);
-	new->e[0] = u->e[0] * v->e[0];
-	new->e[1] = u->e[1] * v->e[1];
-	new->e[2] = u->e[2] * v->e[2];
+/*Crée un nouveau vecteur qui est la divisions des vecteurs u et v*/
+t_vec3	div_vec(t_vec3 u, t_vec3 v)
+{
+	t_vec3 new;
+
+	new.x = u.x / v.x;
+	new.y = u.y / v.y;
+	new.z = u.z / v.z;
 	return (new);
 }
 
 /*Crée un nouveau vecteur qui est la mutiplication de u par la constante t*/
-t_vec	*mult_const(t_vec *u, const double t)
+t_vec3	mult(t_vec3 u, const double t)
 {
-	t_vec *new;
+	t_vec3 new;
 
-	new = magic_malloc(sizeof(t_vec));
-		printf("mult_const malloc!\n");
-
-	if (!new)
-		exit(1);
-	new->e[0] = u->e[0] * t;
-	new->e[1] = u->e[1] * t;
-	new->e[2] = u->e[2] * t;
+	new.x = u.x * t;
+	new.y = u.y * t;
+	new.z = u.z * t;
 	return (new);
 }
 
 /*Crée un nouveau vecteur qui est la division de u par la constante t*/
-t_vec	*div_const(t_vec *u, const double t)
+t_vec3	divis(t_vec3 u, const double t)
 {
-	return (mult_const(u, 1 / t));
+	return (mult(u, 1 / t));
 }

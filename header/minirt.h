@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/16 18:05:56 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/24 13:43:00 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,63 +21,88 @@
 # include <fcntl.h>
 # include <math.h>
 # include <float.h>
+# include <time.h>
+# include <unistd.h>
+//IMAGE
+# define WINDOW_H 560
+# define WINDOW_W 720
 
-# define WINDOW_H 1080
-# define WINDOW_W 1920
-# define RATIO WINDOW_W / WINDOW_H
+# define ERROR -29999
+# define NONE 0
 # define SPHERE 1
+# define A 2
+# define C 3
+# define L 4
+# define SP 5
+# define PL 6
+# define CY 7
 
 # include "../libft/include/libft.h"
-# include "struct.h"
+# include "class.h"
+# include "draw.h"
 
+enum e_alpha {_A, _B, _C};
 
-/*          --- Fonction CLASS ---     */
-
-/*Fichier: hittable.c*/
-int			hit_global(t_ray r, t_record *rec, double t_min, double t_max);
-
-/*          --- Fonction UTILS ---     */
-
-/*Fichier: hittable_list.c*/
-t_hit_lst	*get_hit(void *obj);
-
-/*          --- Fonction qui gere la lib Mlx ---     */
+/*         --- UTILS ---     */
 
 /*Fichier: mlx_fonction.c*/
-void	mlx_center(void);
-/*Fichier : convert_rgb.c*/
-void	img_pix_put(t_img *img, int x, int y, int color);
-int		hexa(t_color *col);
+void		mlx_center(t_data *data);
+/*Fichier : move.c*/
+void		move(int keysym, t_data *data);
+void		init_move(t_data *data);
+int			key_release(int keysym, t_data *data);
+void		move_light(t_data *data);
+void		move_cam(t_data *data);
+/*Fichier : get_data.c*/
+t_data		*get_data(void);
+/*Fichier : animation.c*/
+void	animation(t_data *data);
 
-int		render(t_data *data);
-void	vec(t_vec *u, double x, double y, double z);
+/*			--- RENDER ---	*/
 
-/*          --- Classe vector ---     */
+/*Fichier : display.c*/
+void		img_pix_put(t_img *img, int x, int y, int color);
+int			hexa(t_color col);
+double		clamp(double x, double min, double max);
+/*Fichier: render.c*/
+int			render(t_data *data);
+/*Fichier: object_renderer.c*/
+int			hit_global(t_ray r, t_record *rec, t_point light);
+void		init_pointer(int (*hit[2])(t_record *rec, t_ray r, t_vec2 limit, t_point light));
+/*Fichier: sphere.c*/
+int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+void		set_face(t_ray r, t_vec3 outward, t_record *rec);
+double		discriminent(t_ray r, t_sphere s, double *p);
+/*Fichier: light.c*/
+int			hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+/*Fichier: plane.c*/
+int			hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light);
+/*Fichier: cylinder.c*/
+int			hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+/*Fichier: shadow_render.c*/
+void		shadow_render(t_record *rec, t_point light);
 
-/*Fichier: vector_class.c*/
-t_vec	plus_equal(t_vec *u, t_vec *v);
-t_vec	min_equal(t_vec *u, t_vec *v);
-t_vec	mult_equal(t_vec *u, double t);
-t_vec	div_equal(t_vec *u, double t);
-double	length_squared(t_vec *u);
-double	length(t_vec *u);
-/*Fichier: vector_utility.c*/
-t_vec	*plus(t_vec *u, t_vec *v);
-t_vec	*minus(t_vec *u, t_vec *v);
-t_vec	*mult_vec(t_vec *u, t_vec *v);
-t_vec	*mult_const(t_vec *u, const double t);
-t_vec	*div_const(t_vec *u, const double t);
-/*Fichier: vector_utility2.c*/
-void	printv(t_vec *u);
-double	dot(t_vec *u, t_vec *v);
-t_vec	*cross(t_vec *u, t_vec *v);
-t_vec	*unit_vector(t_vec *v);
-t_vec	*new_vec(double x, double y, double z);
-/*Fichier: ray_class.c*/
-t_ray	*init_ray(t_vec *origin, t_vec *direction);
-void	at(t_ray *r, double t);
-/*Fichier: cam_class.c*/
-void	init_cam(t_cam *cam);
+/*			--- OBJECTS -- 	*/
 
+/*Fichier: init_objects.c*/
+void		init_sphere(t_vec3 vec, double ray, t_color color);
+void		init_light(t_vec3 *vec, double ray);
+void		init_plane(t_vec3 center, t_color color, t_vec3 orient);
+void		init_cylinder(t_vec3 vec, double ray, t_vec3 orient, t_color color);
+/*Fichier: hittable_list.c*/
+t_hit_lst	*get_hit(void *obj, int type);
+/*Fichier: loop_objects.c*/
+int			loop_objects(char *file);
+/*Fichier: lexeur.c*/
+int			object(int fd);
+/*Fichier: lexeur_object.c*/
+int			lex_A(t_lex *lex, char *line, int i);
+int			lex_L(t_lex *lex, char *line, int i);
+int			lex_C(t_lex *lex, char *line, int i);
+int			lex_objects(t_lex *lex, char *line, int i);
 
+/*Fichier: lexeur_util.c*/
+void		string_move(char *line);
+double		get_decimal(char *line, int i);
+int 		get_vector(char *line, int i, t_color *color);
 #endif 
