@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/24 13:43:00 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/27 17:05:42 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@
 
 # include "../libft/include/libft.h"
 # include "class.h"
-# include "draw.h"
 
-enum e_alpha {_A, _B, _C};
+enum e_alpha {_A, _B, _C, OC};
 
 /*         --- UTILS ---     */
 
@@ -56,7 +55,7 @@ void		move_cam(t_data *data);
 /*Fichier : get_data.c*/
 t_data		*get_data(void);
 /*Fichier : animation.c*/
-void	animation(t_data *data);
+void		animation(t_data *data);
 
 /*			--- RENDER ---	*/
 
@@ -88,7 +87,7 @@ void		shadow_render(t_record *rec, t_point light);
 void		init_sphere(t_vec3 vec, double ray, t_color color);
 void		init_light(t_vec3 *vec, double ray);
 void		init_plane(t_vec3 center, t_color color, t_vec3 orient);
-void		init_cylinder(t_vec3 vec, double ray, t_vec3 orient, t_color color);
+void		init_cylinder(t_vec3 center, t_vec3 orient, t_color color, t_vec2 rad_h);
 /*Fichier: hittable_list.c*/
 t_hit_lst	*get_hit(void *obj, int type);
 /*Fichier: loop_objects.c*/

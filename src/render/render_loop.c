@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/24 15:10:23 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/27 17:54:34 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,12 @@ t_color	ray_color(t_ray r, t_point light, int normals)
 {
 	t_record	rec;
 
-	rec.light = 0;
 	if (hit_global(r, &rec, light))
 	{
-		if (rec.type != L && rec.type != CY)
+		if (rec.type != L)
 			shadow_render(&rec, light);
 		if (normals)
 			return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
-		// printf("%f\n", rec.light_level);
 		return (mult(rec.color, rec.light_level));
 	}
 	// return (bckg(r));
@@ -80,7 +78,7 @@ int render(t_data *data)
 	// printf("%ld ms\n", msec);
 	//
 		// printv(mult(data->cam.light, -1));
-	printv(data->cam.light);
+	// printv(data->cam.light);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:19:57 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 12:45:16 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/25 14:12:41 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,15 @@ t_vec3	new_vec(double x, double y, double z)
 	new.x = x;
 	new.y = y;
 	new.z = z;
+	return (new);
+}
+
+t_vec2	new_vec2(double x, double y)
+{
+	t_vec2 new;
+
+	new.x = x;
+	new.y = y;
 	return (new);
 }
 

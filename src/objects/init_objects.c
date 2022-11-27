@@ -6,23 +6,23 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:06:43 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/24 14:51:33 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/27 17:50:16 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-void	init_cylinder(t_vec3 vec, double ray, t_vec3 orient, t_color color)
+void	init_cylinder(t_vec3 center, t_vec3 orient, t_color color, t_vec2 rad_h)
 {
-	t_cyl	*s;
+	t_cyl		*s;
 	void		*ptr;
 
 	s = magic_malloc(sizeof(t_cyl));
-	s->center = vec;
-	s->radius = ray;
+	s->center = center;
 	s->color = color;
-	s->orient = orient;
-	s->height = vec.height;
+	s->orient = unit_vector(orient);
+	s->radius = rad_h.x;
+	s->height = rad_h.y;
 	ptr = s;
 	get_hit(ptr, CY);
 }
