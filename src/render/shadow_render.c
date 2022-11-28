@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/24 11:59:23 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 13:16:18 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	shadow_render(t_record *rec, t_point light)
 	path.orig = plus(rec->hit_point, mult(rec->normal, 0.000001));
 	path.dir = minus(light, path.orig);
 	if (hit_shadow(path, &shadow, light))
-		rec->light_level = 0;
+		rec->light_level = 0.3;
 	else
 	{
 		rec->light_level *= dot(unit_vector(path.dir), unit_vector(rec->normal));

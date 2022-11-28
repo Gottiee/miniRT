@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/28 12:19:34 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/28 17:01:48 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 	ray->orig = cam.origin;
 	ray->dir = plus(cam.lower_left_corner, mult(cam.horizontal, u));
 	ray->dir = plus(ray->dir, mult(cam.vertical, v));
-	//ray->dir = plus(ray->dir, cam.rotate);
 	min_equal(&ray->dir, &cam.origin);
+	//ray->dir = mult_vec(ray->dir, cam.rotate);
+	//ray->dir = unit_vector(ray->dir);
+	//ray->dir = plus(ray->dir, cam.rotate);
 	//ray->dir = plus(ray->dir, cam.rotate);
 }
 
