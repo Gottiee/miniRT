@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/24 17:45:12 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/28 12:20:28 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,12 @@ typedef struct s_cam
 	t_point	light;
 	double	focal;
 	t_vec3	rotate;
-	
+	t_point	lookfrom;
+	t_point	lookat;
+	t_point	vup;
+	t_vec3	w;
+	t_vec3	u;
+	t_vec3	v;
 }				t_cam;
 
 typedef struct s_img
