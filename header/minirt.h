@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 11:13:35 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 16:32:16 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ void		shadow_render(t_record *rec, t_point light);
 /*			--- OBJECTS -- 	*/
 
 /*Fichier: init_objects.c*/
-void		init_sphere(t_vec3 vec, double ray, t_color color);
-void		init_light(t_vec3 *vec, double ray);
-void		init_plane(t_vec3 center, t_color color, t_vec3 orient);
-void		init_cylinder(t_vec3 center, t_vec3 orient, t_color color, t_vec2 rad_h);
+void		init_sphere(t_lex lex);
+void		init_light(t_lex lex);
+void		init_plane(t_lex lex);
+void		init_cylinder(t_lex lex);
 /*Fichier: hittable_list.c*/
 t_hit_lst	*get_hit(void *obj, int type);
 /*Fichier: loop_objects.c*/
@@ -109,9 +109,9 @@ char		*string_move(char *line);
 double		get_decimal(char **line, int i);
 int 		get_vector(char **line, int i, t_color *color);
 /*Fichier: parser.c*/
-int	parser(t_lex lex);
-int	verify_line(char *line);
+int			parser(t_lex lex);
+int			verify_line(char *line, int line_nbr);
 /*Fichier: new_object.c*/
-int	new_object(t_lex lex);
+int			new_object(t_lex lex);
 
 #endif 

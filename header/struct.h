@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 10:58:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 11:54:17 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ typedef struct s_lex
 	double		ratio;
 	t_color		color;
 	t_vec3		coord;
-	t_vec3		vec;
 	t_vec3		orient;
 	int			fov;
 	double		radius;

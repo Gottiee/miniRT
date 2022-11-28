@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/28 10:24:35 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 16:34:38 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 	ray->orig = cam.origin;
 	ray->dir = plus(cam.lower_left_corner, mult(cam.horizontal, u));
 	ray->dir = plus(ray->dir, mult(cam.vertical, v));
-	ray->dir = plus(ray->dir, cam.rotate);//
 	min_equal(&ray->dir, &cam.origin);
 	ray->dir = plus(ray->dir, cam.rotate);
 }
@@ -55,7 +54,6 @@ int render(t_data *data)
 	double	u;
 	double	v;
 	
-	// clock_t before = clock(); //timer
 	set_llc(&data->cam, data->cam.focal);
 	c.y = WINDOW_H - 1;
 	while (c.y >= 0)
@@ -71,14 +69,10 @@ int render(t_data *data)
 		}
 		c.y --;
 	}
-	//	timer
-	// clock_t difference = clock() - before;
-	// clock_t msec = difference * 1000 / CLOCKS_PER_SEC;
-	// system("clear");
-	// printf("%ld ms\n", msec);
-	//
-		// printv(mult(data->cam.light, -1));
-	// printv(data->cam.light);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
+	// printf("ORIGIN: ");
+	// printv(data->cam.origin);
+	// printf("ROTATE: ");
+	// printv(data->cam.rotate);
 	return (0);
 }
