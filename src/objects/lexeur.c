@@ -6,11 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:18:19 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/24 12:10:57 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 10:32:50 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../../header/minirt.h"
+#include "../../header/minirt.h"
 
 int	check_next(char c)
 {
@@ -98,4 +98,4 @@ int	object(int fd)
 		line = get_next_line(fd);
 	}
 	return (1);
-}*/
+}

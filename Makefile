@@ -36,6 +36,8 @@ SRC_FILES = 	main \
 				objects/lexeur \
 				objects/lexeur_object \
 				objects/lexeur_util \
+				objects/parser \
+				objects/pre_parser \
 				render/render_loop \
 				render/object_renderer \
 				render/display \

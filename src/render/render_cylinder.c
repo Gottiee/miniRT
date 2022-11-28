@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/27 18:00:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 10:18:46 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_vec3	set_cyl_normal(t_cyl c, t_point intersection, t_ray r)
 	t = dot(minus(intersection, bottom), c.orient);
 	pt = plus(bottom, mult(c.orient, t));
 	normal = minus(intersection, pt);
-	res = dot(r.dir, normal);	
+	res = dot(r.dir, normal);
 	if (res < 0)
 		return (normal);
 	return (mult(normal, -1));

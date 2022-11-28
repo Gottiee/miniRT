@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lexeur_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eedy <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 13:13:09 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/23 13:24:52 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/28 10:33:01 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
-/*
+
 void	string_move(char *line)
 {
 	while (*line && (*line != ' ' && *line != '\t' && *line != ','))		
@@ -66,4 +66,4 @@ int get_vector(char *line, int i, t_color *color)
 	}
 	color->z = get_decimal(line, i);
 	return (1);
-}*/
+}

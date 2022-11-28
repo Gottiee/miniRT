@@ -6,11 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:59:04 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/23 13:24:14 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/28 10:33:06 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "../../header/minirt.h"
+#include "../../header/minirt.h"
 
 int	lex_A(t_lex *lex, char *line, int i)
 {
@@ -55,4 +55,4 @@ int	lex_objects(t_lex *lex, char *line, int i)
 	(void)line;
 	(void)i;
 	return (1);
-}*/
+}
