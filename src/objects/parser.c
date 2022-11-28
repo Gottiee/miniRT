@@ -6,11 +6,24 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:25:53 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/28 10:46:15 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 11:16:09 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
+
+int	verify_line(char *line)
+{
+	while (ft_isalpha(*line))
+		line ++;
+	while (*line)
+	{
+		if (!ft_isdigit(*line) && *line != '.' && *line != ',' && *line != ' ')
+			return (0);
+		line ++;
+	}
+	return (1);
+}
 
 int	in_range(double input, double min, double max)
 {
@@ -23,17 +36,9 @@ int	verify_vec(t_vec3 u, double min, double max)
 		&& in_range(u.z, min, max));
 }
 
-int	verify_inputs(t_lex lex)
-{
-	in_range(lex.ratio, 0, 1);
-	verify_vec(lex.color, 0, 255);
-	verify_vec(lex.vec, -1, 1);
-	return (0);
-}
-
 int	parser(t_lex lex)
 {
-	(void)lex;
-	verify_inputs(lex);
-	return (0);
+	return (in_range(lex.ratio, 0, 1)
+		&&	verify_vec(lex.color, 0, 255)
+		&&	verify_vec(lex.vec, -1, 1));
 }

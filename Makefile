@@ -38,7 +38,7 @@ SRC_FILES = 	main \
 				objects/lexeur_geo_obj \
 				objects/lexeur_util \
 				objects/parser \
-				objects/pre_parser \
+				objects/new_object \
 				render/render_loop \
 				render/object_renderer \
 				render/display \

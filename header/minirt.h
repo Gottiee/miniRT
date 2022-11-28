@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 10:55:00 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 11:13:35 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,14 @@ int			isnt_complet(int i, int bool);
 int 		lex_SP(t_lex *lex, char *line, int i);
 int			lex_PL(t_lex *lex, char *line, int i);
 int			lex_CY(t_lex *lex, char *line, int i);
-
 /*Fichier: lexeur_util.c*/
 char		*string_move(char *line);
 double		get_decimal(char **line, int i);
 int 		get_vector(char **line, int i, t_color *color);
+/*Fichier: parser.c*/
+int	parser(t_lex lex);
+int	verify_line(char *line);
+/*Fichier: new_object.c*/
+int	new_object(t_lex lex);
+
 #endif 

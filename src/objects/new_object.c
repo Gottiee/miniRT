@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_parser.c                                       :+:      :+:    :+:   */
+/*   new_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:25:53 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/28 10:29:13 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 11:17:19 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	pre_parser(t_lex lex)
+#include "../../header/minirt.h"
+
+int	new_object(t_lex lex)
 {
 	(void)lex;
+	printf("NEW OBJECT\n");
 	return (0);
 }

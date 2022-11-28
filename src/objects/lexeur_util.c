@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 13:13:09 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 10:55:56 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 11:18:08 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 char	*string_move(char *line)
 {
-	while (*line && (*line != ' ' && *line != '\t' && *line != ','))		
+	while (*line && (*line != ' ' && *line != '\t' && *line != ','))
 		line ++;	
 	while (*line && (*line == ' ' || *line == '\t'))		
+		line ++;
+	if (*line == ',')
 		line ++;
 	return (line);
 }
@@ -27,7 +29,7 @@ double	get_decimal(char **line, int i)
 	double right;
 
 	left = ft_atoi(*line);
-	while (**line && !(**line >= '0' && **line <= '9'))
+	while (**line && (**line >= '0' && **line <= '9'))
 		(*line) ++;
 	if (!**line)
 	{
@@ -52,18 +54,17 @@ double	get_decimal(char **line, int i)
 int get_vector(char **line, int i, t_color *color)
 {
 	color->x = get_decimal(line, i);
-	if (!**line || **line != ',')
+	if (!**line)
 	{
 		printf("Error\nVector none complet line %d\n", i);
 		return (0);
 	}
 	color->y = get_decimal(line, i);
-	if (!**line || **line != ',')
+	if (!**line)
 	{
 		printf("Error\nVector none complet line %d\n", i);
 		return (0);
 	}
 	color->z = get_decimal(line, i);
-	*line = string_move(*line);
 	return (1);
 }

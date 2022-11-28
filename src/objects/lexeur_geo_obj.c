@@ -6,7 +6,7 @@
 /*   By: eedy <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:22:40 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/24 18:12:41 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/28 11:12:34 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int lex_SP(t_lex *lex, char *line, int i)
 		return (isnt_complet(i, 0));
 	if (!get_vector(&line, i, &lex->color))
 		return (0);
-	if (!*line)
+	if (*line)
 		return (isnt_complet(i, 1));
 	return (1);
 }
@@ -40,7 +40,7 @@ int	lex_PL(t_lex *lex, char *line, int i)
 		return (isnt_complet(i, 0));
 	if (!get_vector(&line, i, &lex->color))
 		return (0);
-	if (!*line)
+	if (*line)
 		return (isnt_complet(i, 1));
 	return (1);
 }
@@ -63,7 +63,7 @@ int	lex_CY(t_lex *lex, char *line, int i)
 		return (isnt_complet(i, 0));
 	if (!get_vector(&line, i, &lex->color))
 		return (0);
-	if (!*line)
+	if (*line)
 		return (isnt_complet(i, 1));
 	return (1);
 }
