@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:18:19 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 10:32:50 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 10:55:59 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	lexeur(t_lex *lex, char *line, int i)
 		printf("Error\nWrong type line %d\n", i);
 		return (0);
 	}
-	string_move(line);
+	line = string_move(line);
 	if (!*line)
 	{
 		printf("Error\nLine %d isn't complet\n", i);
@@ -91,8 +91,8 @@ int	object(int fd)
 		nbr_line ++;
 		if (line[0] != '\n' && lexeur(&lex, line, nbr_line))
 		{
-		if (!parser(lex))
-				return (0);
+			/*if (!parser(lex))
+					return (0);*/
 		}
 		free(line);
 		line = get_next_line(fd);

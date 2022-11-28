@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/27 18:10:16 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/28 10:55:35 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ int	main(int argc, char **argv)
 {	
 	t_data data;
 	(void)argc;
-	(void)argv;
+	(void)data;
+
+	loop_objects(argv[1]);
 	// if (argc != 2 || !loop_objects(argv[1]))
 	// 	return (1);
-
 	init_cam(&data.cam, (double)WINDOW_W / (double)WINDOW_H, 2.0, 2.0);
 	init_light(&data.cam.light, 0.1);
 	// init_plane(new_vec(0, 0, -2), new_vec(0, 0, 1), unit_vector(new_vec(0, 0, -1)));
