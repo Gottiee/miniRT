@@ -6,27 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/28 16:36:33 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 17:57:52 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
-
-// int	hit_obstacle(t_ray r, t_sphere *s)
-// {
-// 	t_vec3	oc;
-// 	double 	a;	
-// 	double 	b;	
-// 	double 	c;	
-// 	double 	discr;	
-
-// 	oc = minus(r.orig, s->center);
-// 	a = length_squared(&r.dir);
-// 	b = dot(oc, r.dir);
-// 	c = length_squared(&oc) - s->radius * s->radius;
-// 	discr = b * b - a * c;
-// 	return (discr >= 0);
-// }
 
 int	hit_shadow(t_ray r, t_record *rec, t_point light)
 {
@@ -59,19 +43,32 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 	return (1);
 }
 
+double	greatest(double a, double b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
 void	shadow_render(t_record *rec, t_point light)
 {
 	t_ray		path;
 	t_record	shadow;
+	t_light		*l;
+	t_ambiant	*a;
 
-	rec->light_level = 1;
+	l = get_light();
+	a = get_amb(); //si pas de amb ?
+	(void)a;
+	rec->light_level = l->ratio;
 	path.orig = plus(rec->hit_point, mult(rec->normal, 0.000001));
 	path.dir = minus(light, path.orig);
 	if (hit_shadow(path, &shadow, light))
-		rec->light_level = 0;
+		rec->light_level = a->ratio;
 	else
 	{
 		rec->light_level *= dot(unit_vector(path.dir), unit_vector(rec->normal));
-		rec->light_level /= (length(&path.dir) / 2);
+		rec->light_level = greatest(rec->light_level / (length(&path.dir) / 2), a->ratio);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 16:32:16 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 17:46:27 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ void		init_move(t_data *data);
 int			key_release(int keysym, t_data *data);
 void		move_light(t_data *data);
 void		move_cam(t_data *data);
-/*Fichier : get_data.c*/
-t_data		*get_data(void);
+/*Fichier : get.c*/
+t_cam		*get_cam(void);
+t_light		*get_light(void);
+t_ambiant		*get_amb(void);
 /*Fichier : animation.c*/
 void		animation(t_data *data);
 
@@ -80,6 +82,8 @@ int			hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light);
 int			hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 /*Fichier: shadow_render.c*/
 void		shadow_render(t_record *rec, t_point light);
+/*Fichier: rotate_ray.c*/
+t_vec3       rotate_ray(t_ray r, t_cam cam);
 
 /*			--- OBJECTS -- 	*/
 

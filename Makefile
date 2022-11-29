@@ -47,9 +47,11 @@ SRC_FILES = 	main \
 				render/render_cylinder \
 				render/render_plane \
 				render/shadow_render \
+				render/rotate_ray \
 				utils/mlx_fonction \
 				utils/move \
 				utils/animation \
+				utils/get \
 
 
 C_FILES		=	$(addsuffix .c, $(SRC_FILES))

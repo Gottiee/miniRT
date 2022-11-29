@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/21 20:09:58 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 17:33:12 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,43 @@
 
 void	move(int keysym, t_data *data)
 {
-	if (keysym == XK_Left)
-		data->cam.origin = plus(data->cam.origin, new_vec(-0.1, 0, 0));
-	if (keysym == XK_Right)
-		data->cam.origin = plus(data->cam.origin, new_vec(0.1, 0, 0));
-	if (keysym == XK_Down)
-		data->cam.origin = plus(data->cam.origin, new_vec(0, -0.1, 0));
-	if (keysym == XK_Up)
-		data->cam.origin = plus(data->cam.origin, new_vec(0, 0.1, 0));
-	if (keysym == XK_q)
-		data->cam.origin = plus(data->cam.origin, new_vec(0, 0, -0.1));
-	if (keysym == XK_e)
-		data->cam.origin = plus(data->cam.origin, new_vec(0, 0, 0.1));
-	if (keysym == XK_k)
-		data->cam.light = plus(data->cam.light, new_vec(0, -0.1, 0));
-	if (keysym == XK_l)
-		data->cam.light = plus(data->cam.light, new_vec(0.1, 0, 0));
-	if (keysym == XK_i)
-		data->cam.light = plus(data->cam.light, new_vec(0, 0.1, 0));
-	if (keysym == XK_j)
-		data->cam.light = plus(data->cam.light, new_vec(-0.1, 0, 0));
-	if (keysym == XK_o)
-		data->cam.light = plus(data->cam.light, new_vec(0, 0, -0.1));
-	if (keysym == XK_u)
-		data->cam.light = plus(data->cam.light, new_vec(0, 0, 0.1));
-	if (keysym == XK_w)
-		data->cam.rotate = plus(data->cam.rotate, new_vec(0, 0.1, 0));
-	if (keysym == XK_s)
-		data->cam.rotate = plus(data->cam.rotate, new_vec(0, -0.1, 0));
-	if (keysym == XK_d)
-		data->cam.rotate = plus(data->cam.rotate, new_vec(0.1, 0, 0));
+	t_cam	*cam;
+
+	cam = get_cam();
 	if (keysym == XK_a)
-		data->cam.rotate = plus(data->cam.rotate, new_vec(-0.1, 0, 0));
+		cam->lookfrom = plus(cam->lookfrom, new_vec(-0.1, 0, 0));
+	if (keysym == XK_d)
+		cam->lookfrom = plus(cam->lookfrom, new_vec(0.1, 0, 0));
+	if (keysym == XK_s)
+		cam->lookfrom = plus(cam->lookfrom, new_vec(0, -0.1, 0));
+	if (keysym == XK_w)
+		cam->lookfrom = plus(cam->lookfrom, new_vec(0, 0.1, 0));
+	if (keysym == XK_q)
+		cam->lookfrom = plus(cam->lookfrom, new_vec(0, 0, -0.05));
+	if (keysym == XK_e)
+		cam->lookfrom = plus(cam->lookfrom, new_vec(0, 0, 0.05));
+	if (keysym == XK_k)
+		data->light = plus(data->light, new_vec(0, -0.1, 0));
+	if (keysym == XK_l)
+		data->light = plus(data->light, new_vec(0.1, 0, 0));
+	if (keysym == XK_i)
+		data->light = plus(data->light, new_vec(0, 0.1, 0));
+	if (keysym == XK_j)
+		data->light = plus(data->light, new_vec(-0.1, 0, 0));
+	if (keysym == XK_o)
+		data->light = plus(data->light, new_vec(0, 0, -0.1));
+	if (keysym == XK_u)
+		data->light = plus(data->light, new_vec(0, 0, 0.1));
+	if (keysym == XK_Up)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, -0.1, 0)));
+	if (keysym == XK_Down)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0.1, 0)));
+	if (keysym == XK_Right)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(-0.1, 0, 0)));
+	if (keysym == XK_Left)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0.1, 0, 0)));
 	if (keysym == XK_n)
-		data->disp_normals = data->disp_normals == 0;
-	if (keysym == XK_space)
-		data->animation  = data->animation == 0;
-		
+		data->disp_normals = data->disp_normals == 0;		
 	data->render_image = 1;
 }
 

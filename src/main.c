@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/28 16:35:38 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 17:32:27 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (printf("Error\nInvalid args\n"), 1);
-	loop_objects(argv[1]);
-	init_cam(&data.cam, (double)WINDOW_W / (double)WINDOW_H, 2.0, 2.0);
+	if (!loop_objects(argv[1]))
+		return (2);
+
+	data.light = mult(new_vec(0, -1, 0.5), -1);
+	// init_cam(&data.cam, (double)WINDOW_W / (double)WINDOW_H, 2.0, 2.0);
 	// init_light(&data.cam.light, 0.1);
 	// init_plane(new_vec(0, 0, -2), new_vec(0, 0, 1), unit_vector(new_vec(0, 0, -1)));
 	// init_plane(new_vec(0, 0, -1), new_vec(0, 1, 0), unit_vector(new_vec(-0.5, -1, -1)));

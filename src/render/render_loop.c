@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/28 16:34:38 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 17:33:35 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 	ray->dir = plus(cam.lower_left_corner, mult(cam.horizontal, u));
 	ray->dir = plus(ray->dir, mult(cam.vertical, v));
 	min_equal(&ray->dir, &cam.origin);
-	ray->dir = plus(ray->dir, cam.rotate);
+	// ray->dir = plus(ray->dir, cam.rotate);	
 }
 
 int render(t_data *data)
@@ -53,8 +53,10 @@ int render(t_data *data)
 	t_ray	r;
 	double	u;
 	double	v;
-	
-	set_llc(&data->cam, data->cam.focal);
+	t_cam	*cam;
+
+	cam = get_cam();
+	update_cam(*cam);
 	c.y = WINDOW_H - 1;
 	while (c.y >= 0)
 	{
@@ -63,16 +65,12 @@ int render(t_data *data)
 		{
 			u = c.x / (WINDOW_W - 1);
 			v = c.y / (WINDOW_H - 1);
-			init_ray(&r, data->cam, u, v);
-			img_pix_put(&data->i, c.x, WINDOW_H - c.y, hexa(ray_color(r, data->cam.light, data->disp_normals)));
+			init_ray(&r, *cam, u, v);
+			img_pix_put(&data->i, c.x, WINDOW_H - c.y, hexa(ray_color(r, data->light, data->disp_normals)));
 			c.x++;
 		}
 		c.y --;
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
-	// printf("ORIGIN: ");
-	// printv(data->cam.origin);
-	// printf("ROTATE: ");
-	// printv(data->cam.rotate);
 	return (0);
 }

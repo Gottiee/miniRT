@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/25 14:12:17 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 17:14:43 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ t_vec3	max(t_vec3 v1, t_vec3 v2);
 t_ray	new_ray(t_vec3 origin, t_vec3 direction);
 t_point	at(t_ray r, double t);
 /*Fichier: cam_class.c*/
-void	init_cam(t_cam *cam, double ratio, double view_height, double foc_len);
-t_point	*get_light();
-void	set_llc(t_cam *cam, double focal);
+void	init_cam(t_lex lex);
+void	set_llc(t_cam *cam, t_vec3 w);
+void	update_cam(t_cam cam);
 
 #endif 

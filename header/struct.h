@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 11:54:17 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 17:44:38 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_vec3
 	double	x;
 	double	y;
 	double	z;
-	double height;
 }				t_vec3;
 
 
@@ -45,10 +44,16 @@ typedef struct s_cam
 	t_point	origin;
 	t_point	lower_left_corner;
 	t_point	light;
+	double	fov;
 	double	focal;
-	t_vec3	rotate;
-	
+	t_vec3	lookfrom;	
+	t_vec3	lookat;
 }				t_cam;
+
+typedef struct s_matrix
+{
+	double d[4][4];
+}				t_matrix;
 
 typedef struct s_img
 {
@@ -89,8 +94,15 @@ typedef struct s_light
 {
 	t_point	*center;
 	double	radius;
+	double	ratio;
 	t_color	color;
 }				t_light;
+
+typedef struct s_ambiant
+{
+	double	ratio;
+	t_color	color;
+}				t_ambiant;
 
 typedef struct s_record
 {
@@ -122,6 +134,7 @@ typedef struct s_data
 	t_cam	cam;
 	int		render_image;
 	int		disp_normals;
+	t_point	light;
 	//moves
 	int		left;
 	int		right;
