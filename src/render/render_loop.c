@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/29 17:33:35 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 18:07:21 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 	ray->dir = plus(cam.lower_left_corner, mult(cam.horizontal, u));
 	ray->dir = plus(ray->dir, mult(cam.vertical, v));
 	min_equal(&ray->dir, &cam.origin);
-	// ray->dir = plus(ray->dir, cam.rotate);	
 }
 
 int render(t_data *data)

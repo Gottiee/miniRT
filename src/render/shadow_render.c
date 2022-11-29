@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/29 17:57:52 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/29 18:21:20 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 
 double	greatest(double a, double b)
 {
-	if (a > b)
+	if (a >= b)
 		return (a);
 	else
 		return (b);
@@ -60,15 +60,19 @@ void	shadow_render(t_record *rec, t_point light)
 
 	l = get_light();
 	a = get_amb(); //si pas de amb ?
+	// printf("%f\n", a->ratio);
 	(void)a;
 	rec->light_level = l->ratio;
 	path.orig = plus(rec->hit_point, mult(rec->normal, 0.000001));
 	path.dir = minus(light, path.orig);
 	if (hit_shadow(path, &shadow, light))
+	{
 		rec->light_level = a->ratio;
+	}
 	else
 	{
 		rec->light_level *= dot(unit_vector(path.dir), unit_vector(rec->normal));
-		rec->light_level = greatest(rec->light_level / (length(&path.dir) / 2), a->ratio);
+		rec->light_level = greatest(rec->light_level / (length(&path.dir) / 2), a->ratio); //ombre bizarre
 	}
+	rec->color = unit_vector((mult_vec(rec->color, a->color))); //Super chelou, surement pas ça qu'il faut faire
 }
