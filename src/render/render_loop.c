@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/29 18:07:21 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/05 10:37:06 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_color	ray_color(t_ray r, t_point light, int normals)
 
 	if (hit_global(r, &rec, light))
 	{
-		if (rec.type != L && rec.type != CY)
+		if (rec.type != L)
 			shadow_render(&rec, light);
 		if (normals)
 			return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/29 17:33:12 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/02 17:42:30 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	move(int keysym, t_data *data)
 
 	cam = get_cam();
 	if (keysym == XK_a)
-		cam->lookfrom = plus(cam->lookfrom, new_vec(-0.1, 0, 0));
+		cam->lookfrom = (plus(cam->lookfrom, new_vec(-0.1, 0, 0)));
 	if (keysym == XK_d)
-		cam->lookfrom = plus(cam->lookfrom, new_vec(0.1, 0, 0));
+		cam->lookfrom = (plus(cam->lookfrom, new_vec(0.1, 0, 0)));
 	if (keysym == XK_s)
-		cam->lookfrom = plus(cam->lookfrom, new_vec(0, -0.1, 0));
+		cam->lookfrom = (plus(cam->lookfrom, new_vec(0, -0.1, 0)));
 	if (keysym == XK_w)
-		cam->lookfrom = plus(cam->lookfrom, new_vec(0, 0.1, 0));
+		cam->lookfrom = (plus(cam->lookfrom, new_vec(0, 0.1, 0)));
 	if (keysym == XK_q)
-		cam->lookfrom = plus(cam->lookfrom, new_vec(0, 0, -0.05));
+		cam->lookfrom = (plus(cam->lookfrom, new_vec(0, 0, 0.1)));
 	if (keysym == XK_e)
-		cam->lookfrom = plus(cam->lookfrom, new_vec(0, 0, 0.05));
+		cam->lookfrom = (plus(cam->lookfrom, new_vec(0, 0, -0.1)));
 	if (keysym == XK_k)
 		data->light = plus(data->light, new_vec(0, -0.1, 0));
 	if (keysym == XK_l)

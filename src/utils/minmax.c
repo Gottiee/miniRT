@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minmax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/02 15:08:14 by gmansuy          ###   ########.fr       */
+/*   Created: 2022/12/02 18:22:10 by gmansuy           #+#    #+#             */
+/*   Updated: 2022/12/02 18:24:11 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/minirt.h"
+#include "../../header/minirt.h"
 
-int	main(int argc, char **argv)
-{	
-	t_data	data;
-	t_light	*l;
-	(void)argc;
-	(void)argv;
-	(void)data;
+double	ft_min(double a, double b)
+{
+	if (a <= b)
+		return (a);
+	return (b);
+}
 
-	if (argc != 2)
-		return (printf("Error\nInvalid args\n"), 1);
-	if (!loop_objects(argv[1]))
-		return (2);
-	l = get_light();
-	data.light = *l->center; //marche pas
-	// data.light = mult(new_vec(0, -1, 0.5), -1);
-	mlx_center(&data);
-	printf("OK\n");
-	return (0);
+double	ft_max(double a, double b)
+{
+	if (a >= b)
+		return (a);
+	return (b);
 }

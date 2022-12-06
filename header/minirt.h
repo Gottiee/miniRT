@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/29 17:46:27 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/02 18:23:58 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ t_light		*get_light(void);
 t_ambiant		*get_amb(void);
 /*Fichier : animation.c*/
 void		animation(t_data *data);
+/*Fichier : minmax.c*/
+double	ft_min(double a, double b);
+double	ft_max(double a, double b);
 
 /*			--- RENDER ---	*/
 
