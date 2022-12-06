@@ -55,6 +55,17 @@ typedef struct s_matrix
 	double d[4][4];
 }				t_matrix;
 
+typedef struct s_eqn
+{
+	float	a;
+	float	b;
+	float	c;
+	float	delta;
+	float	t1;
+	float	t2;
+	float	t;
+}	t_equation;
+
 typedef struct s_img
 {
 	void	*i;
@@ -79,7 +90,8 @@ typedef struct s_cyl
 	double	radius;
 	double	height;
 	t_color	color;
-	t_vec3	orient;	
+	t_vec3	orient;
+	int		inter_code;
 }				t_cyl;
 
 typedef struct s_plane

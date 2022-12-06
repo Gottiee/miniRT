@@ -83,6 +83,7 @@ int			hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 int			hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light);
 /*Fichier: cylinder.c*/
 int			hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+t_vec3	    normal_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos);
 /*Fichier: shadow_render.c*/
 void		shadow_render(t_record *rec, t_point light);
 /*Fichier: rotate_ray.c*/

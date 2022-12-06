@@ -45,6 +45,7 @@ SRC_FILES = 	main \
 				render/render_sphere \
 				render/render_light \
 				render/render_cylinder \
+				render/normal_cy \
 				render/render_plane \
 				render/shadow_render \
 				utils/mlx_fonction \

@@ -12,59 +12,24 @@
 
 #include "../../header/minirt.h"
 
-/*Print les valeurs x, y, z du vecteur u*/
-void	printv(t_vec3 u)
+t_vec3	normalize(t_vec3 v1)
 {
-	printf("x:%f y:%f z:%f\n", u.x, u.y, u.z);
+	return (mult(v1, 1 / norme(v1)));
 }
 
-/*Résultat d'une multiplication des vecteurs u et v*/
-double	dot(t_vec3 u, t_vec3 v)
+double	scalaire_product(t_vec3 v1, t_vec3 v2)
 {
-	return (u.x * v.x + u.y * v.y + u.z * v.z);
+	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
-/*??????????????????*/
-t_vec3	cross(t_vec3 u, t_vec3 v)
+double	norme(t_vec3 v1)
 {
-	t_vec3 new;
-
-	new.x = u.y * v.z - u.z * v.y;
-	new.y = u.z * v.x - u.x * v.z;
-	new.z = u.x * v.y - u.y * v.x;
-	return (new);
+	return (sqrtf(scalaire_product(v1, v1)));
 }
 
-t_vec3	unit_vector(t_vec3 v)
+void	eq_vector(t_vec3 *v1, t_vec3 v2)
 {
-	return (divis(v, length(&v)));
-}
-
-
-/*Crée un nouveau vecteur avec des valeurs arbitraires*/
-t_vec3	new_vec(double x, double y, double z)
-{
-	t_vec3 new;
-
-	new.x = x;
-	new.y = y;
-	new.z = z;
-	return (new);
-}
-
-t_vec2	new_vec2(double x, double y)
-{
-	t_vec2 new;
-
-	new.x = x;
-	new.y = y;
-	return (new);
-}
-
-t_vec3	max(t_vec3 v1, t_vec3 v2)
-{
-	if (length(&v1) > length(&v2))
-		return (v1);
-	else
-		return (v2);	
+	v1->x = v2.x;
+	v1->y = v2.y;
+	v1->z = v2.z;
 }
