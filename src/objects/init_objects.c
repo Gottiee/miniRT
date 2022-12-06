@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:06:43 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/02 15:11:10 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/06 18:11:38 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	init_light(t_lex lex)
 	*l->center = lex.coord;
 	l->radius = 0.1;
 	l->ratio = lex.ratio;
-	l->color = unit_vector(divis(lex.color, 255));
+	//l->color = unit_vector(divis(lex.color, 255));
+	l->color = lex.color;
 	ptr = l;
 	get_hit(ptr, L);
 }
