@@ -1,4 +1,14 @@
-perf : 38 - 41 ~
-
-E =r.orig
-D =r.dir
+lumiere d'ambiance:
+	- 0.1 ? 
+	- ombre trop noir
+	- couleur
+lumiere:
+	- pas assez forte
+	- verifier que si plus fort eclaire plus loin
+scene:
+	- a faire
+camera:
+	- bizare ? 
+parsing: 
+	- valeur negative ou arrondie ? 
+	- verifier que les elements avec des majuscules soit uniquement mis une fois
