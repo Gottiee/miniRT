@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:25:53 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/29 17:50:44 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 15:48:50 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_amb(t_lex lex)
 	t_ambiant	*amb;
 	
 	amb = get_amb();
-	amb->color = lex.color;
+	amb->color = unit_vector(divis(lex.color, 255));
 	amb->ratio = lex.ratio;
 }
 

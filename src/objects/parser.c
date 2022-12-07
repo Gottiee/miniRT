@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:25:53 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/29 15:16:05 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:39:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ int	verify_vec(t_vec3 u, double min, double max)
 		&& in_range(u.z, min, max)));
 }
 
-int	parser(t_lex lex)
+int	parser(t_lex lex, int *verif)
 {
 	int	ratio;
 	int	color;
 	int	orient;
 	int	fov;
 	
-	// printf("%d\n", lex.type);
+	verif[lex.type] ++;
 	ratio = 1;
 	color = 1;
 	orient = 1;

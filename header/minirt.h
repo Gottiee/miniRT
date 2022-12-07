@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/02 18:23:58 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:39:06 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ char		*string_move(char *line);
 double		get_decimal(char **line, int i);
 int 		get_vector(char **line, int i, t_color *color);
 /*Fichier: parser.c*/
-int			parser(t_lex lex);
+int			parser(t_lex lex, int *verif);
 int			verify_line(char *line, int line_nbr);
 /*Fichier: new_object.c*/
 int			new_object(t_lex lex);

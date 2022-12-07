@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 13:13:09 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/29 15:24:08 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:27:25 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,17 @@ char	*string_move(char *line)
 
 double	get_decimal(char **line, int i)
 {
-	double left;		
-	double right;
+	double	left;		
+	double	right;
+	int		bool;
 
+	bool = 0;
 	left = ft_atoi(*line);
+	if (**line == '-')
+	{
+		bool = 1;
+		(*line) ++;
+	}
 	while (**line && (**line >= '0' && **line <= '9'))
 		(*line) ++;
 	if (!**line)
@@ -42,13 +49,15 @@ double	get_decimal(char **line, int i)
 		right = ft_atoi(*line);
 		if (right < 0)
 		printf("Error\nLine %d float number problem\n", i);
-		while (right > 1)
+		while (right >= 1)
 			right *= 0.1;
 	}
 	else
 		right = 0;
 	*line = string_move(*line);
-	return (left + right);
+	if (left >= 0 && bool == 0)
+		return (left + right);
+	return (left - right);
 }
 
 int get_vector(char **line, int i, t_color *color)

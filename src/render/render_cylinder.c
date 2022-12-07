@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 11:50:20 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:21:41 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ double	cyl_side(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 	eqn.b = 2 * dot(rao, va);
 	eqn.c = dot(rao, rao) - (c->radius * c->radius);
 	eqn.delta = eqn.b * eqn.b - 4 * eqn.a * eqn.c;
-	if (eqn.delta >= 0)
+	if (eqn.delta >= DBL_EPSILON)
 	{
 		eqn.t1 = ((eqn.b * -1) - sqrtf(eqn.delta)) / (2 * eqn.a);
 		eqn.t2 = ((eqn.b * -1) + sqrtf(eqn.delta)) / (2 * eqn.a);
@@ -133,11 +133,12 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	t_vec3		rslt;
 	t_cyl		*c;
 
-	(void)limit;
 	(void)light;
 	c = (t_cyl *)rec->closest;
 	rec->t = get_cyl_t(r, c, &rslt);
 	if (!rec->t)
+		return (0);
+	if (rec->t < limit.x || rec->t > limit.y)
 		return (0);
 	rec->hit_point = rslt;
 	rec->normal = normal_cy(c, rec->hit_point, r.orig);

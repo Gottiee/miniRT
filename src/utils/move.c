@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/02 17:42:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 14:50:56 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	move(int keysym, t_data *data)
 		cam->lookat = unit_vector(plus(cam->lookat, new_vec(-0.1, 0, 0)));
 	if (keysym == XK_Left)
 		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0.1, 0, 0)));
+	if (keysym == XK_z)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, 0.1)));
+	if (keysym == XK_x)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, -0.1)));
 	if (keysym == XK_n)
 		data->disp_normals = data->disp_normals == 0;		
 	data->render_image = 1;

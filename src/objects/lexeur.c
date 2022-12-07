@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:18:19 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/28 12:12:10 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:49:30 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,23 @@ int	lexeur(t_lex *lex, char *line, int i)
 	return (1);
 }
 
+int	verif_verif(int *verif)
+{
+	if (verif[C] > 1 || verif[L] > 1 || verif[A] > 1)
+		return (printf("Error\nToo many cams and/or lights and/or ambiant lights\n"), 0);
+	if (verif[C] == 0 || verif[L] == 0 || verif[A] == 0)
+		return (printf("Error\nNo cam and/or light and/or ambiant light\n"), 0);
+	return (1);
+}
+
 int	object(int fd)
 {
 	t_lex	lex;
 	char	*line;
 	int		nbr_line;
+	int		verif[8];
 
+	ft_bzero(verif, sizeof(int) * 8);
 	nbr_line = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -98,7 +109,7 @@ int	object(int fd)
 			return (0);
 		if (lexeur(&lex, line, nbr_line))
 		{
-			if (!parser(lex))
+			if (!parser(lex, verif))
 				return (printf("Error\nLine %d: Invalid range\n",
 				nbr_line), 0);
 			new_object(lex);
@@ -108,5 +119,5 @@ int	object(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (1);
+	return (verif_verif(verif));
 }

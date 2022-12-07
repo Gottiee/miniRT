@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/02 17:31:51 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:18:17 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	init_cam(t_lex lex)
 	view_width = ratio * view_height;
 	
 	cam->lookfrom = lex.coord;
-	cam->lookat = unit_vector(lex.orient);
+	cam->lookat = lex.orient;
 	vup = new_vec(0, 1, 0);
 	w = unit_vector(minus(cam->lookfrom, cam->lookat));
 	u = unit_vector(cross(vup, w));
