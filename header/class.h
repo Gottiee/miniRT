@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/29 17:14:43 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 11:29:35 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ t_vec3	unit_vector(t_vec3 v);
 t_vec3	new_vec(double x, double y, double z);
 t_vec2	new_vec2(double x, double y);
 t_vec3	max(t_vec3 v1, t_vec3 v2);
+/*Fichier: vector_utility3.c*/
+t_vec3	normalize(t_vec3 v1);
+double	scalaire_product(t_vec3 v1, t_vec3 v2);
+double	norme(t_vec3 v1);
+void	eq_vector(t_vec3 *v1, t_vec3 v2);
+
 /*Fichier: ray_class.c*/
 t_ray	new_ray(t_vec3 origin, t_vec3 direction);
 t_point	at(t_ray r, double t);

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/02 15:52:12 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/07 11:27:29 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_eqn
 	float	t1;
 	float	t2;
 	float	t;
-}	t_equation;
+}	t_eqn;
 
 typedef struct s_img
 {
