@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:06:43 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 13:10:36 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:30:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void	init_sphere(t_lex lex)
 void	init_plane(t_lex lex)
 {
 	t_plane	*p;
+	t_plane	*p2;
 	void	*ptr;
+	void	*ptr2;
 	
 	p = magic_malloc(sizeof(t_plane));
 	p->center = lex.coord;
@@ -51,6 +53,12 @@ void	init_plane(t_lex lex)
 	p->orient = lex.orient;
 	ptr = p;
 	get_hit(ptr, PL);
+	p2 = magic_malloc(sizeof(t_plane));
+	p2->center = lex.coord;
+	p2->color = unit_vector(divis(lex.color, 255));
+	p2->orient = mult(lex.orient, -1);
+	ptr2 = p2;
+	get_hit(ptr2, PL);
 }
 
 void	init_light(t_lex lex)

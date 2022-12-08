@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 18:21:41 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 16:01:06 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ double	cyl_side(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 	eqn.b = 2 * dot(rao, va);
 	eqn.c = dot(rao, rao) - (c->radius * c->radius);
 	eqn.delta = eqn.b * eqn.b - 4 * eqn.a * eqn.c;
-	if (eqn.delta >= DBL_EPSILON)
+	if (eqn.delta >= 0)
 	{
 		eqn.t1 = ((eqn.b * -1) - sqrtf(eqn.delta)) / (2 * eqn.a);
 		eqn.t2 = ((eqn.b * -1) + sqrtf(eqn.delta)) / (2 * eqn.a);

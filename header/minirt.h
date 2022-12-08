@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/07 17:39:06 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:42:02 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ double		clamp(double x, double min, double max);
 int			render(t_data *data);
 /*Fichier: object_renderer.c*/
 int			hit_global(t_ray r, t_record *rec, t_point light);
-void		init_pointer(int (*hit[2])(t_record *rec, t_ray r, t_vec2 limit, t_point light));
+void		init_pointer(int (*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light));
 /*Fichier: sphere.c*/
 int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 void		set_face(t_ray r, t_vec3 outward, t_record *rec);

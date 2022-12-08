@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:00:38 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/29 17:04:24 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:09:56 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int	hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light)
 	rec->hit_point = at(r, rec->t);
 	rec->normal = p.orient;
 	set_face(r, rec->normal, rec);
+	// printv(rec->normal);
+	// printv(p.orient);
 	return (1);
 }
