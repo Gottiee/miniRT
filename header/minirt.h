@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 15:42:02 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 16:48:17 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define SP 5
 # define PL 6
 # define CY 7
+# define CE 1
 
 # include "../libft/include/libft.h"
 # include "class.h"
@@ -84,6 +85,9 @@ int			hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light);
 /*Fichier: cylinder.c*/
 int			hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 t_vec3	    normal_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos);
+double		cyl_caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt);
+/*Fichier: circle.c*/
+int			hit_circle(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 /*Fichier: shadow_render.c*/
 void		shadow_render(t_record *rec, t_point light);
 /*Fichier: rotate_ray.c*/
@@ -121,5 +125,6 @@ int			parser(t_lex lex, int *verif);
 int			verify_line(char *line, int line_nbr);
 /*Fichier: new_object.c*/
 int			new_object(t_lex lex);
+void		init_circle(t_lex lex);
 
 #endif 

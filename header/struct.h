@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 14:29:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:09:58 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,14 @@ typedef struct s_cyl
 	t_vec3	orient;
 	int		inter_code;
 }				t_cyl;
+
+typedef struct s_circle
+{
+	t_point	center;
+	double	radius;
+	t_color	color;
+	t_vec3	orient;
+}				t_circle;
 
 typedef struct s_plane
 {
