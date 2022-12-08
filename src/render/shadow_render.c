@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 18:31:56 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 13:43:57 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,13 @@ void	shadow_render(t_record *rec, t_point light)
 	double		ratio;
 
 	l = get_light();
-	a = get_amb(); //si pas de amb ? segfault
+	a = get_amb();
 	rec->light_level = l->ratio * 5;
 	ratio = a->ratio * 0.5;
 	path.orig = plus(rec->hit_point, mult(rec->normal, 1)); //0.000001
 	path.dir = minus(light, path.orig);
 	if (hit_shadow(path, &shadow, light))
-	{
 		rec->light_level = ratio;
-	}
 	else
 	{
 		rec->light_level = greatest(rec->light_level / (length(&path.dir) / 2), ratio); //ombre bizarre

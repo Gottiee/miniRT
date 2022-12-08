@@ -1,12 +1,11 @@
 lumiere d'ambiance:
 	- couleur...
-scene:
-	- a faire
+	- la couleur ne marche plus ?
 camera:
 	- bizare ? 
-parsing: 
-	- verifier que les elements avec des majuscules soit uniquement mis une fois
-segfault:
-	-pas de cam, light, lumiere d'amb
 cylindre:
 	-ombre fait nimp
+plan:
+	- la normal est set que d'un cote et donc si on est de l'autre cote du plan y'a plus de normal c'est tout noir
+ombre:
+	-plus de lumiere quand on se rapproche d'un element/ dans le else de shadow render

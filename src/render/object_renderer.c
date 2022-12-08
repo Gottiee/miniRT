@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/24 15:09:02 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 13:33:37 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	hit_global(t_ray r, t_record *rec, t_point light)
 	{
 		rec_tmp.closest = list->object;
 		rec_tmp.type = 0;
-		//poiteur sur fonction pour modifier et ne pas aller hit sphere tout le tempps?
 		if (hit[list->type](&rec_tmp, r, limit, light))
 		{
 			hit_any = 1;
