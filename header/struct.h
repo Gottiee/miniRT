@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/07 11:27:29 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 14:29:25 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ typedef struct s_cam
 
 typedef struct s_matrix
 {
-	double d[4][4];
-}				t_matrix;
+	t_vec3	right;
+	t_vec3	up;
+	t_vec3	forward;
+	t_vec3	cam;
+}	t_matrix;
 
 typedef struct s_eqn
 {

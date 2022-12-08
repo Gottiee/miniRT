@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/07 11:29:35 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 14:38:01 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ t_point	at(t_ray r, double t);
 void	init_cam(t_lex lex);
 void	set_llc(t_cam *cam, t_vec3 w);
 void	update_cam(t_cam cam);
+/*Fichier: matrix.c*/
+t_matrix	get_transfo_matrix(t_vec3 cam_orig, t_vec3 cam_dir);
+t_vec3	vector_x_matrix(t_vec3 v, t_matrix m, int i);
 
 #endif 

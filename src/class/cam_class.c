@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 18:18:17 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/08 14:43:51 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,17 @@ void	update_cam(t_cam cam)
 
 void	init_cam(t_lex lex)
 {
-	double	view_width;
-	double	view_height;
-	t_cam	*cam;
-	double	ratio;
-	double	theta;
-	double	h;
-	t_vec3	vup;		
-    t_vec3	w;
-    t_vec3	u;
-    t_vec3	v;
+	double		view_width;
+	double		view_height;
+	t_cam		*cam;
+	double		ratio;
+	double		theta;
+	double		h;
+	t_vec3		vup;		
+    t_vec3		w;
+    t_vec3		u;
+    t_vec3		v;
+	t_matrix	rotate;
 	
 	cam = get_cam();
 	ratio = (double)WINDOW_W / WINDOW_H;
@@ -72,8 +73,12 @@ void	init_cam(t_lex lex)
 	view_height = 2.0 * h;
 	view_width = ratio * view_height;
 	
+
+	rotate = get_transfo_matrix(lex.coord, lex.orient);
+	
 	cam->lookfrom = lex.coord;
-	cam->lookat = lex.orient;
+	cam->lookat = vector_x_matrix(cam->lookfrom, rotate, 1);
+	printv(cam->lookat);
 	vup = new_vec(0, 1, 0);
 	w = unit_vector(minus(cam->lookfrom, cam->lookat));
 	u = unit_vector(cross(vup, w));
