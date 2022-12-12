@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:53 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/12 12:58:42 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ double	get_cyl_t(t_ray r, t_cyl *c, t_vec3 *rslt)
 		hyp = norme(minus(*rslt, c->center));
 		h = sqrtf((hyp * hyp) - (c->radius * c->radius));
 	}
+	// probleme peut etre ici ? 
 	if (t && h < c->height && dot(minus(*rslt, c->center), c->orient) > 0)
 	{
 		c->inter_code = 1;
@@ -140,6 +141,7 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	rec->t = get_cyl_t(r, c, &rslt);
 	if (!rec->t)
 		return (0);
+	// enlever la limit remet les ombres 
 	if (rec->t < 0 || rec->t > limit.y)
 		return (0);
 	rec->hit_point = rslt;
