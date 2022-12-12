@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 16:31:17 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/12 20:15:08 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	hit_global(t_ray r, t_record *rec, t_point light)
 			hit_any = 1;
 			limit.y = rec_tmp.t;
 			*rec = rec_tmp;
-			rec->obj_id = list->id;
 		}
 		list = list->next;
 	}

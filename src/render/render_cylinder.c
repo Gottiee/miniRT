@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:53 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/12 20:24:17 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double	intersect_plan(t_vec3 dir_pix, t_vec3 cam_o, void *plan, t_vec3 *rslt)
 	t = 0;
 	d = 0;
 	pl = (t_plane *)plan;
-	pl_normal = unit_vector(pl->orient);
+	pl_normal = normalize(pl->orient);
 	d = ((pl->center.x * pl_normal.x) + (pl->center.y * pl_normal.y) + \
 	(pl->center.z * pl_normal.z)) * -1;
 	if (dot(pl_normal, dir_pix))
@@ -45,8 +45,8 @@ void	new_plane(t_plane *plan, t_cyl *c, double normal)
 		plan->center = c->center;
 	else
 		plan->center = plus(c->center, \
-		mult(unit_vector(c->orient), c->height));
-	plan->orient = mult(unit_vector(c->orient), normal);
+		mult(normalize(c->orient), c->height));
+	plan->orient = mult(normalize(c->orient), normal);
 	plan->color = c->color;
 }
 
@@ -85,8 +85,8 @@ double	cyl_side(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 	t_vec3	va;
 	t_vec3	rao;
 
-	dir_pix = unit_vector(dir_pix);
-	c->orient = unit_vector(c->orient);
+	dir_pix = normalize(dir_pix);
+	c->orient = normalize(c->orient);
 	va = cross(cross(c->orient, dir_pix), c->orient);
 	rao = cross(cross(c->orient, \
 	minus(cam_o, c->center)), c->orient);
@@ -125,7 +125,6 @@ double	get_cyl_t(t_ray r, t_cyl *c, t_vec3 *rslt)
 		c->inter_code = 1;
 		return (t);
 	}
-	// return (0);
 	return (cyl_caps(c, r.dir, r.orig, rslt));
 }
 
@@ -134,13 +133,11 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	t_vec3		rslt;
 	t_cyl		*c;
 
-	(void)light;
 	(void)limit;
+	(void)light;
 	c = (t_cyl *)rec->closest;
 	rec->t = get_cyl_t(r, c, &rslt);
 	if (!rec->t)
-		return (0);
-	if (rec->t < 0 || rec->t > limit.y)
 		return (0);
 	rec->hit_point = rslt;
 	rec->normal = normal_cy(c, rec->hit_point, r.orig);
