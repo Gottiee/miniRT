@@ -43,13 +43,11 @@ SRC_FILES = 	main \
 				objects/new_object \
 				render/render_loop \
 				render/object_renderer \
+				render/intersection \
+				render/normals \
+				render/utils \
 				render/display \
-				render/render_sphere \
-				render/render_light \
-				render/render_cylinder \
 				render/normal_cy \
-				render/render_circle \
-				render/render_plane \
 				render/shadow_render \
 				utils/mlx_fonction \
 				utils/move \

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/08 15:43:21 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/12 23:18:24 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,28 @@ t_color	bckg(t_ray r)
 
 t_color	ray_color(t_ray r, t_point light, int normals)
 {
-	t_record	rec;
+	t_vec3		hit_point;
+	double		t_min;
+	t_hit_lst	*obj;
+	t_light		*l;
 
-	if (hit_global(r, &rec, light))
+	(void) normals;
+	obj = get_hit(NULL, 0);
+	l = get_light();
+	*l->center = light;
+	hit_point = hit_global(r, &t_min, &obj, 0);
+	if (t_min == DBL_MAX)
 	{
-		if (rec.type != L)
-			shadow_render(&rec, light);
-		if (normals)
-			return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
-		return (mult(rec.color, rec.light_level));
+		return (new_vec(0, 0, 0));
+	}
+	else
+	{
+		// if (normals)
+		// 	return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
+		// return (new_vec(0, 0, 1));
+		return (shadow_render(hit_point, *l, obj, r));
 	}
 	// return (bckg(r));
-	return (new_vec(0, 0, 0));
 }
 
 void	init_ray(t_ray *ray, t_cam cam, double u, double v)
