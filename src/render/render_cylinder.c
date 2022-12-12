@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/12 12:58:42 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/12 17:13:18 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,17 +108,29 @@ double	cyl_side(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 		return (0);
 }
 
+double	mini(double a, double b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
 double	get_cyl_t(t_ray r, t_cyl *c, t_vec3 *rslt)
 {
 	double		hyp;
 	double		h;
 	double		t;
+	// double		caps;
+	// t_vec3		ra2;
 
+	// caps = cyl_caps(c, r.dir, r.orig, rslt);
 	t = cyl_side(r.dir, r.orig, c, rslt);
 	if (t)
 	{
 		hyp = norme(minus(*rslt, c->center));
 		h = sqrtf((hyp * hyp) - (c->radius * c->radius));
+		// ra2 =  plus(c->center, mult(unit_vector(c->orient), c->height));
 	}
 	// probleme peut etre ici ? 
 	if (t && h < c->height && dot(minus(*rslt, c->center), c->orient) > 0)
@@ -142,7 +154,7 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	if (!rec->t)
 		return (0);
 	// enlever la limit remet les ombres 
-	if (rec->t < 0 || rec->t > limit.y)
+	if (rec->t < 0 /*|| rec->t > limit.y*/)
 		return (0);
 	rec->hit_point = rslt;
 	rec->normal = normal_cy(c, rec->hit_point, r.orig);
