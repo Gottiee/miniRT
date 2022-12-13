@@ -19,7 +19,7 @@ double	light_level(t_vec3 hit_point, t_vec3 normal, double shadow_t, t_light lig
 	double		lum;
 	double		ratio;
 
-	eq_vector(&l_point, minus(*light.center, hit_point));
+	l_point = minus(*light.center, hit_point);
 	lum = light.ratio * 0.5;
 	a = get_amb();
 	ratio = a->ratio * 0.5;
@@ -61,11 +61,11 @@ t_color	shadow_render(t_vec3 hit_point, t_light light, t_hit_lst *obj, t_ray r)
 	t_vec3	normal;
 
 	if (obj->type == SP)
-		eq_vector(&normal, normal_sp(((t_sphere *)obj->object), hit_point, r.orig));
+		normal = normal_sp(((t_sphere *)obj->object), hit_point, r.orig);
 	else if (obj->type == PL)
-		eq_vector(&normal, normal_pl(((t_plane *)obj->object), hit_point, r.orig));
+		normal = normal_pl(((t_plane *)obj->object), hit_point, r.orig);
 	else if (obj->type == CY)
-		eq_vector(&normal, normal_cy((t_cyl *)obj->object, hit_point, r.orig));
+		normal = normal_cy((t_cyl *)obj->object, hit_point, r.orig);
 	else if (obj->type == L)
 		return (new_vec(1, 1, 1));
 	return (hit_shadow(hit_point, normal, obj, light));
