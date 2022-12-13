@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/13 11:54:31 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:52:59 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ int			lex_C(t_lex *lex, char *line, int i);
 int			lex_objects(t_lex *lex, char *line, int i);
 int			isnt_complet(int i, int bool);
 /*Fichier: lexeur_geo_obj.c*/
-int 		lex_SP(t_lex *lex, char *line, int i);
-int			lex_PL(t_lex *lex, char *line, int i);
-int			lex_CY(t_lex *lex, char *line, int i);
+int 		lex_sp(t_lex *lex, char *line, int i);
+int			lex_pl(t_lex *lex, char *line, int i);
+int			lex_cy(t_lex *lex, char *line, int i);
 /*Fichier: lexeur_util.c*/
 char		*string_move(char *line);
 double		get_decimal(char **line, int i);
