@@ -6,13 +6,13 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/12 23:26:00 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:45:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-float	intersect(t_hit_lst *lst, t_ray r, t_vec3 *hit)
+double	intersect(t_hit_lst *lst, t_ray r, t_vec3 *hit)
 {
 	if (lst->type == L)
 		return (inter_light(r.dir, r.orig, lst->object, hit));
@@ -36,7 +36,7 @@ t_vec3	hit_global(t_ray r, double *t_max, t_hit_lst **obj, int shad)
 	*t_max = DBL_MAX;
 	while (tmp)
 	{
-		t = intersect(tmp, r &p_hit_temp);
+		t = intersect(tmp, r, &p_hit_temp);
 		if (t && t < *t_max)
 		{
 			eq_vector(&p_hit, p_hit_temp);

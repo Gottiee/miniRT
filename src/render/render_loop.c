@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/12 23:18:24 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:55:26 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ t_color	ray_color(t_ray r, t_point light, int normals)
 	if (t == DBL_MAX)
 		return (new_vec(0, 0, 0));
 	else
-	{
-		// if (normals)
-		// 	return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
-		return (shadow_render(hit_point, *l, obj, r));
-	}
+		return (shadow_render(hit_point, *l, obj, r, normals));
 }
 
 void	init_ray(t_ray *ray, t_cam cam, double u, double v)
@@ -76,6 +72,7 @@ int render(t_data *data)
 		}
 		c.y --;
 	}
+	printv(cam->lookfrom);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/12 23:18:38 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:54:31 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int			render(t_data *data);
 t_vec3  	hit_global(t_ray r, double *t_min, t_hit_lst **obj, int shad);
 
 /*Fichier: shadow_render.c*/
-t_color	    shadow_render(t_vec3 hit_point, t_light s_light, t_hit_lst *obj, t_ray r);
+t_color	    shadow_render(t_vec3 hit_point, t_light s_light, t_hit_lst *obj, t_ray r, int n);
 
 /*			--- INTERSECTION ---	*/
 
@@ -125,8 +125,8 @@ int			new_object(t_lex lex);
 void		init_circle(t_lex lex);
 
 //utils
-void	init_plan(t_plane *plan, t_cyl *cl, float normal_dir);
-int		into_radius(t_vec3 *rslt, t_vec3 base, float radius);
+void	init_plan(t_plane *plan, t_cyl *cl, double normal_dir);
+int		into_radius(t_vec3 *rslt, t_vec3 base, double radius);
 double	max(double a, double b);
 double	min(double a, double b);
 

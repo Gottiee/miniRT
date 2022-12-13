@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersection.c                                     :+:      :+:    :+:   */
+/*   cylindre.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:54:32 by slahlou           #+#    #+#             */
-/*   Updated: 2022/12/12 23:16:56 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 13:11:11 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_vec3	get_cy_norm(t_cyl *cl, t_vec3 hit_point)
 {
 	t_vec3		b_phit;
 	t_vec3		n_hit;
-	float		hyp;
-	float		h;
+	double		hyp;
+	double		h;
 
 	eq_vector(&b_phit, minus(hit_point, cl->center));
 	eq_vector(&cl->orient, normalize(cl->orient));
@@ -38,7 +38,7 @@ t_vec3	normal_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos)
 	t_vec3	n_hit;
 
 	eq_vector(&n_hit, get_cy_norm(cy, hit_point));
-	if (scalaire_product(normalize(minus(hit_point, cam_pos)), n_hit) > 0)
+	if (dot(normalize(minus(hit_point, cam_pos)), n_hit) > 0)
 		eq_vector(&n_hit, mult(n_hit, -1));
 	return (n_hit);
 }
@@ -54,9 +54,9 @@ double	exter_cyl(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *cl, t_vec3 *rslt)
 	eq_vector(&va, cross(cross(cl->orient, dir_pix), cl->orient));
 	eq_vector(&rao, cross(cross(cl->orient, \
 	minus(cam_o, cl->center)), cl->orient));
-	eqn.a = scalaire_product(va, va);
-	eqn.b = 2 * scalaire_product(rao, va);
-	eqn.c = scalaire_product(rao, rao) - (cl->radius * cl->radius);
+	eqn.a = dot(va, va);
+	eqn.b = 2 * dot(rao, va);
+	eqn.c = dot(rao, rao) - (cl->radius * cl->radius);
 	eqn.delta = eqn.b * eqn.b - 4 * eqn.a * eqn.c;
 	if (eqn.delta >= 0)
 	{
@@ -77,8 +77,8 @@ double	caps(t_cyl *cl, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 	t_eqn		eqn;
 	t_plane		base;
 	t_plane		end;
-	t_vec3	base_rslt;
-	t_vec3	end_rslt;
+	t_vec3		base_rslt;
+	t_vec3		end_rslt;
 
 	init_plan(&base, cl, -1);
 	init_plan(&end, cl, 1);
@@ -107,19 +107,23 @@ double	inter_cylindre(t_vec3 dir_pix, t_vec3 cam_o, void *cylindre, t_vec3 *rslt
 	double		hyp;
 	double		h;
 	double		t;
+	double		capst;
+	t_vec3		rslt_caps;
 
 	cl = (t_cyl *)cylindre;
 	t = exter_cyl(dir_pix, cam_o, cl, rslt);
+	capst = caps(cl, dir_pix, cam_o, &rslt_caps);
+	if (capst && capst < t)
+		return (*rslt = rslt_caps, capst);
 	if (t)
 	{
 		hyp = norme(minus(*rslt, cl->center));
 		h = sqrtf((hyp * hyp) - (cl->radius * cl->radius));
 	}
-	if (t && h < cl->height && scalaire_product(minus(*rslt, cl->center), \
-	cl->orient) > 0)
+	if (t && h < cl->height && dot(minus(*rslt, cl->center), cl->orient) > 0)
 	{
 		cl->inter_code = 1;
 		return (t);
 	}
-	return (caps(cl, dir_pix, cam_o, rslt));
+	return (*rslt = rslt_caps, capst);
 }

@@ -12,6 +12,7 @@ SUBDIR		=	obj/class \
 				obj/utils \
 				obj/render\
 				obj/objects\
+				obj/intersection \
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc

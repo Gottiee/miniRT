@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/12 23:19:19 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:55:38 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_color	hit_shadow(t_vec3 hit_point, t_vec3 normal, t_hit_lst *objects, t_light 
 		return (new_vec(1, 1, 1));
 }
 
-t_color	shadow_render(t_vec3 hit_point, t_light light, t_hit_lst *obj, t_ray r)
+t_color	shadow_render(t_vec3 hit_point, t_light light, t_hit_lst *obj, t_ray r, int n)
 {
 	t_vec3	normal;
 
@@ -68,6 +68,8 @@ t_color	shadow_render(t_vec3 hit_point, t_light light, t_hit_lst *obj, t_ray r)
 		normal = normal_cy((t_cyl *)obj->object, hit_point, r.orig);
 	else if (obj->type == L)
 		return (new_vec(1, 1, 1));
+	if (n)
+		return (mult(plus(normal, new_vec(1, 1, 1)), 0.5));
 	return (hit_shadow(hit_point, normal, obj, light));
 	//ambiance couleur pas encore prise en compte
 }

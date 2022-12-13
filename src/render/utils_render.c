@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 21:25:03 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/12 21:30:34 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:42:57 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-int	into_radius(t_vec3 *rslt, t_vec3 base, float radius)
+int	into_radius(t_vec3 *rslt, t_vec3 base, double radius)
 {
 	if ((radius + 0.012) - norme(minus(base, *rslt)) <= 0)
 		return (0);
 	return (1);
 }
 
-void	init_plan(t_plane *plan, t_cyl *cl, float normal_dir)
+void	init_plan(t_plane *plan, t_cyl *cl, double normal_dir)
 {
 	if (normal_dir == -1)
 		eq_vector(&plan->center, cl->center);

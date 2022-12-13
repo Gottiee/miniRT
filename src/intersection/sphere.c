@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersection.c                                     :+:      :+:    :+:   */
+/*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:54:32 by slahlou           #+#    #+#             */
-/*   Updated: 2022/12/12 23:16:56 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:43:14 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,57 +25,57 @@ t_vec3	normal_sp(t_sphere *sp, t_vec3 hit_point, t_vec3 cam_pos)
 double	inter_light(t_vec3 dir_pix, t_vec3 cam_o, void *sphere, t_vec3 *rslt)
 {
 	t_vec3	oc;
-	t_eqn	inter;
+	t_eqn	eqn;
 	t_light	*sp;
 
 	sp = (t_light *)sphere;
-	eq_vector(&oc, minus(cam_o, *sp->center));
-	eq_vector(&dir_pix, normalize(dir_pix));
-	inter.b = scalaire_product(dir_pix, oc) * 2;
-	inter.c = (scalaire_product(oc, oc) - (sp->radius * sp->radius));
-	inter.delta = (inter.b * inter.b) - (4 * inter.c);
-	if (inter.delta >= 0)
+	oc = minus(cam_o, *sp->center);
+	dir_pix = normalize(dir_pix);
+	eqn.b = dot(dir_pix, oc) * 2;
+	eqn.c = (dot(oc, oc) - (sp->radius * sp->radius));
+	eqn.delta = (eqn.b * eqn.b) - (4 * eqn.c);
+	if (eqn.delta >= 0)
 	{
-		inter.t1 = ((inter.b * -1) - sqrtf(inter.delta)) / 2;
-		inter.t2 = ((inter.b * -1) + sqrtf(inter.delta)) / 2;
-		if (inter.t2 < 0)
+		eqn.t1 = ((eqn.b * -1) - sqrtf(eqn.delta)) / 2;
+		eqn.t2 = ((eqn.b * -1) + sqrtf(eqn.delta)) / 2;
+		if (eqn.t2 < 0)
 			return (0);
-		if (inter.t1 > 0)
-			inter.t = inter.t1;
+		if (eqn.t1 > 0)
+			eqn.t = eqn.t1;
 		else
-			inter.t = inter.t2;
-		eq_vector(rslt, plus(cam_o, mult(dir_pix, inter.t)));
+			eqn.t = eqn.t2;
+		*rslt = plus(cam_o, mult(dir_pix, eqn.t));
 	}
 	else
 		return (0);
-	return (inter.t);
+	return (eqn.t);
 }
 
 double	inter_sphere(t_vec3 dir_pix, t_vec3 cam_o, void *sphere, t_vec3 *rslt)
 {
-	t_vec3	oc;
-	t_eqn	inter;
+	t_vec3		oc;
+	t_eqn		eqn;
 	t_sphere	*sp;
 
 	sp = (t_sphere *)sphere;
-	eq_vector(&oc, minus(cam_o, sp->center));
-	eq_vector(&dir_pix, normalize(dir_pix));
-	inter.b = scalaire_product(dir_pix, oc) * 2;
-	inter.c = (scalaire_product(oc, oc) - (sp->radius * sp->radius));
-	inter.delta = (inter.b * inter.b) - (4 * inter.c);
-	if (inter.delta >= 0)
+	oc = minus(cam_o, sp->center);
+	dir_pix = normalize(dir_pix);
+	eqn.b = dot(dir_pix, oc) * 2;
+	eqn.c = (dot(oc, oc) - (sp->radius * sp->radius));
+	eqn.delta = (eqn.b * eqn.b) - (4 * eqn.c);
+	if (eqn.delta >= 0)
 	{
-		inter.t1 = ((inter.b * -1) - sqrtf(inter.delta)) / 2;
-		inter.t2 = ((inter.b * -1) + sqrtf(inter.delta)) / 2;
-		if (inter.t2 < 0)
+		eqn.t1 = ((eqn.b * -1) - sqrtf(eqn.delta)) / 2;
+		eqn.t2 = ((eqn.b * -1) + sqrtf(eqn.delta)) / 2;
+		if (eqn.t2 < 0)
 			return (0);
-		if (inter.t1 > 0)
-			inter.t = inter.t1;
+		if (eqn.t1 > 0)
+			eqn.t = eqn.t1;
 		else
-			inter.t = inter.t2;
-		eq_vector(rslt, plus(cam_o, mult(dir_pix, inter.t)));
+			eqn.t = eqn.t2;
+		*rslt = plus(cam_o, mult(dir_pix, eqn.t));
 	}
 	else
 		return (0);
-	return (inter.t);
+	return (eqn.t);
 }
