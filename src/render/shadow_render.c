@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/13 11:55:38 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:11:16 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,22 @@ double	light_level(t_vec3 hit_point, t_vec3 normal, double shadow_t, t_light lig
 	l_point = minus(*light.center, hit_point);
 	lum = light.ratio * 0.5;
 	a = get_amb();
-	ratio = a->ratio * 0.5;
+	ratio = a->ratio * 0.3;
 	if (shadow_t != DBL_MAX)
 		return (ratio);
 	lum = max(dot(unit_vector(l_point), unit_vector(normal)), ratio);
 	lum = max(lum / (length(&l_point) / 5), ratio);
 	return (lum);
+}
+
+t_color	get_color(t_color obj_color, double lum)
+{
+	t_color	color;
+	t_ambiant	*a;
+
+	a = get_amb();
+	color = unit_vector(plus(obj_color, mult(divis(a->color, lum), a->ratio * 0.3)));
+	return (mult(color, lum));
 }
 
 t_color	hit_shadow(t_vec3 hit_point, t_vec3 normal, t_hit_lst *objects, t_light light)
@@ -44,13 +54,13 @@ t_color	hit_shadow(t_vec3 hit_point, t_vec3 normal, t_hit_lst *objects, t_light 
 	objects = get_hit(NULL, 0);
 	hit_global(r, &shadow_t, &objects, 1);
 	if (current->type == SP)
-		return (mult(((t_sphere *)current->object)->color, \
+		return (get_color(((t_sphere *)current->object)->color, \
 		light_level(hit_point, normal, shadow_t, light)));
 	else if (current->type == PL)
-		return (mult(((t_plane *)current->object)->color, \
+		return (get_color(((t_plane *)current->object)->color, \
 		light_level(hit_point, normal, shadow_t, light)));
 	else if (current->type == CY)
-		return (mult(((t_cyl *)current->object)->color, \
+		return (get_color(((t_cyl *)current->object)->color, \
 		light_level(hit_point, normal, shadow_t, light)));
 	else
 		return (new_vec(1, 1, 1));
