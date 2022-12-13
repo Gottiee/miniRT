@@ -137,9 +137,9 @@ void	init_plan(t_plane *plan, t_cyl *cl, float normal_dir);
 int		into_radius(t_vec3 *rslt, t_vec3 base, float radius);
 double	max(double a, double b);
 double	min(double a, double b);
-t_vec3	compute_nhit_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos);
-t_vec3	compute_nhit_sp(t_sphere *sp, t_vec3 hit_point, t_vec3 cam_pos);
-t_vec3	compute_nhit_pl(t_plane *pl, t_vec3 hit_point, t_vec3 cam_pos);
+t_vec3	normal_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos);
+t_vec3	normal_sp(t_sphere *sp, t_vec3 hit_point, t_vec3 cam_pos);
+t_vec3	normal_pl(t_plane *pl, t_vec3 hit_point, t_vec3 cam_pos);
 t_vec3	hit_global(t_ray r, double *t_min, t_hit_lst **obj, int shad);
 double	inter_light(t_vec3 dir_pix, t_vec3 cam_o, void *sphere, t_vec3 *rslt);
 

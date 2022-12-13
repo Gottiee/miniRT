@@ -41,17 +41,16 @@ SRC_FILES = 	main \
 				objects/lexeur_util \
 				objects/parser \
 				objects/new_object \
+				intersection/cylindre \
+				intersection/plane \
+				intersection/sphere \
 				render/render_loop \
 				render/object_renderer \
-				render/intersection \
-				render/normals \
-				render/utils \
+				render/utils_render \
 				render/display \
-				render/normal_cy \
 				render/shadow_render \
 				utils/mlx_fonction \
 				utils/move \
-				utils/animation \
 				utils/get \
 				utils/minmax \
 
