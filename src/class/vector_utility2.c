@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:19:57 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/12 21:29:51 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:00:17 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ t_vec3	cross(t_vec3 u, t_vec3 v)
 
 t_vec3	unit_vector(t_vec3 v)
 {
+	if (length(&v) == 0)
+		return (new_vec(0, 0, 0));
 	return (divis(v, length(&v)));
 }
 

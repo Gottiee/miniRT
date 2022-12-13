@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/13 11:55:26 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:27:34 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 
 int render(t_data *data)
 {
-	t_vec2	c;
-	t_ray	r;
-	double	u;
-	double	v;
-	t_cam	*cam;
+	t_vec2		c;
+	t_ray		r;
+	double		u;
+	double		v;
+	t_cam		*cam;
 
 	cam = get_cam();
 	update_cam(*cam);
@@ -72,7 +72,6 @@ int render(t_data *data)
 		}
 		c.y --;
 	}
-	printv(cam->lookfrom);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->i.i, 0, 0);
 	return (0);
 }
