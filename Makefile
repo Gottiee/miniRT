@@ -12,6 +12,7 @@ SUBDIR		=	obj/class \
 				obj/utils \
 				obj/render\
 				obj/objects\
+				obj/intersection \
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc
@@ -41,19 +42,16 @@ SRC_FILES = 	main \
 				objects/lexeur_util \
 				objects/parser \
 				objects/new_object \
+				intersection/cylindre \
+				intersection/plane \
+				intersection/sphere \
 				render/render_loop \
 				render/object_renderer \
+				render/utils_render \
 				render/display \
-				render/render_sphere \
-				render/render_light \
-				render/render_cylinder \
-				render/normal_cy \
-				render/render_circle \
-				render/render_plane \
 				render/shadow_render \
 				utils/mlx_fonction \
 				utils/move \
-				utils/animation \
 				utils/get \
 				utils/minmax \
 

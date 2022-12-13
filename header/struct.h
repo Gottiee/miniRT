@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:58 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:46:55 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ typedef struct s_matrix
 
 typedef struct s_eqn
 {
-	float	a;
-	float	b;
-	float	c;
-	float	delta;
-	float	t1;
-	float	t2;
-	float	t;
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+	double	t1;
+	double	t2;
+	double	t;
 }	t_eqn;
 
 typedef struct s_img

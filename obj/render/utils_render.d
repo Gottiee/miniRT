@@ -1,4 +1,4 @@
-obj/render/render_plane.o: src/render/render_plane.c \
+obj/render/utils_render.o: src/render/utils_render.c \
  src/render/../../header/minirt.h mlx_linux/mlx.h \
  src/render/../../header/../libft/include/libft.h \
  src/render/../../header/../libft/include/ft_printf.h \

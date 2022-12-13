@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/02 15:00:16 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:38:42 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	launch_render(t_data *data)
 {
 	if (data->render_image)
 	{
-		if (data->animation)
-			animation(data);
 		render(data);
 		data->render_image = 0;
 	}
