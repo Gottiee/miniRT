@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/13 16:50:23 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 18:00:01 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,52 @@ void	update_cam(t_cam cam)
 	t_lex	lex;
 
 	lex.fov = cam.fov;
-	lex.orient = cam.lookat;
+	lex.orient = divis(cam.lookat, 10);
 	lex.coord = cam.lookfrom;
 	init_cam(lex);
 }
+
+// void	init_cam(t_lex lex)
+// {
+// 	double		view_width;
+// 	double		view_height;
+// 	t_cam		*cam;
+// 	double		ratio;
+// 	double		theta;
+// 	double		h;
+// 	t_vec3		vup;		
+//     t_vec3		w;
+//     t_vec3		u;
+//     t_vec3		v;
+// 	// t_matrix	rotate;
+	
+// 	cam = get_cam();
+// 	ratio = (double)WINDOW_W / WINDOW_H;
+// 	cam->fov = lex.fov;
+// 	theta = degrees_to_radians(cam->fov);
+// 	h = tan(theta / 2);
+// 	view_height = 2.0 * h;
+// 	view_width = ratio * view_height;
+	
+
+// 	// rotate = get_transfo_matrix(lex.coord, lex.orient);
+	
+// 	cam->lookfrom = lex.coord;
+// 	cam->lookat = lex.orient;
+// 	// cam->lookat = vector_x_matrix(cam->lookfrom, rotate, 1);
+// 	// printv(cam->lookat);
+// 	vup = new_vec(0, 1, 0);
+// 	w = unit_vector(minus(cam->lookfrom, cam->lookat));
+// 	u = unit_vector(cross(vup, w));
+// 	v = cross(w, u);
+// 	printv(cam->lookat);
+// 	printv(cam->lookfrom);
+// 	cam->focal = 2.0;
+// 	cam->origin = cam->lookfrom;
+// 	cam->horizontal = mult(u, view_width);
+// 	cam->vertical = mult(v, view_height);
+// 	set_llc(cam, w);
+// }
 
 void	init_cam(t_lex lex)
 {
@@ -71,11 +113,13 @@ void	init_cam(t_lex lex)
 	view_height = 2.0 * h;
 	view_width = ratio * view_height;
 	cam->lookfrom = lex.coord;
-	cam->lookat = mult(lex.orient, INT_MAX);
+	cam->lookat = mult(lex.orient, 10);
 	if (!cam->lookat.z)
 		cam->lookat.z = -0.1;
+	printv(cam->lookat);
+	printv(cam->lookfrom);
 	vup = new_vec(0,1, 0);
-	w = unit_vector(minus(unit_vector(cam->lookfrom), cam->lookat));
+	w = unit_vector(minus(cam->lookfrom, cam->lookat));
 	u = unit_vector(cross(vup, w));
 	v = cross(w, u);
 	cam->focal = 2.0;
