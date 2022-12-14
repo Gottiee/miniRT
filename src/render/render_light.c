@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 12:55:16 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 11:49:04 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 12:07:00 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	t_point sph;
 	
 	(void)light;
+	return (0);
 	l = *((t_light *)rec->closest);
  	sph = light;
 	discr = discriminent_light(r, l, p, sph);

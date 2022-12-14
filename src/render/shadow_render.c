@@ -6,24 +6,24 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 11:48:57 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 12:11:53 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-int	hit_shadow(t_ray r, t_record *rec, t_point light)
+double	hit_shadow(t_ray r, t_record *rec, t_point light)
 {
 	t_hit_lst	*list;
 	t_record	rec_tmp;
 	t_vec2		limit;
-	int			hit_any;
+	// int			hit_any;
 	int 		(*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 	
 	init_pointer(hit);
 	limit.x = 0;
 	limit.y = DBL_MAX;
-	hit_any = 0;
+	// hit_any = 0;
 	list = get_hit(NULL, 0);
 	while (list)
 	{
@@ -33,7 +33,7 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 		{
 			if (rec_tmp.t < limit.y)
 			{
-				hit_any = 1;
+				// hit_any = 1;
 				limit.y = rec_tmp.t;
 				*rec = rec_tmp;
 				rec->obj_id = list->id;
@@ -41,9 +41,7 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 		}
 		list = list->next;
 	}
-	if (!hit_any || rec->type == L)
-		return (0);
-	return (1);
+	return (limit.y);
 }
 
 double	greatest(double a, double b)
@@ -61,6 +59,8 @@ void	shadow_render(t_record *rec, t_point light)
 	t_light		*l;
 	t_ambiant	*a;
 	double		ratio;
+	double		shadt;
+	double		plum;
 
 	l = get_light();
 	a = get_amb();
@@ -68,7 +68,9 @@ void	shadow_render(t_record *rec, t_point light)
 	ratio = a->ratio * 0.5;
 	path.orig = plus(rec->hit_point, mult(rec->normal, 0.01));
 	path.dir = minus(light, path.orig);
-	if (hit_shadow(path, &shadow, light))
+	shadt = hit_shadow(path, &shadow, light);
+	plum = norme(minus(light, rec->hit_point));
+	if (shadt != DBL_MAX || shadt > plum)
 		rec->light_level = ratio;
 	else
 	{
