@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/14 14:48:19 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:31:41 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ int			hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light);
 int			hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 t_vec3	    normal_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos);
 double		cyl_caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt);
+/*Fichier: cylinder2.c*/
+int			get_rad(t_vec3 *rslt, t_vec3 base, double radius);
+double		intersect_plan(t_vec3 dir_pix, t_vec3 cam_o, void *plan, t_vec3 *rslt);
+void		new_plane(t_plane *plan, t_cyl *c, double normal);
+
 /*Fichier: circle.c*/
 int			hit_circle(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 /*Fichier: shadow_render.c*/

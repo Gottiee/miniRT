@@ -6,49 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 16:32:07 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:35:28 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
-
-int	get_rad(t_vec3 *rslt, t_vec3 base, double radius)
-{
-	if ((radius + 0.012) - norme(minus(base, *rslt)) <= 0)
-		return (0);
-	return (1);
-}
-
-double	intersect_plan(t_vec3 dir_pix, t_vec3 cam_o, void *plan, t_vec3 *rslt)
-{
-	t_plane		*pl;
-	double		d;
-	double		t;
-	t_vec3	pl_normal;
-
-	t = 0;
-	d = 0;
-	pl = (t_plane *)plan;
-	pl_normal = unit_vector(pl->orient);
-	d = ((pl->center.x * pl_normal.x) + (pl->center.y * pl_normal.y) + \
-	(pl->center.z * pl_normal.z)) * -1;
-	if (dot(pl_normal, dir_pix))
-		t = -1 * ((dot(pl_normal, cam_o) + d) / \
-		(dot(pl_normal, dir_pix)));
-	*rslt = plus(cam_o, mult(dir_pix, t));
-	return ((t > 0) * t);
-}
-
-void	new_plane(t_plane *plan, t_cyl *c, double normal)
-{
-	if (normal == -1)
-		plan->center = c->center;
-	else
-		plan->center = plus(c->center, \
-		mult(unit_vector(c->orient), c->height));
-	plan->orient = mult(unit_vector(c->orient), normal);
-	plan->color = c->color;
-}
 
 double	caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 {
@@ -67,16 +29,14 @@ double	caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 	&& dot(dir_pix, c->orient) > 0)
 	{
 		*rslt = base_rslt;
-		c->inter_code = 2;
-		return (var.t1);
+		return (c->inter_code = 2, var.t1);
 	}
 	if (var.t2 && (!var.t1 || var.t2 < var.t1) && var.t2 != \
 	DBL_MAX && get_rad(&end_rslt, end.center, c->radius) \
 	&& dot(dir_pix, c->orient) < 0)
 	{
 		*rslt = end_rslt;
-		c->inter_code = 3;
-		return (var.t2);
+		return (c->inter_code = 3, var.t2);
 	}
 	return (0);
 }
@@ -113,7 +73,6 @@ double	exter_cyl(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 double	get_cyl_t(t_vec3 dir_pix, t_vec3 cam_o, void *cylindre, t_vec3 *rslt)
 {
 	t_cyl		*cl;
-	double		hyp;
 	double		h;
 	double		t;
 	double		capst;
@@ -126,8 +85,8 @@ double	get_cyl_t(t_vec3 dir_pix, t_vec3 cam_o, void *cylindre, t_vec3 *rslt)
 		return (*rslt = rslt_caps, capst);
 	if (t)
 	{
-		hyp = norme(minus(*rslt, cl->center));
-		h = sqrtf((hyp * hyp) - (cl->radius * cl->radius));
+		h = norme(minus(*rslt, cl->center));
+		h = sqrtf((h * h) - (cl->radius * cl->radius));
 	}
 	if (t && h < cl->height && dot(minus(*rslt, cl->center), cl->orient) > 0)
 	{
@@ -148,8 +107,6 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	rec->t = get_cyl_t(r.dir, r.orig, c, &rslt);
 	if (rec->t <= 0)
 		return (0);
-	// if (rec->t < 0 || rec->t > limit.y)
-	// 	return (0);
 	rec->hit_point = at(r, rec->t);
 	rec->normal = normal_cy(c, rec->hit_point, r.orig);
 	rec->color = c->color;

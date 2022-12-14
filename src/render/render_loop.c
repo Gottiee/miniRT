@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/08 15:43:21 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 17:58:34 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 t_color	bckg(t_ray r)
 {
-	t_vec3		unit_vec;
-    double		t;
+	t_vec3	unit_vec;
+	double	t;
 
 	unit_vec = unit_vector(r.dir);
-    t = 0.5 * (unit_vec.y + 1.0);
-	return (plus(mult(new_vec(1, 1, 1), 1.0 - t), mult(new_vec(0.5, 0.7, 1), t)));	
+	t = 0.5 * (unit_vec.y + 1.0);
+	return (plus(mult(new_vec(1, 1, 1), 1.0 - t), \
+	mult(new_vec(0.5, 0.7, 1), t)));
 }
 
 t_color	ray_color(t_ray r, t_point light, int normals)
@@ -34,7 +35,6 @@ t_color	ray_color(t_ray r, t_point light, int normals)
 			return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
 		return (mult(rec.color, rec.light_level));
 	}
-	// return (bckg(r));
 	return (new_vec(0, 0, 0));
 }
 
@@ -46,7 +46,7 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 	min_equal(&ray->dir, &cam.origin);
 }
 
-int render(t_data *data)
+int	render(t_data *data)
 {
 	t_vec2	c;
 	t_ray	r;
@@ -65,7 +65,8 @@ int render(t_data *data)
 			u = c.x / (WINDOW_W - 1);
 			v = c.y / (WINDOW_H - 1);
 			init_ray(&r, *cam, u, v);
-			img_pix_put(&data->i, c.x, WINDOW_H - c.y, hexa(ray_color(r, data->light, data->disp_normals)));
+			img_pix_put(&data->i, c.x, WINDOW_H - c.y, \
+			hexa(ray_color(r, data->light, data->disp_normals)));
 			c.x++;
 		}
 		c.y --;

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:00:38 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/14 16:02:15 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:09:54 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light)
 	t = dot(polo, p.orient) / d;
 	if (t < 0)
 		return (0);
-	// if (t < limit.x || t > limit.y)
-	// 	return (0);
 	rec->t = t;
 	rec->light_level = 1;
 	rec->color = p.color;

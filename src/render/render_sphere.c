@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 16:25:44 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:18:40 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	set_face(t_ray r, t_vec3 outward, t_record *rec)
 {
 	int	front_face;
-	
+
 	front_face = dot(r.dir, outward) < 0;
 	rec->normal = outward;
 	if (!front_face)
@@ -24,7 +24,7 @@ void	set_face(t_ray r, t_vec3 outward, t_record *rec)
 
 void	set_normal(t_record *rec, t_ray r, t_point light, t_sphere s)
 {
-	rec->hit_point = plus(r.orig, mult((r.dir), rec->t));
+	rec->hit_point = sat(r, rec->t);
 	rec->normal = divis(minus(rec->hit_point, s.center), s.radius);
 	set_face(r, rec->normal, rec);
 	rec->light_level = clamp(dot(rec->normal, minus(light, s.center)), 0, 1);
@@ -34,7 +34,7 @@ double	discriminent(t_ray r, t_sphere s, double *p)
 {
 	t_vec3	oc;
 	double	discr;
-	
+
 	oc = minus(r.orig, s.center);
 	p[_A] = length_squared(&r.dir);
 	p[_B] = dot(oc, r.dir);
@@ -50,7 +50,7 @@ int	hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	double		p[3];
 	double		sqrt_discr;
 	t_sphere	s;
-	
+
 	(void)limit;
 	s = *((t_sphere *)rec->closest);
 	discr = discriminent(r, s, p);

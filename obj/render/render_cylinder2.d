@@ -1,4 +1,4 @@
-obj/render/render_circle.o: src/render/render_circle.c \
+obj/render/render_cylinder2.o: src/render/render_cylinder2.c \
  src/render/../../header/minirt.h mlx_linux/mlx.h \
  src/render/../../header/../libft/include/libft.h \
  src/render/../../header/../libft/include/ft_printf.h \

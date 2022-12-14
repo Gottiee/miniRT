@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 16:24:59 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:45:26 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 	t_hit_lst	*list;
 	t_record	rec_tmp;
 	t_vec2		limit;
-	// int			hit_any;
-	int 		(*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light);
-	
+	int			(*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+
 	init_pointer(hit);
 	limit.x = 0;
 	limit.y = DBL_MAX;
-	// hit_any = 0;
 	list = get_hit(NULL, 0);
 	while (list)
 	{
@@ -31,11 +29,8 @@ int	hit_shadow(t_ray r, t_record *rec, t_point light)
 		rec_tmp.type = 0;
 		if (hit[list->type](&rec_tmp, r, limit, light))
 		{
-			// if (list->type == SP)
-			// 	printf("cy%f | ", rec_tmp.t);
 			if (rec_tmp.t < limit.y)
 			{
-				// hit_any = 1;
 				limit.y = rec_tmp.t;
 				*rec = rec_tmp;
 				rec->obj_id = list->id;
