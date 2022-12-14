@@ -6,11 +6,37 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 14:50:56 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:37:08 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
+
+void	move2(int keysym, t_data *data)
+{
+	if (keysym == XK_i)
+		data->light = plus(data->light, new_vec(0, 0.1, 0));
+	if (keysym == XK_j)
+		data->light = plus(data->light, new_vec(-0.1, 0, 0));
+	if (keysym == XK_o)
+		data->light = plus(data->light, new_vec(0, 0, -0.1));
+	if (keysym == XK_u)
+		data->light = plus(data->light, new_vec(0, 0, 0.1));
+	if (keysym == XK_Up)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, -0.1, 0)));
+	if (keysym == XK_Down)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0.1, 0)));
+	if (keysym == XK_Right)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(-0.1, 0, 0)));
+	if (keysym == XK_Left)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0.1, 0, 0)));
+	if (keysym == XK_z)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, 0.1)));
+	if (keysym == XK_x)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, -0.1)));
+	if (keysym == XK_n)
+		data->disp_normals = data->disp_normals == 0;
+}
 
 void	move(int keysym, t_data *data)
 {
@@ -33,29 +59,8 @@ void	move(int keysym, t_data *data)
 		data->light = plus(data->light, new_vec(0, -0.1, 0));
 	if (keysym == XK_l)
 		data->light = plus(data->light, new_vec(0.1, 0, 0));
-	if (keysym == XK_i)
-		data->light = plus(data->light, new_vec(0, 0.1, 0));
-	if (keysym == XK_j)
-		data->light = plus(data->light, new_vec(-0.1, 0, 0));
-	if (keysym == XK_o)
-		data->light = plus(data->light, new_vec(0, 0, -0.1));
-	if (keysym == XK_u)
-		data->light = plus(data->light, new_vec(0, 0, 0.1));
-	if (keysym == XK_Up)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, -0.1, 0)));
-	if (keysym == XK_Down)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0.1, 0)));
-	if (keysym == XK_Right)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(-0.1, 0, 0)));
-	if (keysym == XK_Left)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0.1, 0, 0)));
-	if (keysym == XK_z)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, 0.1)));
-	if (keysym == XK_x)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, -0.1)));
-	if (keysym == XK_n)
-		data->disp_normals = data->disp_normals == 0;		
-	data->render_image = 1;
+	move2(keysym, data);
+		data->render_image = 1;
 }
 
 int	key_release(int keysym, t_data *data)
@@ -96,4 +101,6 @@ void	init_move(t_data *data)
 	data->far = 0;
 	data->close = 0;
 	data->disp_normals = 0;
+	data->render_image = 1;
+	data->animation = 0;
 }

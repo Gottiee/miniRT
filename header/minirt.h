@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/13 16:52:59 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:18:18 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ int			loop_objects(char *file);
 /*Fichier: lexeur.c*/
 int			object(int fd);
 /*Fichier: lexeur_object.c*/
-int			lex_A(t_lex *lex, char *line, int i);
-int			lex_L(t_lex *lex, char *line, int i);
-int			lex_C(t_lex *lex, char *line, int i);
+int			lex_a(t_lex *lex, char *line, int i);
+int			lex_l(t_lex *lex, char *line, int i);
+int			lex_c(t_lex *lex, char *line, int i);
 int			lex_objects(t_lex *lex, char *line, int i);
 int			isnt_complet(int i, int bool);
 /*Fichier: lexeur_geo_obj.c*/
@@ -117,6 +117,8 @@ int			lex_cy(t_lex *lex, char *line, int i);
 char		*string_move(char *line);
 double		get_decimal(char **line, int i);
 int 		get_vector(char **line, int i, t_color *color);
+void		call_type(t_lex *lex, char *line, int i, int *value);
+int			do_parser(t_lex *lex, int *verif, int nbr_line);
 /*Fichier: parser.c*/
 int			parser(t_lex lex, int *verif);
 int			verify_line(char *line, int line_nbr);
