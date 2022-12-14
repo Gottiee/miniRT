@@ -6,52 +6,46 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 16:31:17 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:45:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-void	init_pointer(int (*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light))
+double	intersect(t_hit_lst *lst, t_ray r, t_vec3 *hit)
 {
-	hit[SP] = &hit_sphere;
-	hit[L] = &hit_light;
-	hit[PL] = &hit_plane;
-	hit[CY] = &hit_cylinder;
-	hit[CE] = &hit_circle;	
+	if (lst->type == L)
+		return (inter_light(r.dir, r.orig, lst->object, hit));
+	if (lst->type == PL)
+		return (inter_plan(r.dir, r.orig, lst->object, hit));
+	if (lst->type == SP)
+		return (inter_sphere(r.dir, r.orig, lst->object, hit));
+	if (lst->type == CY)
+		return (inter_cylindre(r.dir, r.orig, lst->object, hit));
+	return (0);
 }
 
-int	hit_global(t_ray r, t_record *rec, t_point light)
+t_vec3	hit_global(t_ray r, double *t_max, t_hit_lst **obj, int shad)
 {
-	t_hit_lst	*list;
-	t_record	rec_tmp;
-	t_vec2		limit;
-	int			hit_any;
-	int 		(*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light);
-	
-	init_pointer(hit);
-	limit.x = 0;
-	limit.y = DBL_MAX;
-	hit_any = 0;
-	list = get_hit(NULL, 0);
-	while (list)
+	t_hit_lst	*tmp;
+	t_vec3		p_hit;
+	t_vec3		p_hit_temp;
+	double		t;
+
+	tmp = *obj;
+	*t_max = DBL_MAX;
+	while (tmp)
 	{
-		rec_tmp.closest = list->object;
-		rec_tmp.type = 0;
-		if (hit[list->type](&rec_tmp, r, limit, light))
+		t = intersect(tmp, r, &p_hit_temp);
+		if (t && t < *t_max)
 		{
-			hit_any = 1;
-			limit.y = rec_tmp.t;
-			*rec = rec_tmp;
-			rec->obj_id = list->id;
+			eq_vector(&p_hit, p_hit_temp);
+			*t_max = t;
+			*obj = tmp;
 		}
-		list = list->next;
+		tmp = tmp->next;
 	}
-	if (!hit_any)
-		return (0);
-	return (1);
+	if (shad && (*obj)->type == L)
+		*t_max = DBL_MAX;
+	return (p_hit);
 }
-
-//Peut etre un debut d'antialiasing, a tester
-// if (discr < 0.001)
-// 	rec->light_level *= 0.5;

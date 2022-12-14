@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 14:38:01 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/12 21:31:27 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_vec3	cross(t_vec3 u, t_vec3 v);
 t_vec3	unit_vector(t_vec3 v);
 t_vec3	new_vec(double x, double y, double z);
 t_vec2	new_vec2(double x, double y);
-t_vec3	max(t_vec3 v1, t_vec3 v2);
+t_vec3	maxi(t_vec3 v1, t_vec3 v2);
 /*Fichier: vector_utility3.c*/
 t_vec3	normalize(t_vec3 v1);
 double	scalaire_product(t_vec3 v1, t_vec3 v2);

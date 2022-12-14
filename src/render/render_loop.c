@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:45:32 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/08 15:43:21 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:27:34 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,20 @@ t_color	bckg(t_ray r)
 
 t_color	ray_color(t_ray r, t_point light, int normals)
 {
-	t_record	rec;
+	t_vec3		hit_point;
+	t_hit_lst	*obj;
+	t_light		*l;
+	double		t;
 
-	if (hit_global(r, &rec, light))
-	{
-		if (rec.type != L)
-			shadow_render(&rec, light);
-		if (normals)
-			return (mult(plus(rec.normal, new_vec(1, 1, 1)), 0.5));
-		return (mult(rec.color, rec.light_level));
-	}
-	// return (bckg(r));
-	return (new_vec(0, 0, 0));
+	(void) normals;
+	obj = get_hit(NULL, 0);
+	l = get_light();
+	*l->center = light;
+	hit_point = hit_global(r, &t, &obj, 0);
+	if (t == DBL_MAX)
+		return (new_vec(0, 0, 0));
+	else
+		return (shadow_render(hit_point, *l, obj, r, normals));
 }
 
 void	init_ray(t_ray *ray, t_cam cam, double u, double v)
@@ -48,11 +50,11 @@ void	init_ray(t_ray *ray, t_cam cam, double u, double v)
 
 int render(t_data *data)
 {
-	t_vec2	c;
-	t_ray	r;
-	double	u;
-	double	v;
-	t_cam	*cam;
+	t_vec2		c;
+	t_ray		r;
+	double		u;
+	double		v;
+	t_cam		*cam;
 
 	cam = get_cam();
 	update_cam(*cam);

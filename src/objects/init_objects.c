@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:06:43 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/08 18:01:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:48:21 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ void	init_cylinder(t_lex lex)
 	s->height = lex.height;
 	ptr = s;
 	get_hit(ptr, CY);
-	// init_circle(lex);
-	// lex.orient = mult(lex.orient, -1);
-	// init_circle(lex);
-	// lex.orient = mult(lex.orient, -1);
-	// lex.coord = plus(lex.coord, mult(normalize(lex.orient), lex.height));
-	// init_circle(lex);
-	// lex.orient = mult(lex.orient, -1);
-	// init_circle(lex);
 }
 
 void	init_sphere(t_lex lex)

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 13:13:09 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/07 17:27:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:45:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ double	get_decimal(char **line, int i)
 		(*line) ++;
 		right = ft_atoi(*line);
 		if (right < 0)
-		printf("Error\nLine %d float number problem\n", i);
+		printf("Error\nLine %d double number problem\n", i);
 		while (right >= 1)
 			right *= 0.1;
 	}

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 10:18:38 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 10:32:27 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	set_llc(t_cam *cam, t_vec3 w)
 	cam->lower_left_corner = minus(cam->lower_left_corner, divis(cam->horizontal, 2));
 	cam->lower_left_corner = minus(cam->lower_left_corner, divis(cam->vertical, 2));
 	cam->lower_left_corner = minus(cam->lower_left_corner, w);
-	
 }
 
 void	update_cam(t_cam cam)

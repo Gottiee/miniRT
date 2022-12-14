@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dec_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akouoi <akouoi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 16:52:09 by akouoi            #+#    #+#             */
-/*   Updated: 2022/11/19 13:48:23 by eedy             ###   ########.fr       */
+/*   Created: 2022/11/25 18:57:49 by gmansuy           #+#    #+#             */
+/*   Updated: 2022/11/25 18:57:52 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	pf_utoa(int fd, va_list ap, int i)
 	char			*str;
 	int				n_len;
 
-	n = 0;
 	if (i == 5)
 		n = va_arg(ap, unsigned int);
 	n_len = pf_nblen(n, 10);
