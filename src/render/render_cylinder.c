@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 10:30:53 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 11:25:35 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,8 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	rec->t = get_cyl_t(r.dir, r.orig, c, &rslt);
 	if (rec->t <= 0)
 		return (0);
-	if (rec->t < 0 || rec->t > limit.y)
-		return (0);
+	// if (rec->t < 0 || rec->t > limit.y)
+	// 	return (0);
 	rec->hit_point = rslt;
 	rec->normal = normal_cy(c, rec->hit_point, r.orig);
 	rec->color = c->color;

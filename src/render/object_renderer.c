@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/14 10:40:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 11:36:35 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ int	hit_global(t_ray r, t_record *rec, t_point light)
 		rec_tmp.type = 0;
 		if (hit[list->type](&rec_tmp, r, limit, light))
 		{
-			hit_any = 1;
-			limit.y = rec_tmp.t;
-			*rec = rec_tmp;
-			rec->obj_id = list->id;
+			if (rec_tmp.t < limit.y)
+			{
+				hit_any = 1;
+				limit.y = rec_tmp.t;
+				*rec = rec_tmp;
+				rec->obj_id = list->id;
+			}
 		}
 		list = list->next;
 	}

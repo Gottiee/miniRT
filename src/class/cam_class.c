@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:18:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 10:18:38 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 10:44:03 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void	init_cam(t_lex lex)
 	cam->lookat = mult(lex.orient, 10);
 	if (!cam->lookat.z)
 		cam->lookat.z = -0.1;
-	printv(cam->lookat);
-	printv(cam->lookfrom);
 	vup = new_vec(0,1, 0);
 	w = unit_vector(minus(cam->lookfrom, cam->lookat));
 	u = unit_vector(cross(vup, w));

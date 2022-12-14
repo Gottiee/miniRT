@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/27 17:23:49 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 11:05:37 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 		if (root < limit.x || root > limit.y)
 			return (0);
 	}
-	rec->t = clamp(root, 0.0, limit.y);
+	rec->t = root;
 	set_normal(rec, r, light, s);
 	rec->color = s.color;
 	rec->type = SP;
