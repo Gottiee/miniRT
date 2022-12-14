@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:57:52 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/18 13:39:18 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:37:57 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,10 @@ t_ray	new_ray(t_vec3 origin, t_vec3 direction)
 /*Modifie r.dir en additionant r.orig a t*r.dir*/
 t_point	at(t_ray r, double t)
 {
+	return (plus(r.orig, mult(unit_vector(r.dir), t)));
+}
 
-//  point3 at(double t) const {
-//             return orig + t*dir;
-//         }
-
-	return (plus(r.orig, mult(r.dir, t)));
-
-	// mult_equal(&r->dir, t);
-	// r->dir.x = r->orig.x + r->dir.x;
-	// r->dir.y = r->orig.y + r->dir.y;
-	// r->dir.z = r->orig.z + r->dir.z;
+t_point	sat(t_ray r, double t)
+{
+	return (plus(r.orig, mult((r.dir), t)));
 }

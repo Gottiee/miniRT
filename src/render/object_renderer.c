@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/14 12:05:48 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:45:57 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,3 @@ int	hit_global(t_ray r, t_record *rec, t_point light)
 		return (0);
 	return (1);
 }
-
-//Peut etre un debut d'antialiasing, a tester
-// if (discr < 0.001)
-// 	rec->light_level *= 0.5;

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 12:55:16 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 12:07:00 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:27:05 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	t_point sph;
 	
 	(void)light;
-	return (0);
+	(void)limit;
 	l = *((t_light *)rec->closest);
  	sph = light;
 	discr = discriminent_light(r, l, p, sph);
@@ -43,14 +43,14 @@ int	hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 		return (0);
 	sqrt_discr = sqrt(discr);
 	root = (-p[_B] - sqrt_discr) / p[_A];
-	if (root < limit.x || root > limit.y)
+	if (root < 0)
 	{
 		root = (-p[_B] + sqrt_discr) / p[_A];
-		if (root < limit.x || root > limit.y)
+		if (root < 0)
 			return (0);
 	}
-	rec->t = clamp(root, 0.0, limit.y);
-	rec->hit_point = at(r, rec->t);
+	rec->t = root;
+	rec->hit_point = plus(r.orig, mult((r.dir), rec->t));
 	rec->normal = divis(minus(rec->hit_point, sph),l.radius);
 	rec->light_level = 1;
 	rec->color = l.color;

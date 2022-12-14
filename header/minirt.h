@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 16:48:17 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 14:48:19 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 //IMAGE
 # define WINDOW_H 560
 # define WINDOW_W 720
+// # define WINDOW_H 100
+// # define WINDOW_W 100
 
 # define ERROR -29999
 # define NONE 0

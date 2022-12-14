@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:00:38 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 17:06:33 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:02:15 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light)
 	t_vec3	polo;
 
 	(void)light;
+	(void)limit;
 	p = *((t_plane *)rec->closest);
 	t = dot(p.orient, minus(p.center, r.orig)) / dot(p.orient, r.dir);
 	d = dot(p.orient, r.dir);
@@ -29,8 +30,8 @@ int	hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light)
 	t = dot(polo, p.orient) / d;
 	if (t < 0)
 		return (0);
-	if (t < limit.x || t > limit.y)
-		return (0);
+	// if (t < limit.x || t > limit.y)
+	// 	return (0);
 	rec->t = t;
 	rec->light_level = 1;
 	rec->color = p.color;
@@ -38,7 +39,5 @@ int	hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light)
 	rec->hit_point = at(r, rec->t);
 	rec->normal = p.orient;
 	set_face(r, rec->normal, rec);
-	// printv(rec->normal);
-	// printv(p.orient);
 	return (1);
 }
