@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:53 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 10:30:53 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	new_plane(t_plane *plan, t_cyl *c, double normal)
 	plan->color = c->color;
 }
 
-double	cyl_caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
+double	caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 {
 	t_eqn		var;
 	t_plane		base;
@@ -63,14 +63,16 @@ double	cyl_caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 	var.t1 = intersect_plan(dir_pix, cam_o, &base, &base_rslt);
 	var.t2 = intersect_plan(dir_pix, cam_o, &end, &end_rslt);
 	if (var.t1 && (!var.t2 || var.t1 < var.t2) && var.t1 != \
-	DBL_MAX && get_rad(&base_rslt, base.center, c->radius))
+	DBL_MAX && get_rad(&base_rslt, base.center, c->radius) \
+	&& dot(dir_pix, c->orient) > 0)
 	{
 		*rslt = base_rslt;
 		c->inter_code = 2;
 		return (var.t1);
 	}
 	if (var.t2 && (!var.t1 || var.t2 < var.t1) && var.t2 != \
-	DBL_MAX && get_rad(&end_rslt, end.center, c->radius))
+	DBL_MAX && get_rad(&end_rslt, end.center, c->radius) \
+	&& dot(dir_pix, c->orient) < 0)
 	{
 		*rslt = end_rslt;
 		c->inter_code = 3;
@@ -79,7 +81,7 @@ double	cyl_caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 	return (0);
 }
 
-double	cyl_side(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
+double	exter_cyl(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 {
 	t_eqn	eqn;
 	t_vec3	va;
@@ -108,25 +110,31 @@ double	cyl_side(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 		return (0);
 }
 
-double	get_cyl_t(t_ray r, t_cyl *c, t_vec3 *rslt)
+double	get_cyl_t(t_vec3 dir_pix, t_vec3 cam_o, void *cylindre, t_vec3 *rslt)
 {
+	t_cyl		*cl;
 	double		hyp;
 	double		h;
 	double		t;
+	double		capst;
+	t_vec3		rslt_caps;
 
-	t = cyl_side(r.dir, r.orig, c, rslt);
+	cl = (t_cyl *)cylindre;
+	t = exter_cyl(dir_pix, cam_o, cl, rslt);
+	capst = caps(cl, dir_pix, cam_o, &rslt_caps);
+	if (capst && capst < t)
+		return (*rslt = rslt_caps, capst);
 	if (t)
 	{
-		hyp = norme(minus(*rslt, c->center));
-		h = sqrtf((hyp * hyp) - (c->radius * c->radius));
+		hyp = norme(minus(*rslt, cl->center));
+		h = sqrtf((hyp * hyp) - (cl->radius * cl->radius));
 	}
-	if (t && h < c->height && dot(minus(*rslt, c->center), c->orient) > 0)
+	if (t && h < cl->height && dot(minus(*rslt, cl->center), cl->orient) > 0)
 	{
-		c->inter_code = 1;
+		cl->inter_code = 1;
 		return (t);
 	}
-	// return (0);
-	return (cyl_caps(c, r.dir, r.orig, rslt));
+	return (*rslt = rslt_caps, capst);
 }
 
 int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
@@ -137,8 +145,8 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	(void)light;
 	(void)limit;
 	c = (t_cyl *)rec->closest;
-	rec->t = get_cyl_t(r, c, &rslt);
-	if (!rec->t)
+	rec->t = get_cyl_t(r.dir, r.orig, c, &rslt);
+	if (rec->t <= 0)
 		return (0);
 	if (rec->t < 0 || rec->t > limit.y)
 		return (0);

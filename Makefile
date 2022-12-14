@@ -31,7 +31,6 @@ SRC_FILES = 	main \
 				class/vector_utility3 \
 				class/ray_class \
 				class/cam_class \
-				class/matrix \
 				objects/hittable_list \
 				objects/init_objects \
 				objects/loop_objects \
