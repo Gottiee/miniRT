@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hex_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akouoi <akouoi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 09:45:14 by akouoi            #+#    #+#             */
-/*   Updated: 2022/11/19 13:49:08 by eedy             ###   ########.fr       */
+/*   Created: 2022/11/25 18:59:12 by gmansuy           #+#    #+#             */
+/*   Updated: 2022/12/15 10:15:00 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	pf_point(int fd, va_list ap, int i)
 	int						n_len;
 	char					*str;
 
-	n = 0;
 	if (i == 2)
 		n = va_arg(ap, unsigned long long int);
 	if (n == 0)

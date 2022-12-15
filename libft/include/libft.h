@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:55:20 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/17 12:10:59 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/11/04 14:57:46 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <fcntl.h>
-# include <stddef.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "magic_gnl.h"

@@ -52,7 +52,6 @@ SRC_FILES = 	main \
 				render/shadow_render \
 				utils/mlx_fonction \
 				utils/move \
-				utils/animation \
 				utils/get \
 				utils/minmax \
 
