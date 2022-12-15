@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:54:32 by slahlou           #+#    #+#             */
-/*   Updated: 2022/12/13 15:25:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 17:02:21 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ double	caps(t_cyl *cl, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 	eqn.t2 = inter_plan(dir_pix, cam_o, &end, &end_rslt);
 	if (eqn.t1 && (!eqn.t2 || eqn.t1 < eqn.t2) && eqn.t1 != \
 	FLT_MAX && into_radius(&base_rslt, base.center, cl->radius)
-	&& dot(dir_pix, cl->orient) > 0)
+		&& dot(dir_pix, cl->orient) > 0)
 	{
 		eq_vector(rslt, base_rslt);
 		cl->inter_code = 2;
@@ -94,7 +94,7 @@ double	caps(t_cyl *cl, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt)
 	}
 	if (eqn.t2 && (!eqn.t1 || eqn.t2 < eqn.t1) && eqn.t2 != \
 	FLT_MAX && into_radius(&end_rslt, end.center, cl->radius)
-	&& dot(dir_pix, cl->orient) < 0)
+		&& dot(dir_pix, cl->orient) < 0)
 	{
 		eq_vector(rslt, end_rslt);
 		cl->inter_code = 3;

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:49:08 by eedy              #+#    #+#             */
-/*   Updated: 2022/11/21 13:18:39 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 12:20:06 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_hit_lst	*new_hit(void *obj, int type)
 	new->object = obj;
 	new->id = 0;
 	new->type = type;
-	return (new);	
+	return (new);
 }
 
 void	add_hit(void *obj, t_hit_lst **list, int type)
@@ -44,7 +44,9 @@ void	add_hit(void *obj, t_hit_lst **list, int type)
 
 t_hit_lst	*get_hit(void *obj, int type)
 {
-	static t_hit_lst	*m_stack = NULL;
+	static t_hit_lst	*m_stack;
+
+	m_stack = NULL;
 	if (obj)
 	{
 		if (!m_stack)

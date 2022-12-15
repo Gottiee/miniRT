@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/13 15:37:50 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/13 18:16:39 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,12 @@ t_color	get_color(t_color obj_color, double lum)
 t_color	hit_shadow(t_vec3 hit_point, t_vec3 normal, t_hit_lst *objects, t_light light)
 {
 	t_ray		r;
-	t_vec3		lum_dir;
 	t_hit_lst	*current;
 	double		shadow_t;
 
 	current = objects;
-	eq_vector(&lum_dir, normalize(minus(*light.center, hit_point)));
-	r.orig = plus(hit_point, mult(normal, 0.01));
-	r.dir = lum_dir;
+	r.orig = plus(hit_point, mult(normal, 0.0001));
+	r.dir = *light.center;
 	objects = get_hit(NULL, 0);
 	hit_global(r, &shadow_t, &objects, 1);
 	if (current->type == SP)

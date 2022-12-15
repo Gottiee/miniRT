@@ -1,5 +1,6 @@
-obj/class/matrix.o: src/class/matrix.c src/class/../../header/minirt.h \
- mlx_linux/mlx.h src/class/../../header/../libft/include/libft.h \
+obj/class/vector_utility4.o: src/class/vector_utility4.c \
+ src/class/../../header/minirt.h mlx_linux/mlx.h \
+ src/class/../../header/../libft/include/libft.h \
  src/class/../../header/../libft/include/ft_printf.h \
  src/class/../../header/../libft/include/get_next_line.h \
  src/class/../../header/../libft/include/magic_gnl.h \

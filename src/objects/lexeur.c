@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:18:19 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/07 17:49:30 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 11:42:30 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_next(char c)
 
 void	set_type(t_lex *lex, char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (line[i] == 'A' && check_next(line[i + 1]))
@@ -41,17 +41,17 @@ void	set_type(t_lex *lex, char *line)
 	else if (line[i] == 'c' && line[i + 1] && line[i + 1] == 'y'
 		&& check_next(line[i + 2]))
 		lex->type = CY;
-	else	
+	else
 		lex->type = NONE;
 }
 
 int	lexeur(t_lex *lex, char *line, int i)
 {
-	int value;
+	int	value;
 
-	while (*line && (*line == ' ' || *line == '\t'))		
-		line ++;	
-	if (!*line)	
+	while (*line && (*line == ' ' || *line == '\t'))
+		line ++;
+	if (!*line)
 		return (0);
 	set_type(lex, line);
 	if (lex->type == NONE)
@@ -65,14 +65,7 @@ int	lexeur(t_lex *lex, char *line, int i)
 		printf("Error\nLine %d isn't complet\n", i);
 		return (0);
 	}
-	if (lex->type == A)
-		value = lex_A(lex, line, i);
-	if (lex->type == C)
-		value = lex_C(lex, line, i);
-	if (lex->type == L)
-		value = lex_L(lex, line, i);
-	if (lex->type == CY || lex->type == SP || lex->type == PL)
-		value = lex_objects(lex, line, i);
+	call_type(lex, line, i, &value);
 	if (value == 0)
 		return (0);
 	return (1);
@@ -81,9 +74,11 @@ int	lexeur(t_lex *lex, char *line, int i)
 int	verif_verif(int *verif)
 {
 	if (verif[C] > 1 || verif[L] > 1 || verif[A] > 1)
-		return (printf("Error\nToo many cams and/or lights and/or ambiant lights\n"), 0);
+		return (printf("Error\nToo many cams and/or \
+lights and/or ambiant lights\n"), 0);
 	if (verif[C] == 0 || verif[L] == 0 || verif[A] == 0)
-		return (printf("Error\nNo cam and/or light and/or ambiant light\n"), 0);
+		return (printf("Error\nNo cam and/or light and/or \
+ambiant light\n"), 0);
 	return (1);
 }
 
@@ -91,33 +86,24 @@ int	object(int fd)
 {
 	t_lex	lex;
 	char	*line;
-	int		nbr_line;
-	int		verif[8];
 
-	ft_bzero(verif, sizeof(int) * 8);
-	nbr_line = 0;
+	ft_bzero(lex.verif, sizeof(int) * 8);
+	lex.nbr_line = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		nbr_line ++;
+		lex.nbr_line ++;
 		if (line[0] == '\n')
 		{
 			line = get_next_line(fd);
 			continue ;
 		}
-		if (!verify_line(line, nbr_line))
+		if (!verify_line(line, lex.nbr_line))
 			return (0);
-		if (lexeur(&lex, line, nbr_line))
-		{
-			if (!parser(lex, verif))
-				return (printf("Error\nLine %d: Invalid range\n",
-				nbr_line), 0);
-			new_object(lex);
-		}
-		else
+		if (lexeur(&lex, line, lex.nbr_line) && !do_parser(lex, lex.verif, lex.nbr_line))
 			return (0);
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (verif_verif(verif));
+	return (verif_verif(lex.verif));
 }

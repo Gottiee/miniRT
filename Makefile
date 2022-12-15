@@ -30,6 +30,7 @@ SRC_FILES = 	main \
 				class/vector_utility \
 				class/vector_utility2 \
 				class/vector_utility3 \
+				class/vector_utility4 \
 				class/ray_class \
 				class/cam_class \
 				objects/hittable_list \
@@ -39,6 +40,7 @@ SRC_FILES = 	main \
 				objects/lexeur_object \
 				objects/lexeur_geo_obj \
 				objects/lexeur_util \
+				objects/utils2 \
 				objects/parser \
 				objects/new_object \
 				intersection/cylindre \

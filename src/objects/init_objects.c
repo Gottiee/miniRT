@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:06:43 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/13 11:48:21 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 11:54:08 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_plane(t_lex lex)
 	t_plane	*p2;
 	void	*ptr;
 	void	*ptr2;
-	
+
 	p = magic_malloc(sizeof(t_plane));
 	p->center = lex.coord;
 	p->color = unit_vector(divis(lex.color, 255));
@@ -71,7 +71,6 @@ void	init_light(t_lex lex)
 	*l->center = lex.coord;
 	l->radius = 0.1;
 	l->ratio = lex.ratio;
-	//l->color = unit_vector(divis(lex.color, 255));
 	l->color = lex.color;
 	ptr = l;
 	get_hit(ptr, L);

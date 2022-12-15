@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:25:53 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 17:39:49 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:20:09 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	verify_line(char *line, int line_nbr)
 		line ++;
 	while (*line)
 	{
-		if (!ft_isdigit(*line) && *line != '.' && *line != ',' 
+		if (!ft_isdigit(*line) && *line != '.' && *line != ','
 			&& *line != ' ' && *line != '\n' && *line != '-')
 			return (printf("Error\nOn line %d: Invalid input '%c'\n",
-				line_nbr, *line), 0);
+					line_nbr, *line), 0);
 		line ++;
 	}
 	return (1);
@@ -29,14 +29,13 @@ int	verify_line(char *line, int line_nbr)
 
 int	in_range(double input, double min, double max)
 {
-	// printf("input : %f\n", input);
 	return (input >= min && input <= max);
 }
 
 int	verify_vec(t_vec3 u, double min, double max)
 {
 	return ((in_range(u.x, min, max) && in_range(u.y, min, max)
-		&& in_range(u.z, min, max)));
+			&& in_range(u.z, min, max)));
 }
 
 int	parser(t_lex lex, int *verif)
@@ -45,11 +44,12 @@ int	parser(t_lex lex, int *verif)
 	int	color;
 	int	orient;
 	int	fov;
-	
-	verif[lex.type] ++;
+
+	verif[lex.type]++;
 	ratio = 1;
 	color = 1;
 	orient = 1;
+	fov = 1;
 	if (lex.type == L || lex.type == A)
 		ratio = in_range(lex.ratio, 0, 1.0);
 	if (lex.type != C)

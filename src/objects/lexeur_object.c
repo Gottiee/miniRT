@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:59:04 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/13 16:52:59 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:16:34 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	isnt_complet(int i, int bool)
 	}
 	else if (bool == 1)
 	{
-		printf("Error\n Line %d too many arguments\n", i)	;
+		printf("Error\n Line %d too many arguments\n", i);
 		return (0);
 	}
 	return (0);
 }
 
-int	lex_A(t_lex *lex, char *line, int i)
+int	lex_a(t_lex *lex, char *line, int i)
 {
 	lex->ratio = get_decimal(&line, i);
 	if (lex->ratio == ERROR)
@@ -41,7 +41,7 @@ int	lex_A(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_C(t_lex *lex, char *line, int i)
+int	lex_c(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
@@ -58,7 +58,7 @@ int	lex_C(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_L(t_lex *lex, char *line, int i)
+int	lex_l(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
