@@ -8,6 +8,7 @@
 		"get_next_line.h": "c",
 		"fcntl.h": "c",
 		"mlx.h": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"x.h": "c"
 	}
 }

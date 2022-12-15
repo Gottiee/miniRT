@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/15 10:49:45 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:33:47 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ double	discriminent(t_ray r, t_sphere s, double *p)
 	double	discr;
 
 	oc = minus(r.orig, s.center);
-	p[_A] = length_squared(&r.dir);
-	p[_B] = dot(oc, r.dir);
-	p[_C] = length_squared(&oc) - s.radius * s.radius;
-	discr = p[_B] * p[_B] - p[_A] * p[_C];
+	p[eqa] = length_squared(&r.dir);
+	p[eqb] = dot(oc, r.dir);
+	p[eqc] = length_squared(&oc) - s.radius * s.radius;
+	discr = p[eqb] * p[eqb] - p[eqa] * p[eqc];
 	return (discr);
 }
 
@@ -58,10 +58,10 @@ int	hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	if (discr < 0)
 		return (0);
 	sqrt_discr = sqrt(discr);
-	root = (-p[_B] - sqrt_discr) / p[_A];
+	root = (-p[eqb] - sqrt_discr) / p[eqa];
 	if (root < 0)
 	{
-		root = (-p[_B] + sqrt_discr) / p[_A];
+		root = (-p[eqb] + sqrt_discr) / p[eqa];
 		if (root < 0)
 			return (0);
 	}

@@ -6,13 +6,12 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:58 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:42:20 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define STRUCT_H
-
+# define STRUCT_H
 
 typedef struct s_vec2
 {
@@ -27,9 +26,8 @@ typedef struct s_vec3
 	double	z;
 }				t_vec3;
 
-
-typedef t_vec3 t_point;
-typedef t_vec3 t_color;
+typedef t_vec3	t_point;
+typedef t_vec3	t_color;
 
 typedef struct s_ray
 {
@@ -78,13 +76,11 @@ typedef struct s_img
 	int		e;
 }				t_img;
 
-
 typedef struct s_sphere
 {
 	t_point	center;
 	double	radius;
-	t_color	color;
-	
+	t_color	color;	
 }				t_sphere;
 
 typedef struct s_cyl
@@ -109,8 +105,7 @@ typedef struct s_plane
 {
 	t_point	center;
 	t_color	color;
-	t_vec3	orient;
-	
+	t_vec3	orient;	
 }				t_plane;
 
 typedef struct s_light
@@ -129,7 +124,7 @@ typedef struct s_ambiant
 
 typedef struct s_record
 {
-	t_point 	hit_point;
+	t_point		hit_point;
 	t_vec3		normal;
 	void		*closest;
 	double		t;
@@ -158,7 +153,6 @@ typedef struct s_data
 	int		render_image;
 	int		disp_normals;
 	t_point	light;
-	//moves
 	int		left;
 	int		right;
 	int		up;
@@ -170,7 +164,7 @@ typedef struct s_data
 
 typedef struct s_lex
 {
-	int 		type;
+	int			type;
 	double		ratio;
 	t_color		color;
 	t_vec3		coord;

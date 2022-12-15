@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eedy <eliot.edy@icloud.com>                +#+  +:+       +#+        */
+/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 13:21:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 11:42:56 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 12:37:29 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	call_type(t_lex *lex, char *line, int i, int *value)
 	if (lex->type == A)
 		*value = lex_a(lex, line, i);
 	if (lex->type == C)
-		*value = lex_c(lex, line, i);
+		*value = lex_C(lex, line, i);
 	if (lex->type == L)
 		*value = lex_l(lex, line, i);
 	if (lex->type == CY || lex->type == SP || lex->type == PL)

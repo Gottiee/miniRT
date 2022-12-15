@@ -6,3 +6,4 @@ cylindre:
 	-ombre fait nimp
 ombre:
 	-plus de lumiere quand on se rapproche d'un element/ dans le else de shadow render
+pas de msg d'erreur si la map existe pas (+verifier le parsing avec valgrind)

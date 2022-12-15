@@ -6,12 +6,12 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 11:39:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 12:39:32 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
-#define MINIRT_H
+# define MINIRT_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -44,7 +44,7 @@
 # include "../libft/include/libft.h"
 # include "class.h"
 
-enum e_alpha {_A, _B, _C, OC};
+enum e_alpha {eqa, eqb, eqc, oc};
 
 /*         --- UTILS ---     */
 
@@ -59,12 +59,12 @@ void		move_cam(t_data *data);
 /*Fichier : get.c*/
 t_cam		*get_cam(void);
 t_light		*get_light(void);
-t_ambiant		*get_amb(void);
+t_ambiant	*get_amb(void);
 /*Fichier : animation.c*/
 void		animation(t_data *data);
 /*Fichier : minmax.c*/
-double	ft_min(double a, double b);
-double	ft_max(double a, double b);
+double		ft_min(double a, double b);
+double		ft_max(double a, double b);
 
 /*			--- RENDER ---	*/
 
@@ -76,7 +76,8 @@ double		clamp(double x, double min, double max);
 int			render(t_data *data);
 /*Fichier: object_renderer.c*/
 int			hit_global(t_ray r, t_record *rec, t_point light);
-void		init_pointer(int (*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light));
+void		init_pointer(int (*hit[8])(t_record *rec, t_ray r, \
+t_vec2 limit, t_point light));
 /*Fichier: sphere.c*/
 int			hit_sphere(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 void		set_face(t_ray r, t_vec3 outward, t_record *rec);
@@ -87,11 +88,12 @@ int			hit_light(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 int			hit_plane(t_record *rec, t_ray r, t_vec2 limit, t_vec3 light);
 /*Fichier: cylinder.c*/
 int			hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light);
-t_vec3	    normal_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos);
+t_vec3		normal_cy(t_cyl *cy, t_vec3 hit_point, t_vec3 cam_pos);
 double		cyl_caps(t_cyl *c, t_vec3 dir_pix, t_vec3 cam_o, t_vec3 *rslt);
 /*Fichier: cylinder2.c*/
 int			get_rad(t_vec3 *rslt, t_vec3 base, double radius);
-double		intersect_plan(t_vec3 dir_pix, t_vec3 cam_o, void *plan, t_vec3 *rslt);
+double		intersect_plan(t_vec3 dir_pix, \
+t_vec3 cam_o, void *plan, t_vec3 *rslt);
 void		new_plane(t_plane *plan, t_cyl *c, double normal);
 
 /*Fichier: circle.c*/
@@ -99,7 +101,7 @@ int			hit_circle(t_record *rec, t_ray r, t_vec2 limit, t_point light);
 /*Fichier: shadow_render.c*/
 void		shadow_render(t_record *rec, t_point light);
 /*Fichier: rotate_ray.c*/
-t_vec3       rotate_ray(t_ray r, t_cam cam);
+t_vec3		rotate_ray(t_ray r, t_cam cam);
 
 /*			--- OBJECTS -- 	*/
 
@@ -121,13 +123,13 @@ int			lex_C(t_lex *lex, char *line, int i);
 int			lex_objects(t_lex *lex, char *line, int i);
 int			isnt_complet(int i, int bool);
 /*Fichier: lexeur_geo_obj.c*/
-int 		lex_SP(t_lex *lex, char *line, int i);
+int			lex_SP(t_lex *lex, char *line, int i);
 int			lex_PL(t_lex *lex, char *line, int i);
 int			lex_CY(t_lex *lex, char *line, int i);
 /*Fichier: lexeur_util.c*/
 char		*string_move(char *line);
 double		get_decimal(char **line, int i);
-int 		get_vector(char **line, int i, t_color *color);
+int			get_vector(char **line, int i, t_color *color);
 /*Fichier: parser.c*/
 int			parser(t_lex lex, int *verif);
 int			verify_line(char *line, int line_nbr);
