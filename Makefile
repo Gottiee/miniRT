@@ -29,6 +29,7 @@ SRC_FILES = 	main \
 				class/vector_utility \
 				class/vector_utility2 \
 				class/vector_utility3 \
+				class/vector_utility4 \
 				class/ray_class \
 				class/cam_class \
 				objects/hittable_list \

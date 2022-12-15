@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:25:53 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/07 17:39:49 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:34:22 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	parser(t_lex lex, int *verif)
 	ratio = 1;
 	color = 1;
 	orient = 1;
+	fov = 1;
 	if (lex.type == L || lex.type == A)
 		ratio = in_range(lex.ratio, 0, 1.0);
 	if (lex.type != C)

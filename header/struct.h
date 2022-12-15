@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 12:42:20 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:32:41 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ typedef struct s_cam
 	double	focal;
 	t_vec3	lookfrom;	
 	t_vec3	lookat;
+	double	ratio;
+	double	theta;
+	double	h;
+	t_vec3	vup;
+	t_vec3	w;
+	t_vec3	u;
+	t_vec3	v;
+	double	view_width;
+	double	view_height;
 }				t_cam;
 
 typedef struct s_matrix
@@ -172,6 +181,19 @@ typedef struct s_lex
 	int			fov;
 	double		radius;
 	double		height;
+	int			nbr_line;
+	int			verif[8];
+
 }				t_lex;
+
+typedef struct s_spe
+{
+	double	a;
+	double	b;
+	double	c;
+	double	discr;
+	double	root;
+	t_ray	tmp;
+}				t_spe;
 
 #endif
