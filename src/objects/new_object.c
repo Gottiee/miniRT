@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:25:53 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/15 11:53:48 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 14:10:39 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@ void	init_amb(t_lex lex)
 	amb = get_amb();
 	amb->color = unit_vector(divis(lex.color, 255));
 	amb->ratio = lex.ratio;
+}
+
+void	init_light(t_lex lex)
+{
+	t_light		*l;
+	void		*ptr;
+
+	l = get_light();
+	l->center = magic_malloc(sizeof(t_vec3));
+	*l->center = lex.coord;
+	l->radius = 0.1;
+	l->ratio = lex.ratio;
+	l->color = lex.color;
+	ptr = l;
+	get_hit(ptr, L);
 }
 
 void	init_circle(t_lex lex)

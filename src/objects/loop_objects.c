@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:28:42 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/15 11:31:54 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 13:59:12 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ int	loop_objects(char *file)
 
 	if (!check_extension(file))
 	{
-		printf("Bad extention, check the name file\n");
+		printf("Error\nBad extention, check the file name\n");
 		return (0);
 	}
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (printf("Error\nBad file name\n"), 0);
 	if (!object(fd))
 	{
 		magic_free();

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:27:37 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/04 16:10:06 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:43:11 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	*magic_malloc(size_t size)
 {
 	void	*mem;
 
-	mem = calloc(size, 1);
+	mem = ft_calloc(size, 1);
 	if (!mem)
 	{
 		magic_free();

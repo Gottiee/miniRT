@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:18:19 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 13:50:46 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 14:19:49 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ int	object(int fd)
 
 	ft_bzero(lex.verif, sizeof(int) * 8);
 	lex.nbr_line = 0;
-	line = get_next_line(fd);
+	line = magic_gnl(fd);
 	while (line)
 	{
 		lex.nbr_line ++;
 		if (line[0] == '\n')
 		{
-			line = get_next_line(fd);
+			line = magic_gnl(fd);
 			continue ;
 		}
 		if (!verify_line(line, lex.nbr_line))
@@ -103,8 +103,7 @@ int	object(int fd)
 		if (lexeur(&lex, line, lex.nbr_line)
 			&& !do_parser(lex, lex.verif, lex.nbr_line))
 			return (0);
-		free(line);
-		line = get_next_line(fd);
+		line = magic_gnl(fd);
 	}
 	return (verif_verif(lex.verif));
 }

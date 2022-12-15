@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:59:04 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/14 13:16:34 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 14:04:12 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	lex_c(t_lex *lex, char *line, int i)
 		return (0);
 	if (!*line)
 		return (isnt_complet(i, 0));
-	lex->fov = atoi(line);
+	lex->fov = ft_atoi(line);
 	line = string_move(line);
 	if (*line)
 		return (isnt_complet(i, 1));

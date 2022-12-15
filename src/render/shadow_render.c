@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:42:02 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/15 10:31:02 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:59:48 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	shadow_render(t_record *rec, t_point light)
 
 	l = get_light();
 	a = get_amb();
-	rec->light_level = l->ratio * 5;
+	rec->light_level = l->ratio * 2;
 	path.orig = plus(rec->hit_point, mult(rec->normal, 0.01));
 	path.dir = normalize(minus(light, rec->hit_point));
 	p = minus(light, path.orig);
@@ -72,7 +72,7 @@ void	shadow_render(t_record *rec, t_point light)
 		rec->light_level = a->ratio * 0.5;
 	else
 	{
-		rec->light_level = greatest(dot(unit_vector(p), \
+		rec->light_level *= greatest(dot(unit_vector(p), \
 		unit_vector(rec->normal)), a->ratio * 0.5);
 		rec->light_level = greatest(rec->light_level / (length(&p) / 5), \
 		a->ratio * 0.5);
