@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:14 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 18:35:28 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 10:48:56 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ double	exter_cyl(t_vec3 dir_pix, t_vec3 cam_o, t_cyl *c, t_vec3 *rslt)
 	t_vec3	va;
 	t_vec3	rao;
 
-	dir_pix = unit_vector(dir_pix);
+	// dir_pix = unit_vector(dir_pix);
 	c->orient = unit_vector(c->orient);
 	va = cross(cross(c->orient, dir_pix), c->orient);
 	rao = cross(cross(c->orient, \
@@ -107,8 +107,8 @@ int	hit_cylinder(t_record *rec, t_ray r, t_vec2 limit, t_point light)
 	rec->t = get_cyl_t(r.dir, r.orig, c, &rslt);
 	if (rec->t <= 0)
 		return (0);
-	rec->hit_point = at(r, rec->t);
-	rec->normal = normal_cy(c, rec->hit_point, r.orig);
+	rec->hit_point = rslt;
+	rec->normal = normal_cy(c, rslt, r.orig);
 	rec->color = c->color;
 	rec->light_level = 1;
 	rec->type = CY;
