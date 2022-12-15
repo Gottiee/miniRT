@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 13:31:46 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:52:19 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,19 +117,21 @@ int			loop_objects(char *file);
 /*Fichier: lexeur.c*/
 int			object(int fd);
 /*Fichier: lexeur_object.c*/
-int			lex_A(t_lex *lex, char *line, int i);
-int			lex_L(t_lex *lex, char *line, int i);
-int			lex_C(t_lex *lex, char *line, int i);
+int			lex_a(t_lex *lex, char *line, int i);
+int			lex_l(t_lex *lex, char *line, int i);
+int			lex_c(t_lex *lex, char *line, int i);
 int			lex_objects(t_lex *lex, char *line, int i);
 int			isnt_complet(int i, int bool);
 /*Fichier: lexeur_geo_obj.c*/
-int			lex_SP(t_lex *lex, char *line, int i);
-int			lex_PL(t_lex *lex, char *line, int i);
-int			lex_CY(t_lex *lex, char *line, int i);
+int			lex_sp(t_lex *lex, char *line, int i);
+int			lex_pl(t_lex *lex, char *line, int i);
+int			lex_cy(t_lex *lex, char *line, int i);
 /*Fichier: lexeur_util.c*/
 char		*string_move(char *line);
 double		get_decimal(char **line, int i);
 int			get_vector(char **line, int i, t_color *color);
+void		call_type(t_lex *lex, char *line, int i, int *value);
+int			do_parser(t_lex lex, int *verif, int nbr_line);
 /*Fichier: parser.c*/
 int			parser(t_lex lex, int *verif);
 int			verify_line(char *line, int line_nbr);

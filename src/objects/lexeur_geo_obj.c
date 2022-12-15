@@ -6,13 +6,13 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:22:40 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 12:37:29 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:12:40 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-int lex_SP(t_lex *lex, char *line, int i)
+int	lex_sp(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
@@ -28,7 +28,7 @@ int lex_SP(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_PL(t_lex *lex, char *line, int i)
+int	lex_pl(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
@@ -45,7 +45,7 @@ int	lex_PL(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_CY(t_lex *lex, char *line, int i)
+int	lex_cy(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);

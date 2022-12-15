@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:28:42 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/02 15:08:12 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 11:31:54 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	check_extension(char *file)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while (file[++i] && file[i] != '.');
+	while (file[++i] && file[i] != '.')
+	{
+	}
 	if (file[i] != '.')
 		return (0);
 	i ++;
@@ -28,7 +30,7 @@ int	check_extension(char *file)
 
 int	loop_objects(char *file)
 {
-	int fd;
+	int	fd;
 
 	if (!check_extension(file))
 	{

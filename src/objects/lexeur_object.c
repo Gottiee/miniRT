@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:59:04 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 12:37:49 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:16:34 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	isnt_complet(int i, int bool)
 	}
 	else if (bool == 1)
 	{
-		printf("Error\n Line %d too many arguments\n", i)	;
+		printf("Error\n Line %d too many arguments\n", i);
 		return (0);
 	}
 	return (0);
 }
 
-int	lex_A(t_lex *lex, char *line, int i)
+int	lex_a(t_lex *lex, char *line, int i)
 {
 	lex->ratio = get_decimal(&line, i);
 	if (lex->ratio == ERROR)
@@ -41,7 +41,7 @@ int	lex_A(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_C(t_lex *lex, char *line, int i)
+int	lex_c(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
@@ -58,7 +58,7 @@ int	lex_C(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_L(t_lex *lex, char *line, int i)
+int	lex_l(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
@@ -77,13 +77,13 @@ int	lex_L(t_lex *lex, char *line, int i)
 int	lex_objects(t_lex *lex, char *line, int i)
 {
 	if (lex->type == SP)
-		if (!lex_SP(lex, line, i))
+		if (!lex_sp(lex, line, i))
 			return (0);
 	if (lex->type == PL)
-		if (!lex_PL(lex, line, i))
+		if (!lex_pl(lex, line, i))
 			return (0);
 	if (lex->type == CY)
-		if (!lex_CY(lex, line, i))
+		if (!lex_cy(lex, line, i))
 			return (0);
 	return (1);
 }
