@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 11:39:25 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 13:26:18 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ enum e_alpha {_A, _B, _C, OC};
 /*         --- UTILS ---     */
 
 /*Fichier: mlx_fonction.c*/
-void		mlx_center(t_data *data);
+int		mlx_center(t_data *data);
 /*Fichier : move.c*/
 void		move(int keysym, t_data *data);
 void		init_move(t_data *data);
