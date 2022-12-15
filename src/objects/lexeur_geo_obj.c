@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lexeur_geo_obj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eedy <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:22:40 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/14 13:12:40 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/28 11:12:34 by eedy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-int	lex_sp(t_lex *lex, char *line, int i)
+int lex_SP(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
@@ -28,7 +28,7 @@ int	lex_sp(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_pl(t_lex *lex, char *line, int i)
+int	lex_PL(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);
@@ -45,7 +45,7 @@ int	lex_pl(t_lex *lex, char *line, int i)
 	return (1);
 }
 
-int	lex_cy(t_lex *lex, char *line, int i)
+int	lex_CY(t_lex *lex, char *line, int i)
 {
 	if (!get_vector(&line, i, &lex->coord))
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:54:07 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/15 11:47:07 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 10:19:38 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,25 @@ int	launch_render(t_data *data)
 	return (0);
 }
 
-int	mlx_center(t_data *data)
+void	mlx_center(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
-		return (magic_free(), exit(0), 0);
+		exit (0);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_W, WINDOW_H, "MiniRT");
 	if (data->win_ptr == NULL)
 	{
 		free(data->win_ptr);
-		return (magic_free(), exit(0), 0);
+		exit (0);
 	}
 	data->i.i = mlx_new_image(data->mlx_ptr, WINDOW_W, WINDOW_H);
 	if (!data->i.i)
-		return (magic_free(), exit(0), 0);
-	data->i.a = mlx_get_data_addr(data->i.i,
-			&data->i.b, &data->i.l, &data->i.e);
+		exit(0);
+	data->i.a = mlx_get_data_addr(data->i.i, &data->i.b, \
+	&data->i.l, &data->i.e);
 	if (!data->i.a)
-		return (magic_free(), exit(0), 0);
+		exit(0);
+	data->render_image = 1;
 	init_move(data);
 	mlx_loop_hook(data->mlx_ptr, &launch_render, data);
 	mlx_hook(data->win_ptr, 17, StructureNotifyMask, &handle_destroy, data);
@@ -80,5 +81,4 @@ int	mlx_center(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->i.i);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
-	return (1);
 }

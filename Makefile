@@ -12,7 +12,6 @@ SUBDIR		=	obj/class \
 				obj/utils \
 				obj/render\
 				obj/objects\
-				obj/intersection \
 #BONUS_DIR	= src_bonus/
 
 CC			= gcc
@@ -30,7 +29,6 @@ SRC_FILES = 	main \
 				class/vector_utility \
 				class/vector_utility2 \
 				class/vector_utility3 \
-				class/vector_utility4 \
 				class/ray_class \
 				class/cam_class \
 				objects/hittable_list \
@@ -40,16 +38,17 @@ SRC_FILES = 	main \
 				objects/lexeur_object \
 				objects/lexeur_geo_obj \
 				objects/lexeur_util \
-				objects/utils2 \
 				objects/parser \
 				objects/new_object \
-				intersection/cylindre \
-				intersection/plane \
-				intersection/sphere \
 				render/render_loop \
 				render/object_renderer \
-				render/utils_render \
 				render/display \
+				render/render_sphere \
+				render/render_light \
+				render/render_cylinder \
+				render/render_cylinder2 \
+				render/normal_cy \
+				render/render_plane \
 				render/shadow_render \
 				utils/mlx_fonction \
 				utils/move \

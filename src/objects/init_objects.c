@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:06:43 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/15 11:54:08 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 10:43:39 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ void	init_cylinder(t_lex lex)
 	s->height = lex.height;
 	ptr = s;
 	get_hit(ptr, CY);
+	// init_circle(lex);
+	// lex.orient = mult(lex.orient, -1);
+	// init_circle(lex);
+	// lex.orient = mult(lex.orient, -1);
+	// lex.coord = plus(lex.coord, mult(normalize(lex.orient), lex.height));
+	// init_circle(lex);
+	// lex.orient = mult(lex.orient, -1);
+	// init_circle(lex);
 }
 
 void	init_sphere(t_lex lex)
@@ -46,7 +54,7 @@ void	init_plane(t_lex lex)
 	t_plane	*p2;
 	void	*ptr;
 	void	*ptr2;
-
+	
 	p = magic_malloc(sizeof(t_plane));
 	p->center = lex.coord;
 	p->color = unit_vector(divis(lex.color, 255));
@@ -68,9 +76,10 @@ void	init_light(t_lex lex)
 
 	l = get_light();
 	l->center = magic_malloc(sizeof(t_vec3));
-	*l->center = lex.coord;
+	*l->center = mult((lex.coord), 1);
 	l->radius = 0.1;
 	l->ratio = lex.ratio;
+	//l->color = unit_vector(divis(lex.color, 255));
 	l->color = lex.color;
 	ptr = l;
 	get_hit(ptr, L);

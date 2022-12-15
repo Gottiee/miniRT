@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:56:17 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/14 13:57:37 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/08 18:09:58 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,6 @@ typedef struct s_cam
 	double	focal;
 	t_vec3	lookfrom;	
 	t_vec3	lookat;
-
-	double		ratio;
-	double		theta;
-	double		h;
-	t_vec3		vup;		
-    t_vec3		w;
-    t_vec3		u;
-    t_vec3		v;
-	double		view_width;
-	double		view_height;
 }				t_cam;
 
 typedef struct s_matrix
@@ -70,13 +60,13 @@ typedef struct s_matrix
 
 typedef struct s_eqn
 {
-	double	a;
-	double	b;
-	double	c;
-	double	delta;
-	double	t1;
-	double	t2;
-	double	t;
+	float	a;
+	float	b;
+	float	c;
+	float	delta;
+	float	t1;
+	float	t2;
+	float	t;
 }	t_eqn;
 
 typedef struct s_img
@@ -168,6 +158,7 @@ typedef struct s_data
 	int		render_image;
 	int		disp_normals;
 	t_point	light;
+	//moves
 	int		left;
 	int		right;
 	int		up;
@@ -187,18 +178,6 @@ typedef struct s_lex
 	int			fov;
 	double		radius;
 	double		height;
-	int			nbr_line;
-	int			verif[8];
 }				t_lex;
-
-typedef struct s_spe
-{
-	double	a;
-	double	b;
-	double	c;
-	double	discr;
-	double	root;
-	t_ray	tmp;
-}				t_spe;
 
 #endif

@@ -6,40 +6,11 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:34:58 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/15 11:47:44 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 10:18:08 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
-
-void	move2(int keysym, t_data *data)
-{
-	t_cam	*cam;
-
-	cam = get_cam();
-	if (keysym == XK_i)
-		data->light = plus(data->light, new_vec(0, 0.1, 0));
-	if (keysym == XK_j)
-		data->light = plus(data->light, new_vec(-0.1, 0, 0));
-	if (keysym == XK_o)
-		data->light = plus(data->light, new_vec(0, 0, -0.1));
-	if (keysym == XK_u)
-		data->light = plus(data->light, new_vec(0, 0, 0.1));
-	if (keysym == XK_Up)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, -0.1, 0)));
-	if (keysym == XK_Down)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0.1, 0)));
-	if (keysym == XK_Right)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(-0.1, 0, 0)));
-	if (keysym == XK_Left)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0.1, 0, 0)));
-	if (keysym == XK_z)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, 0.1)));
-	if (keysym == XK_x)
-		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, -0.1)));
-	if (keysym == XK_n)
-		data->disp_normals = data->disp_normals == 0;
-}
 
 void	move(int keysym, t_data *data)
 {
@@ -62,9 +33,46 @@ void	move(int keysym, t_data *data)
 		data->light = plus(data->light, new_vec(0, -0.1, 0));
 	if (keysym == XK_l)
 		data->light = plus(data->light, new_vec(0.1, 0, 0));
-	move2(keysym, data);
-		data->render_image = 1;
+	if (keysym == XK_i)
+		data->light = plus(data->light, new_vec(0, 0.1, 0));
+	if (keysym == XK_j)
+		data->light = plus(data->light, new_vec(-0.1, 0, 0));
+	if (keysym == XK_o)
+		data->light = plus(data->light, new_vec(0, 0, -0.1));
+	if (keysym == XK_u)
+		data->light = plus(data->light, new_vec(0, 0, 0.1));
+	if (keysym == XK_Up)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, -0.1, 0)));
+	if (keysym == XK_Down)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0.1, 0)));
+	if (keysym == XK_Right)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(-0.1, 0, 0)));
+	if (keysym == XK_Left)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0.1, 0, 0)));
+	if (keysym == XK_z)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, 0.1)));
+	if (keysym == XK_x)
+		cam->lookat = unit_vector(plus(cam->lookat, new_vec(0, 0, -0.1)));
+	if (keysym == XK_n)
+		data->disp_normals = data->disp_normals == 0;		
+	data->render_image = 1;
 }
+
+// void	move_light(t_data *data)
+// {
+// 	if (data->left == 1)
+// 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0.1, 0, 0)));
+// 	if (data->right == 1)
+// 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(-0.1, 0, 0)));
+// 	if (data->down == 1)
+// 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0.1, 0)));
+// 	if (data->up == 1)
+// 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, -0.1, 0)));	
+// 	if (data->far == 1)
+// 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, 0.1)));
+// 	if (data->close == 1)
+// 		data->cam.light = unit_vector(plus(data->cam.light, new_vec(0, 0, -0.1)));
+// }
 
 int	key_release(int keysym, t_data *data)
 {
@@ -104,6 +112,4 @@ void	init_move(t_data *data)
 	data->far = 0;
 	data->close = 0;
 	data->disp_normals = 0;
-	data->render_image = 1;
-	data->animation = 0;
 }

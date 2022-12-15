@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:55:11 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/11/24 11:48:23 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:02:16 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 double	clamp(double x, double min, double max)
 {
 	if (x < min)
-		return min;
-    if (x > max)
-		return max;
-    return (x);
+		return (min);
+	if (x > (max))
+		return (max);
+	return (x);
 }
 
 int	hexa(t_color col)
 {
-	int r;
-	int g;
-	int b;
-	
+	int	r;
+	int	g;
+	int	b;
+
 	col.x = clamp(col.x, 0, 1);
 	col.y = clamp(col.y, 0, 1);
 	col.z = clamp(col.z, 0, 1);

@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:46:40 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 13:58:55 by eedy             ###   ########.fr       */
+/*   Updated: 2022/11/18 13:25:20 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,16 @@ t_vec3	div_equal(t_vec3 *u, double t)
 {
 	mult_equal(u, 1 / t);
 	return (*u);
+}
+
+/*Taille du vecteur 'u' au carré*/
+double	length_squared(t_vec3 *u)
+{
+	return (u->x * u->x + u->y * u->y + u->z * u->z);
+}
+
+/*Taille du vecteur 'u'*/
+double	length(t_vec3 *u)
+{
+	return (sqrt(length_squared(u)));
 }

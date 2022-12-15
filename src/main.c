@@ -6,7 +6,7 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:29:38 by gmansuy           #+#    #+#             */
-/*   Updated: 2022/12/14 14:02:48 by eedy             ###   ########.fr       */
+/*   Updated: 2022/12/15 11:31:37 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {	
 	t_data	data;
-	t_light	*l;
+	t_light	*l; //protect segfault //map existe pas ?
 
 	if (argc != 2)
 		return (printf("Error\nInvalid args\n"), 1);

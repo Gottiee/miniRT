@@ -6,46 +6,53 @@
 /*   By: gmansuy <gmansuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:29:44 by eedy              #+#    #+#             */
-/*   Updated: 2022/12/13 11:45:49 by gmansuy          ###   ########.fr       */
+/*   Updated: 2022/12/15 10:15:03 by gmansuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/minirt.h"
 
-double	intersect(t_hit_lst *lst, t_ray r, t_vec3 *hit)
+void	init_pointer(int (*hit[8])(t_record *rec, t_ray r, \
+t_vec2 limit, t_point light))
 {
-	if (lst->type == L)
-		return (inter_light(r.dir, r.orig, lst->object, hit));
-	if (lst->type == PL)
-		return (inter_plan(r.dir, r.orig, lst->object, hit));
-	if (lst->type == SP)
-		return (inter_sphere(r.dir, r.orig, lst->object, hit));
-	if (lst->type == CY)
-		return (inter_cylindre(r.dir, r.orig, lst->object, hit));
-	return (0);
+	hit[SP] = &hit_sphere;
+	hit[L] = &hit_light;
+	hit[PL] = &hit_plane;
+	hit[CY] = &hit_cylinder;
 }
 
-t_vec3	hit_global(t_ray r, double *t_max, t_hit_lst **obj, int shad)
+void	setlim(t_vec2 *limit, int *hit_any)
 {
-	t_hit_lst	*tmp;
-	t_vec3		p_hit;
-	t_vec3		p_hit_temp;
-	double		t;
+	limit->x = 0;
+	limit->y = DBL_MAX;
+	*hit_any = 0;
+}
 
-	tmp = *obj;
-	*t_max = DBL_MAX;
-	while (tmp)
+int	hit_global(t_ray r, t_record *rec, t_point light)
+{
+	t_hit_lst	*list;
+	t_record	rec_tmp;
+	t_vec2		limit;
+	int			hit_any;
+	int			(*hit[8])(t_record *rec, t_ray r, t_vec2 limit, t_point light);
+
+	init_pointer(hit);
+	setlim(&limit, &hit_any);
+	list = get_hit(NULL, 0);
+	while (list)
 	{
-		t = intersect(tmp, r, &p_hit_temp);
-		if (t && t < *t_max)
+		rec_tmp.closest = list->object;
+		rec_tmp.type = 0;
+		if (list->type != L && hit[list->type](&rec_tmp, r, limit, light))
 		{
-			eq_vector(&p_hit, p_hit_temp);
-			*t_max = t;
-			*obj = tmp;
+			if (rec_tmp.t < limit.y)
+			{
+				hit_any = 1;
+				limit.y = rec_tmp.t;
+				*rec = rec_tmp;
+			}
 		}
-		tmp = tmp->next;
+		list = list->next;
 	}
-	if (shad && (*obj)->type == L)
-		*t_max = DBL_MAX;
-	return (p_hit);
+	return (hit_any);
 }
